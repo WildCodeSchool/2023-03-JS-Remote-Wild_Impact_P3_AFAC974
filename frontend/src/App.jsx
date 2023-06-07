@@ -29,7 +29,7 @@ function App() {
         <Route path="/subscription" element={<UserSubscription />} />
         <Route path="/login" element={<UserLogin />} />
         <Route path="/profile" element={<UserProfile />} />
-        <Route path="/favorites" element={<UserFavourites />} />
+        <Route path="/favourites" element={<UserFavourites />} />
         <Route path="/admin" element={<Admin />} />
       </Routes>
     </Router>

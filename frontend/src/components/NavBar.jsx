@@ -8,7 +8,7 @@ function NavBar() {
       <Link to="/gallery">Gallery</Link>
       <Link to="/author">Author</Link>
       <Link to="/about">About</Link>
-      <Link to="/favorites">Your favorites</Link>
+      <Link to="/favourites">Your favourites</Link>
     </div>
   );
 }
