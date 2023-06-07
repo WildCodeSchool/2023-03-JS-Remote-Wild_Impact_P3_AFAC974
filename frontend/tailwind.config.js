@@ -12,7 +12,11 @@ module.exports = {
       'white': "#FFFFFF",
       'black': "#292929",
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+      'sans': ['Epilogue'],
+    },
+  },
   },
   plugins: [],
 };
