@@ -31,7 +31,8 @@ CREATE TABLE
         reference VARCHAR(255) NOT NULL,
         summary LONGTEXT NOT NULL,
         format VARCHAR(255) NOT NULL,
-        created_date TIMESTAMP DEFAU article_link VARCHAR(255),
+        created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+        article_link VARCHAR(255),
         techniques_id INT,
         categories_id INT,
         CONSTRAINT techniques_id_fk FOREIGN KEY (techniques_id) REFERENCES techniques(id),
@@ -43,7 +44,8 @@ CREATE TABLE
         id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
         email VARCHAR(255) NOT NULL UNIQUE,
         firstname VARCHAR(255),
-        created_date TIMESTAMP DEFAU hashed_password VARCHAR(255) NOT NULL,
+        created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP, 
+        hashed_password VARCHAR(255) NOT NULL,
         is_admin BOOLEAN
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
