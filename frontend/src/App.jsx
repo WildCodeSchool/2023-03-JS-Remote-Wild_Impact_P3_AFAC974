@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
+import UserLayout from "./pages/layout/UserLayout";
+import AdminLayout from "./pages/layout/AdminLayout";
+
 import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import Gallery from "./pages/Gallery";
@@ -12,7 +15,7 @@ import UserLogin from "./pages/UserLogin";
 import UserProfile from "./pages/UserProfile";
 import UserFavourites from "./pages/UserFavourites";
 
-import Admin from "./pages/Admin";
+import Admin from "./pages/admin/Admin";
 
 import "./Index.css";
 
@@ -21,16 +24,20 @@ function App() {
     <Router>
       <NavBar />
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/gallery" element={<Gallery />} />
-        <Route path="/gallery/:id" element={<OneImage />} />
-        <Route path="/author" element={<Author />} />
-        <Route path="/about" element={<About />} />
-        <Route path="/subscription" element={<UserSubscription />} />
-        <Route path="/login" element={<UserLogin />} />
-        <Route path="/profile" element={<UserProfile />} />
-        <Route path="/favourites" element={<UserFavourites />} />
-        <Route path="/admin" element={<Admin />} />
+        <Route path="/" element={<UserLayout />}>
+          <Route path="" element={<HomePage />} />
+          <Route path="gallery" element={<Gallery />} />
+          <Route path="gallery/:id" element={<OneImage />} />
+          <Route path="author" element={<Author />} />
+          <Route path="about" element={<About />} />
+          <Route path="subscription" element={<UserSubscription />} />
+          <Route path="login" element={<UserLogin />} />
+          <Route path="profile" element={<UserProfile />} />
+          <Route path="favourites" element={<UserFavourites />} />
+        </Route>
+        <Route path="/admin" element={<AdminLayout />}>
+          <Route path="" element={<Admin />} />
+        </Route>
       </Routes>
     </Router>
   );
