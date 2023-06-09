@@ -52,15 +52,16 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const categories = req.body;
-  console.log("Hello World");
-  console.log(categories);
 
   // TODO validations (length, format...)
 
   models.categories
     .insert(categories)
     .then(([result]) => {
-      res.location(`/categories/${result.insertId}`).sendStatus(201);
+      res
+        .location(`/categories/${result.insertId}`)
+        .status(201)
+        .json({ id: result.insertId, category: categories.category });
     })
     .catch((err) => {
       console.error(err);
