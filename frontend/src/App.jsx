@@ -23,7 +23,7 @@ import "./Index.css";
 function App() {
   return (
     <Router>
-      {/* <NavBar /> */}
+      <NavBar />
       <Routes>
         <Route path="/" element={<UserLayout />}>
           <Route path="" element={<HomePage />} />

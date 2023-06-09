@@ -1,10 +1,13 @@
 import React, { useState } from "react";
+import connexion from "../../services/connexion";
 
 function CategoriesAdmin() {
   const [category, setCategory] = useState("");
 
-  const handleCategory = (event) => {
+  const handleCategory = async (event) => {
     event.preventDefault();
+    const result = await connexion.post("/categories", { category });
+    console.info(result);
   };
 
   return (
