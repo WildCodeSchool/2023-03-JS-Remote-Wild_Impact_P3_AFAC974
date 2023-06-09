@@ -15,14 +15,15 @@ import UserLogin from "./pages/UserLogin";
 import UserProfile from "./pages/UserProfile";
 import UserFavourites from "./pages/UserFavourites";
 
-import Admin from "./pages/admin/Admin";
+import WorksAdmin from "./pages/admin/WorksAdmin";
+import CategoriesAdmin from "./pages/admin/CategoriesAdmin";
 
 import "./Index.css";
 
 function App() {
   return (
     <Router>
-      <NavBar />
+      {/* <NavBar /> */}
       <Routes>
         <Route path="/" element={<UserLayout />}>
           <Route path="" element={<HomePage />} />
@@ -36,7 +37,8 @@ function App() {
           <Route path="favourites" element={<UserFavourites />} />
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="" element={<Admin />} />
+          <Route path="works" element={<WorksAdmin />} />
+          <Route path="categories" element={<CategoriesAdmin />} />
         </Route>
       </Routes>
     </Router>
