@@ -18,8 +18,8 @@ router.put("/works/:id", workControllers.edit);
 router.post("/works", workControllers.add);
 router.delete("/works/:id", workControllers.destroy);
 
-const categorieControllers = require("./controllers/categorieControllers");
+const categoryControllers = require("./controllers/categoryControllers");
 
-router.post("/categories", categorieControllers.add);
+router.post("/categories", categoryControllers.add);
 
 module.exports = router;
