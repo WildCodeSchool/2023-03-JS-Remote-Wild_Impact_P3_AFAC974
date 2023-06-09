@@ -39,6 +39,11 @@ const WorkManager = require("./WorkManager");
 models.work = new WorkManager();
 models.work.setDatabase(pool);
 
+const CategoriesManager = require("./CategoriesManager");
+
+models.categories = new CategoriesManager();
+models.categories.setDatabase(pool);
+
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 
