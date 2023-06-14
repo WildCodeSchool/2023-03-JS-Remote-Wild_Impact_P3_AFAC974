@@ -1,22 +1,22 @@
 const AbstractManager = require("./AbstractManager");
 
-class CategoriesManager extends AbstractManager {
+class TechniqueManager extends AbstractManager {
   constructor() {
-    super({ table: "categories" });
+    super({ table: "techniques" });
   }
 
-  insert(categories) {
+  insert(techniques) {
     return this.database.query(`insert into ${this.table} (name) values (?)`, [
-      categories.category,
+      techniques.technique,
     ]);
   }
 
-  update(categories) {
+  update(techniques) {
     return this.database.query(
       `update ${this.table} set name = ? where id = ?`,
-      [categories.name, categories.id]
+      [techniques.name, techniques.id]
     );
   }
 }
 
-module.exports = CategoriesManager;
+module.exports = TechniqueManager;
