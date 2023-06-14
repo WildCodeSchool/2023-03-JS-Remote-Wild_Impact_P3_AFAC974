@@ -17,6 +17,7 @@ import UserFavourites from "./pages/UserFavourites";
 
 import WorksAdmin from "./pages/admin/WorksAdmin";
 import CategoriesAdmin from "./pages/admin/CategoriesAdmin";
+import TechniquesAdmin from "./pages/admin/TechniquesAdmin";
 
 import "./Index.css";
 
@@ -39,6 +40,7 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="works" element={<WorksAdmin />} />
           <Route path="categories" element={<CategoriesAdmin />} />
+          <Route path="techniques" element={<TechniquesAdmin />} />
         </Route>
       </Routes>
     </Router>
