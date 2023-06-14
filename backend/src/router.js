@@ -27,6 +27,7 @@ const techniqueControllers = require("./controllers/techniqueControllers");
 
 router.get("/techniques", techniqueControllers.browse);
 router.get("/techniques/:id", techniqueControllers.read);
+router.put("/techniques/:id", techniqueControllers.edit);
 router.post("/techniques", techniqueControllers.add);
 router.delete("/techniques/:id", techniqueControllers.destroy);
 
