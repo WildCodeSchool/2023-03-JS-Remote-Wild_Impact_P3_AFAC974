@@ -28,5 +28,6 @@ const techniqueControllers = require("./controllers/techniqueControllers");
 router.get("/techniques", techniqueControllers.browse);
 router.get("/techniques/:id", techniqueControllers.read);
 router.post("/techniques", techniqueControllers.add);
+router.delete("/techniques/:id", techniqueControllers.destroy);
 
 module.exports = router;
