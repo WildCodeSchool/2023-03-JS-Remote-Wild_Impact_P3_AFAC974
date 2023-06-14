@@ -21,5 +21,6 @@ router.delete("/works/:id", workControllers.destroy);
 const categoryControllers = require("./controllers/categoryControllers");
 
 router.post("/categories", categoryControllers.add);
+router.delete("/categories/:id", categoryControllers.destroy);
 
 module.exports = router;
