@@ -51,14 +51,17 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const item = req.body;
+  const techniques = req.body;
 
   // TODO validations (length, format...)
 
-  models.item
-    .insert(item)
+  models.technique
+    .insert(techniques)
     .then(([result]) => {
-      res.location(`/items/${result.insertId}`).sendStatus(201);
+      res
+        .location(`/techniques/${result.insertId}`)
+        .status(201)
+        .json({ id: result.insertId, technique: techniques.technique });
     })
     .catch((err) => {
       console.error(err);

@@ -7,7 +7,7 @@ class TechniqueManager extends AbstractManager {
 
   insert(techniques) {
     return this.database.query(`insert into ${this.table} (name) values (?)`, [
-      techniques.technique,
+      techniques.name,
     ]);
   }
 

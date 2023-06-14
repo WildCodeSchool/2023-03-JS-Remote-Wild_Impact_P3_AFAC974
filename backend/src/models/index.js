@@ -44,7 +44,7 @@ const CategoriesManager = require("./CategoriesManager");
 models.categories = new CategoriesManager();
 models.categories.setDatabase(pool);
 
-const TechniqueManager = require("./Technique.Manager");
+const TechniqueManager = require("./TechniqueManager");
 
 models.technique = new TechniqueManager();
 models.technique.setDatabase(pool);
