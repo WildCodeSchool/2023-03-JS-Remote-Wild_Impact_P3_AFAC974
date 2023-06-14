@@ -44,6 +44,10 @@ const CategoriesManager = require("./CategoriesManager");
 models.categories = new CategoriesManager();
 models.categories.setDatabase(pool);
 
+const TechniqueManager = require("./TechniqueManager");
+
+models.technique = new TechniqueManager();
+models.technique.setDatabase(pool);
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 

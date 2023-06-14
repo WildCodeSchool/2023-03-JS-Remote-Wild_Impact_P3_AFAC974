@@ -20,6 +20,12 @@ router.delete("/works/:id", workControllers.destroy);
 
 const categoryControllers = require("./controllers/categoryControllers");
 
+router.get("/categories", categoryControllers.browse);
 router.post("/categories", categoryControllers.add);
+
+const techniqueControllers = require("./controllers/techniqueControllers");
+
+router.get("/techniques", techniqueControllers.browse);
+router.post("/techniques", techniqueControllers.add);
 
 module.exports = router;
