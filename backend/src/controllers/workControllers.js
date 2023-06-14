@@ -53,12 +53,13 @@ const edit = (req, res) => {
 const add = (req, res) => {
   const work = req.body;
 
-  // TODO validations (length, format...)
-
   models.work
     .insert(work)
     .then(([result]) => {
-      res.location(`/works/${result.insertId}`).sendStatus(201);
+      res
+        .location(`/works/${result.insertId}`)
+        .sendStatus(201)
+        .json({ ...req.body, id: result.insertID });
     })
     .catch((err) => {
       console.error(err);
