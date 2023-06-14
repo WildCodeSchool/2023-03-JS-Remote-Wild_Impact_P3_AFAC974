@@ -22,4 +22,8 @@ const categoryControllers = require("./controllers/categoryControllers");
 
 router.post("/categories", categoryControllers.add);
 
+const techniqueControllers = require("./controllers/techniqueControllers");
+
+router.get("/techniques/:id", techniqueControllers.read);
+
 module.exports = router;
