@@ -1,20 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet } from "react-router-dom";
 
 function TechniquesAdmin() {
-  const [technique, setTechnique] = useState({
+  const [addTechnique, setAddTechnique] = useState({
     name: "",
   });
 
-  const handleTechnique = (value) => {
-    setTechnique({ ...technique, name: value });
+  const [techniques, setTechniques] = useState([]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/techniques`)
+      .then((res) => res.json())
+      .then((data) => setTechniques(data))
+      .catch((err) => console.error(err));
+  }, []);
+
+  const handleTechnique = (name, value) => {
+    setAddTechnique({ ...addTechnique, [name]: value });
   };
 
   const postTechnique = (e) => {
     e.preventDefault();
     fetch(`${import.meta.env.VITE_BACKEND_URL}/techniques`, {
       method: "POST",
-      body: JSON.stringify(technique),
+      body: JSON.stringify(addTechnique),
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
@@ -39,9 +48,12 @@ function TechniquesAdmin() {
       >
         Selectionner une technique
         <select className="bg-gray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
-          <option>Aquarelle</option>
-          <option>Dessin</option>
-          <option>Dessin à la mine de plomb</option>
+          <option value="">Choisir la technique</option>
+          {techniques.map((technique) => (
+            <option key={technique.id} value={technique.id}>
+              {technique.name}
+            </option>
+          ))}
         </select>
       </label>
 
@@ -55,8 +67,9 @@ function TechniquesAdmin() {
         type="text"
         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
         placeholder=""
-        value={technique.name}
-        onChange={(e) => handleTechnique(e.target.value)}
+        name="name"
+        value={addTechnique.name}
+        onChange={(e) => handleTechnique(e.target.name, e.target.value)}
       />
 
       <div className="Button">
