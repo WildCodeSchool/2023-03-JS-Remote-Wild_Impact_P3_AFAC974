@@ -22,6 +22,7 @@ const categoryControllers = require("./controllers/categoryControllers");
 
 router.get("/categories", categoryControllers.browse);
 router.post("/categories", categoryControllers.add);
+router.delete("/categories/:id", categoryControllers.destroy);
 
 const techniqueControllers = require("./controllers/techniqueControllers");
 

@@ -1,25 +1,42 @@
 import React, { useState } from "react";
-import connexion from "../../services/connexion";
 
 function CategoriesAdmin() {
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState({
+    name: "",
+  });
 
-  const handleCategory = async (event) => {
+  const handleCategory = (name, value) => {
+    setCategory({ ...category, [name]: value });
+  };
+
+  const postCategory = (event) => {
     event.preventDefault();
-    const result = await connexion.post("/categories", { category });
-    console.info(result);
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`, {
+      method: "POST",
+      body: JSON.stringify(category),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((json) => console.info(json))
+      .catch((err) => console.error(err));
   };
 
   return (
     <div>
-      <form onSubmit={(event) => handleCategory(event)}>
-        <label>
+      <form onSubmit={(event) => postCategory(event)}>
+        <label htmlFor="">
           Nom de la catégorie
           <input
             type="text"
             minLength={4}
-            value={category}
-            onChange={(event) => setCategory(event.target.value)}
+            name="name"
+            onChange={(event) =>
+              handleCategory(event.target.name, event.target.value)
+            }
+            value={category.name}
           />
         </label>
         <button type="submit">Ajouter</button>

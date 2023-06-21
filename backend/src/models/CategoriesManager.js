@@ -7,7 +7,7 @@ class CategoriesManager extends AbstractManager {
 
   insert(categories) {
     return this.database.query(`insert into ${this.table} (name) values (?)`, [
-      categories.category,
+      categories.name,
     ]);
   }
 
