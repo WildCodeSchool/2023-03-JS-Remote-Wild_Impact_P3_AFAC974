@@ -30,14 +30,42 @@ function WorksAdmin() {
   };
 
   return (
-    <div className="flex flex-col">
-      <h1>Gérer les oeuvres</h1>
-      <form className="flex" onSubmit={(event) => postWork(event)}>
-        <div className="md:container ">
-          <div className="flex">
-            <label htmlFor="Titre de l'oeuvre">
+    <div className="flex-1">
+      <h1 className="text-xl font-bold p-4">Gérer les oeuvres</h1>
+      <form
+        className="flex justify-around"
+        onSubmit={(event) => postWork(event)}
+      >
+        <div className="w-80">
+          <div>
+            <label
+              className="flex flex-col font-semibold pb-5"
+              htmlFor="Référence"
+            >
+              Référence
+              <input
+                className="border border-black"
+                type="text"
+                required
+                placeholder="Tapez ici la référence de l'oeuvre"
+                minLength={5}
+                maxLength={12}
+                name="reference"
+                onChange={(event) =>
+                  handleWork(event.target.name, event.target.value)
+                }
+                value={work.reference}
+              />
+            </label>
+          </div>
+          <div className="pt-5">
+            <label
+              className="flex flex-col font-semibold pb-5"
+              htmlFor="Titre de l'oeuvre"
+            >
               Titre de l'oeuvre
               <input
+                className="border border-black"
                 type="text"
                 required
                 placeholder="Titre de l'oeuvre"
@@ -52,9 +80,13 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label htmlFor="Titre Résumé">
+            <label
+              className="flex flex-col font-semibold pb-5"
+              htmlFor="Titre Résumé"
+            >
               Titre Résumé
               <input
+                className="border border-black"
                 type="text"
                 required
                 placeholder="Titre Résumé"
@@ -69,9 +101,13 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label htmlFor="Année de réalisation">
+            <label
+              className="flex flex-col font-semibold pb-5"
+              htmlFor="Année de réalisation"
+            >
               Année de réalisation
               <input
+                className="border border-black"
                 type="text"
                 required
                 placeholder="Année de réalisation"
@@ -86,56 +122,13 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label htmlFor="Image">
-              Image
-              <input
-                type="text"
-                required
-                placeholder="Image"
-                name="image_src"
-                onChange={(event) =>
-                  handleWork(event.target.name, event.target.value)
-                }
-                value={work.image_src}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="Texte alternatif de l'image">
-              Texte alternatif de l'image
-              <input
-                type="text"
-                required
-                placeholder="Texte alternatif de l'image"
-                name="image_alt"
-                onChange={(event) =>
-                  handleWork(event.target.name, event.target.value)
-                }
-                value={work.image_alt}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="Référence">
-              Référence
-              <input
-                type="text"
-                required
-                placeholder="Tapez ici la référence de l'oeuvre"
-                minLength={5}
-                maxLength={12}
-                name="reference"
-                onChange={(event) =>
-                  handleWork(event.target.name, event.target.value)
-                }
-                value={work.reference}
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor="Description">
-              Description
+            <label
+              className="flex flex-col font-semibold pb-5"
+              htmlFor="Description"
+            >
+              Commentaire 1
               <textarea
+                className="border border-black"
                 required
                 placeholder="Description"
                 minLength={50}
@@ -148,52 +141,164 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label htmlFor="Dimensions">
-              Dimensions
-              <input
-                type="text"
+            <label
+              className="flex flex-col font-semibold pb-5"
+              htmlFor="Description"
+            >
+              Commentaire 2
+              <textarea
+                className="border border-black"
                 required
-                placeholder="Dimensions"
-                minLength={6}
-                maxLength={50}
-                name="format"
+                placeholder="Description"
+                minLength={50}
+                name="summary"
                 onChange={(event) =>
                   handleWork(event.target.name, event.target.value)
                 }
-                value={work.format}
+                value={work.summary}
               />
             </label>
           </div>
-          <div className="md:container flex">
-            <div>
-              <label htmlFor="Technique">
-                Technique //* faire les fetch pour techniques et catégories pour
-                pouvoir les afficher / state / poster*/
-                <input type="text" placeholder="Technique" />
-              </label>
-            </div>
-            <div>
-              <label htmlFor="Catégories">
-                Catégories
-                <input type="text" placeholder="Catégories" />
-              </label>
-            </div>
+          <div>
+            <label
+              className="flex flex-col font-semibold pb-5"
+              htmlFor="Description"
+            >
+              Commentaire 3
+              <textarea
+                className="border border-black"
+                required
+                placeholder="Description"
+                minLength={50}
+                name="summary"
+                onChange={(event) =>
+                  handleWork(event.target.name, event.target.value)
+                }
+                value={work.summary}
+              />
+            </label>
           </div>
           <div>
-            <label htmlFor="Articles">
-              Articles
-              <input type="text" placeholder="Articles" />
+            <label
+              className="flex flex-col font-semibold pb-5"
+              htmlFor="Description"
+            >
+              Commentaire 4
+              <textarea
+                className="border border-black"
+                required
+                placeholder="Description"
+                minLength={50}
+                name="summary"
+                onChange={(event) =>
+                  handleWork(event.target.name, event.target.value)
+                }
+                value={work.summary}
+              />
             </label>
           </div>
         </div>
-
-        <button
-          type="submit"
-          className="bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-blue py-2 px-4 border border-blue-500 hover:border-transparent rounded"
-        >
+        <div>
+          <div className="pt-60">
+            <div>
+              <label
+                className="flex flex-col font-semibold pb-5"
+                htmlFor="Technique"
+              >
+                Technique
+                <select className="border border-black" type="text">
+                  <option value="">
+                    Choisissez la technique à associer avec l'oeuvre
+                  </option>
+                </select>
+              </label>
+            </div>
+            <div>
+              <label
+                className="flex flex-col font-semibold pb-5"
+                htmlFor="Dimensions"
+              >
+                Dimensions
+                <input
+                  className="border border-black"
+                  type="text"
+                  required
+                  placeholder="Notez ici les dimensions de l'oeuvre, en cm"
+                  minLength={6}
+                  maxLength={50}
+                  name="format"
+                  onChange={(event) =>
+                    handleWork(event.target.name, event.target.value)
+                  }
+                  value={work.format}
+                />
+              </label>
+            </div>
+            <div>
+              <label
+                className="flex flex-col font-semibold pb-5"
+                htmlFor="Catégories"
+              >
+                Catégorie
+                <select className="border border-black" type="text">
+                  <option value="">
+                    Choisissez la catégorie à associer avec l'oeuvre
+                  </option>
+                </select>
+              </label>
+            </div>
+            <div>
+              <label
+                className="flex flex-col font-semibold pb-5"
+                htmlFor="Texte alternatif de l'image"
+              >
+                Texte alternatif de l'image
+                <input
+                  className="border border-black"
+                  type="text"
+                  required
+                  placeholder="Décrivez l'oeuvre en quelques mots (à destination des personnes déficientes visuelles"
+                  name="image_alt"
+                  onChange={(event) =>
+                    handleWork(event.target.name, event.target.value)
+                  }
+                  value={work.image_alt}
+                />
+              </label>
+            </div>
+            <div>
+              <label
+                className="flex flex-col font-semibold pb-5"
+                htmlFor="Image"
+              >
+                Image
+                <input
+                  className="border border-black"
+                  type="file"
+                  required
+                  placeholder="Image"
+                  name="image_src"
+                  onChange={(event) =>
+                    handleWork(event.target.name, event.target.value)
+                  }
+                  value={work.image_src}
+                />
+              </label>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div className="flex justify-end pt-10 pb-5 pr-10 gap-10">
+        <button type="submit" className="bg-black text-white py-2 px-4">
           Ajouter
         </button>
-      </form>
+        <button type="button" className="bg-black text-white py-2 px-4">
+          Modifier
+        </button>
+        <button type="button" className="bg-black text-white py-2 px-4">
+          Supprimer
+        </button>
+      </div>
     </div>
   );
 }
