@@ -1,10 +1,19 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 function CategoriesAdmin() {
   const [category, setCategory] = useState({
     id: null,
     name: "",
   });
+
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`)
+      .then((res) => res.json())
+      .then((data) => setCategories(data))
+      .catch((err) => console.error(err));
+  }, []);
 
   const handleCategory = (name, value) => {
     setCategory({ ...category, [name]: value });
@@ -38,6 +47,21 @@ function CategoriesAdmin() {
   return (
     <div>
       <form onSubmit={(event) => postCategory(event)}>
+        <label
+          htmlFor="Select categories"
+          className="block mb-2 text-sm font-medium text-gray dark:text-white"
+        >
+          Selectionner une catégorie
+          <select className="bg-gray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500">
+            <option value="">Choisir la catégorie</option>
+            {categories.map((cat) => (
+              <option key={cat.id} value={cat.id}>
+                {cat.name}
+              </option>
+            ))}
+          </select>
+        </label>
+
         <label htmlFor="">
           Nom de la catégorie
           <input
@@ -52,6 +76,7 @@ function CategoriesAdmin() {
         </label>
         {!category.id && <button type="submit">Ajouter</button>}
       </form>
+
       {category.id && (
         <button type="button" onClick={(e) => deleteCategory(e)}>
           Supprimer
