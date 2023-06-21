@@ -33,6 +33,25 @@ class WorkManager extends AbstractManager {
     );
   }
 
+  update(work) {
+    return this.database.query(
+      `update ${this.table} set title = ? summary_title = ? date = ? image_src = ? image_alt = ? reference = ? summary = ? format = ? techniques_id = ? categories_id = ? where id = ?`,
+      [
+        work.title,
+        work.summary_title,
+        work.date,
+        work.image_src,
+        work.image_alt,
+        work.reference,
+        work.summary,
+        work.format,
+        work.techniques_id,
+        work.categories_id,
+        work.id,
+      ]
+    );
+  }
+
   delete(id) {
     return this.database.query(`delete from ${this.table} where id = ?`, [id]);
   }
