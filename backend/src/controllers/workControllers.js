@@ -30,9 +30,6 @@ const read = (req, res) => {
 
 const edit = (req, res) => {
   const work = req.body;
-
-  // TODO validations (length, format...)
-
   work.id = parseInt(req.params.id, 10);
 
   models.work
@@ -58,7 +55,7 @@ const add = (req, res) => {
     .then(([result]) => {
       res
         .location(`/works/${result.insertId}`)
-        .sendStatus(201)
+        .status(201)
         .json({ ...req.body, id: result.insertID });
     })
     .catch((err) => {
