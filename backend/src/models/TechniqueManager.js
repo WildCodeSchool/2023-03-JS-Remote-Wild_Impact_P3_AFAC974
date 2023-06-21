@@ -17,6 +17,10 @@ class TechniqueManager extends AbstractManager {
       [techniques.name, techniques.id]
     );
   }
+
+  delete(id) {
+    return this.database.query(`delete from ${this.table} where id = ?`, [id]);
+  }
 }
 
 module.exports = TechniqueManager;
