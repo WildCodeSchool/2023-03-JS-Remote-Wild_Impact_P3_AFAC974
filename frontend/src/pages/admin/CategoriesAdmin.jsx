@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
 
+const categoryModel = {
+  id: null,
+  name: "",
+};
+
 function CategoriesAdmin() {
-  const [category, setCategory] = useState({
-    id: null,
-    name: "",
-  });
+  const [category, setCategory] = useState(categoryModel);
 
   const [categories, setCategories] = useState([]);
 
@@ -34,8 +36,8 @@ function CategoriesAdmin() {
       },
     })
       .then((res) => res.json())
-      .then((json) => {
-        setCategory(json);
+      .then(() => {
+        setCategory(categoryModel);
         getCategories();
       })
       .catch((err) => console.error(err));
@@ -46,8 +48,8 @@ function CategoriesAdmin() {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/categories/${category.id}`, {
       method: "DELETE",
     })
-      .then((res) => res.json())
-      .then((json) => console.info(json))
+      .then(() => setCategory(categoryModel))
+      .then(() => getCategories())
       .catch((err) => console.error(err));
   };
 
@@ -90,9 +92,14 @@ function CategoriesAdmin() {
       </form>
 
       {category.id && (
-        <button type="button" onClick={(e) => deleteCategory(e)}>
-          Supprimer
-        </button>
+        <div>
+          <button type="button" onClick={(e) => deleteCategory(e)}>
+            Supprimer
+          </button>
+          {/* <button type="button" onClick={() => setCategory(categoryModel)}>
+            Ajouter une nouvelle catégorie
+          </button> */}
+        </div>
       )}
     </div>
   );
