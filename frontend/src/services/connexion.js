@@ -1,5 +1,4 @@
 const postData = (path, data) => {
-  // console.log(data);
   return fetch(`${import.meta.env.VITE_BACKEND_URL}${path}`, {
     method: "POST",
     body: JSON.stringify(data),
