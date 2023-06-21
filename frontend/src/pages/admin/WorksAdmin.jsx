@@ -2,7 +2,7 @@ import React from "react";
 
 function WorksAdmin() {
   return (
-    <div className="flex flex-col">
+    <div className="flex">
       <h1>Gérer les oeuvres</h1>
       <form className="flex">
         <div className="md:container ">
