@@ -3,16 +3,19 @@ import connexion from "../../services/connexion";
 
 function WorksAdmin() {
   const [work, setWork] = useState({
+    reference: "",
     title: "",
     summary_title: "",
     date: "",
+    summary1: "",
+    summary2: "",
+    summary3: "",
+    summary4: "",
+    techniques_id: 1,
+    format: "",
+    categories_id: 2,
     image_src: "",
     image_alt: "",
-    reference: "",
-    summary: "",
-    format: "",
-    techniques_id: "",
-    categories_id: "",
   });
 
   const handleWork = (name, value) => {
@@ -32,7 +35,7 @@ function WorksAdmin() {
   return (
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
-      <h1 className="text-xl font-bold p-4">Gérer les oeuvres</h1>
+      <h2 className="text-xl font-bold p-4">Gérer les oeuvres</h2>
       <form
         className="flex justify-around"
         onSubmit={(event) => postWork(event)}
@@ -118,11 +121,11 @@ function WorksAdmin() {
                 required
                 placeholder="Description"
                 minLength={50}
-                name="summary"
+                name="summary1"
                 onChange={(event) =>
                   handleWork(event.target.name, event.target.value)
                 }
-                value={work.summary}
+                value={work.summary1}
               />
             </label>
           </div>
@@ -131,14 +134,13 @@ function WorksAdmin() {
               Commentaire 2
               <textarea
                 className="border border-black"
-                required
                 placeholder="Description"
                 minLength={50}
-                name="summary"
+                name="summary2"
                 onChange={(event) =>
                   handleWork(event.target.name, event.target.value)
                 }
-                value={work.summary}
+                value={work.summary2}
               />
             </label>
           </div>
@@ -147,14 +149,13 @@ function WorksAdmin() {
               Commentaire 3
               <textarea
                 className="border border-black"
-                required
                 placeholder="Description"
                 minLength={50}
-                name="summary"
+                name="summary3"
                 onChange={(event) =>
                   handleWork(event.target.name, event.target.value)
                 }
-                value={work.summary}
+                value={work.summary3}
               />
             </label>
           </div>
@@ -163,14 +164,13 @@ function WorksAdmin() {
               Commentaire 4
               <textarea
                 className="border border-black"
-                required
                 placeholder="Description"
                 minLength={50}
-                name="summary"
+                name="summary4"
                 onChange={(event) =>
                   handleWork(event.target.name, event.target.value)
                 }
-                value={work.summary}
+                value={work.summary4}
               />
             </label>
           </div>
@@ -249,18 +249,19 @@ function WorksAdmin() {
             </div>
           </div>
         </div>
+
+        <div className="flex justify-end pt-10 pb-5 pr-10 gap-10">
+          <button type="submit" className="bg-black text-white py-2 px-4">
+            Ajouter
+          </button>
+          <button type="button" className="bg-black text-white py-2 px-4">
+            Modifier
+          </button>
+          <button type="button" className="bg-black text-white py-2 px-4">
+            Supprimer
+          </button>
+        </div>
       </form>
-      <div className="flex justify-end pt-10 pb-5 pr-10 gap-10">
-        <button type="submit" className="bg-black text-white py-2 px-4">
-          Ajouter
-        </button>
-        <button type="button" className="bg-black text-white py-2 px-4">
-          Modifier
-        </button>
-        <button type="button" className="bg-black text-white py-2 px-4">
-          Supprimer
-        </button>
-      </div>
     </div>
   );
 }

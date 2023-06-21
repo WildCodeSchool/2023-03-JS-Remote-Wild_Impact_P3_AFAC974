@@ -38,7 +38,7 @@ class WorkManager extends AbstractManager {
 
   update(work) {
     return this.database.query(
-      `update ${this.table} set title = ? summary_title = ? date = ? image_src = ? image_alt = ? reference = ? summary1 = ? summary2= ? summary3 = ? summary4 = ? format = ? techniques_id = ? categories_id = ? where id = ?`,
+      `update ${this.table} set title = ?, summary_title = ?, date = ?, image_src = ?, image_alt = ?, reference = ?, summary1 = ?, summary2= ?, summary3 = ?, summary4 = ?, format = ?, techniques_id = ?, categories_id = ? where id = ?`,
       [
         work.title,
         work.summary_title,
