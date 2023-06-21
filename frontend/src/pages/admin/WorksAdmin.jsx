@@ -31,6 +31,7 @@ function WorksAdmin() {
 
   return (
     <div className="flex-1">
+      <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h1 className="text-xl font-bold p-4">Gérer les oeuvres</h1>
       <form
         className="flex justify-around"
@@ -38,10 +39,7 @@ function WorksAdmin() {
       >
         <div className="w-80">
           <div>
-            <label
-              className="flex flex-col font-semibold pb-5"
-              htmlFor="Référence"
-            >
+            <label className="flex flex-col font-semibold pb-5">
               Référence
               <input
                 className="border border-black"
@@ -59,10 +57,7 @@ function WorksAdmin() {
             </label>
           </div>
           <div className="pt-5">
-            <label
-              className="flex flex-col font-semibold pb-5"
-              htmlFor="Titre de l'oeuvre"
-            >
+            <label className="flex flex-col font-semibold pb-5">
               Titre de l'oeuvre
               <input
                 className="border border-black"
@@ -80,10 +75,7 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label
-              className="flex flex-col font-semibold pb-5"
-              htmlFor="Titre Résumé"
-            >
+            <label className="flex flex-col font-semibold pb-5">
               Titre Résumé
               <input
                 className="border border-black"
@@ -101,10 +93,7 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label
-              className="flex flex-col font-semibold pb-5"
-              htmlFor="Année de réalisation"
-            >
+            <label className="flex flex-col font-semibold pb-5">
               Année de réalisation
               <input
                 className="border border-black"
@@ -122,10 +111,7 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label
-              className="flex flex-col font-semibold pb-5"
-              htmlFor="Description"
-            >
+            <label className="flex flex-col font-semibold pb-5">
               Commentaire 1
               <textarea
                 className="border border-black"
@@ -141,10 +127,7 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label
-              className="flex flex-col font-semibold pb-5"
-              htmlFor="Description"
-            >
+            <label className="flex flex-col font-semibold pb-5">
               Commentaire 2
               <textarea
                 className="border border-black"
@@ -160,10 +143,7 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label
-              className="flex flex-col font-semibold pb-5"
-              htmlFor="Description"
-            >
+            <label className="flex flex-col font-semibold pb-5">
               Commentaire 3
               <textarea
                 className="border border-black"
@@ -179,10 +159,7 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label
-              className="flex flex-col font-semibold pb-5"
-              htmlFor="Description"
-            >
+            <label className="flex flex-col font-semibold pb-5">
               Commentaire 4
               <textarea
                 className="border border-black"
@@ -201,10 +178,7 @@ function WorksAdmin() {
         <div>
           <div className="pt-60">
             <div>
-              <label
-                className="flex flex-col font-semibold pb-5"
-                htmlFor="Technique"
-              >
+              <label className="flex flex-col font-semibold pb-5">
                 Technique
                 <select className="border border-black" type="text">
                   <option value="">
@@ -214,10 +188,7 @@ function WorksAdmin() {
               </label>
             </div>
             <div>
-              <label
-                className="flex flex-col font-semibold pb-5"
-                htmlFor="Dimensions"
-              >
+              <label className="flex flex-col font-semibold pb-5">
                 Dimensions
                 <input
                   className="border border-black"
@@ -235,10 +206,7 @@ function WorksAdmin() {
               </label>
             </div>
             <div>
-              <label
-                className="flex flex-col font-semibold pb-5"
-                htmlFor="Catégories"
-              >
+              <label className="flex flex-col font-semibold pb-5">
                 Catégorie
                 <select className="border border-black" type="text">
                   <option value="">
@@ -248,10 +216,7 @@ function WorksAdmin() {
               </label>
             </div>
             <div>
-              <label
-                className="flex flex-col font-semibold pb-5"
-                htmlFor="Texte alternatif de l'image"
-              >
+              <label className="flex flex-col font-semibold pb-5">
                 Texte alternatif de l'image
                 <input
                   className="border border-black"
@@ -267,10 +232,7 @@ function WorksAdmin() {
               </label>
             </div>
             <div>
-              <label
-                className="flex flex-col font-semibold pb-5"
-                htmlFor="Image"
-              >
+              <label className="flex flex-col font-semibold pb-5">
                 Image
                 <input
                   className="border border-black"
