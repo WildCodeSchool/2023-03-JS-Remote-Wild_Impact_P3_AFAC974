@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.categories
+  models.category
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.categories
+  models.category
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -35,7 +35,7 @@ const edit = (req, res) => {
 
   categories.id = parseInt(req.params.id, 10);
 
-  models.categories
+  models.category
     .update(categories)
     .then(([result]) => {
       if (result.affectedRows === 0) {
@@ -54,7 +54,7 @@ const add = (req, res) => {
   const categories = req.body;
   // TODO validations (length, format...)
 
-  models.categories
+  models.category
     .insert(categories)
     .then(([result]) => {
       res
@@ -69,7 +69,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.categories
+  models.category
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {

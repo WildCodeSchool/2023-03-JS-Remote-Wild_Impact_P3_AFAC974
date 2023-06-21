@@ -39,10 +39,10 @@ const WorkManager = require("./WorkManager");
 models.work = new WorkManager();
 models.work.setDatabase(pool);
 
-const CategoriesManager = require("./CategoriesManager");
+const CategoryManager = require("./CategoryManager");
 
-models.categories = new CategoriesManager();
-models.categories.setDatabase(pool);
+models.category = new CategoryManager();
+models.category.setDatabase(pool);
 
 const TechniqueManager = require("./TechniqueManager");
 
