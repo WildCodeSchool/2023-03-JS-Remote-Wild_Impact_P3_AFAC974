@@ -17,7 +17,7 @@ class WorkManager extends AbstractManager {
 
   insert(work) {
     return this.database.query(
-      `insert into ${this.table} (title, summary_title, date, image_src, image_alt, reference, summary, format, techniques_id, categories_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      `insert into ${this.table} (title, summary_title, date, image_src, image_alt, reference, summary1, summary2, summary3, summary4, format, techniques_id, categories_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
       [
         work.title,
         work.summary_title,
@@ -25,7 +25,10 @@ class WorkManager extends AbstractManager {
         work.image_src,
         work.image_alt,
         work.reference,
-        work.summary,
+        work.summary1,
+        work.summary2,
+        work.summary3,
+        work.summary4,
         work.format,
         work.techniques_id,
         work.categories_id,
@@ -35,7 +38,7 @@ class WorkManager extends AbstractManager {
 
   update(work) {
     return this.database.query(
-      `update ${this.table} set title = ? summary_title = ? date = ? image_src = ? image_alt = ? reference = ? summary = ? format = ? techniques_id = ? categories_id = ? where id = ?`,
+      `update ${this.table} set title = ? summary_title = ? date = ? image_src = ? image_alt = ? reference = ? summary1 = ? summary2= ? summary3 = ? summary4 = ? format = ? techniques_id = ? categories_id = ? where id = ?`,
       [
         work.title,
         work.summary_title,
@@ -43,7 +46,10 @@ class WorkManager extends AbstractManager {
         work.image_src,
         work.image_alt,
         work.reference,
-        work.summary,
+        work.summary1,
+        work.summary2,
+        work.summary3,
+        work.summary4,
         work.format,
         work.techniques_id,
         work.categories_id,
