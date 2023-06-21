@@ -1,19 +1,18 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import UserLayout from "./pages/layout/UserLayout";
-import AdminLayout from "./pages/layout/AdminLayout";
 
-import NavBar from "./components/NavBar";
 import HomePage from "./pages/HomePage";
 import Gallery from "./pages/Gallery";
 import OneImage from "./pages/OneImage";
 import Author from "./pages/Author";
 import About from "./pages/About";
-
 import UserSubscription from "./pages/UserSubscription";
 import UserLogin from "./pages/UserLogin";
 import UserProfile from "./pages/UserProfile";
 import UserFavourites from "./pages/UserFavourites";
+
+import AdminLayout from "./pages/layout/AdminLayout";
 
 import WorksAdmin from "./pages/admin/WorksAdmin";
 import CategoriesAdmin from "./pages/admin/CategoriesAdmin";
@@ -24,7 +23,6 @@ import "./Index.css";
 function App() {
   return (
     <Router>
-      <NavBar />
       <Routes>
         <Route path="/" element={<UserLayout />}>
           <Route path="" element={<HomePage />} />
@@ -38,7 +36,7 @@ function App() {
           <Route path="favourites" element={<UserFavourites />} />
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="works" element={<WorksAdmin />} />
+          <Route path="" element={<WorksAdmin />} />
           <Route path="categories" element={<CategoriesAdmin />} />
           <Route path="techniques" element={<TechniquesAdmin />} />
         </Route>
