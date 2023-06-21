@@ -25,6 +25,16 @@ function CategoriesAdmin() {
       .catch((err) => console.error(err));
   };
 
+  const deleteCategory = (event) => {
+    event.preventDefault();
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories/${category.id}`, {
+      method: "DELETE",
+    })
+      .then((res) => res.json())
+      .then((json) => console.info(json))
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div>
       <form onSubmit={(event) => postCategory(event)}>
@@ -41,8 +51,12 @@ function CategoriesAdmin() {
           />
         </label>
         {!category.id && <button type="submit">Ajouter</button>}
-        {category.id && <button type="submit">Supprimer</button>}
       </form>
+      {category.id && (
+        <button type="button" onClick={(e) => deleteCategory(e)}>
+          Supprimer
+        </button>
+      )}
     </div>
   );
 }
