@@ -2,6 +2,7 @@ import React, { useState } from "react";
 
 function CategoriesAdmin() {
   const [category, setCategory] = useState({
+    id: null,
     name: "",
   });
 
@@ -20,7 +21,7 @@ function CategoriesAdmin() {
       },
     })
       .then((res) => res.json())
-      .then((json) => console.info(json))
+      .then((json) => setCategory(json))
       .catch((err) => console.error(err));
   };
 
@@ -39,7 +40,8 @@ function CategoriesAdmin() {
             value={category.name}
           />
         </label>
-        <button type="submit">Ajouter</button>
+        {!category.id && <button type="submit">Ajouter</button>}
+        {category.id && <button type="submit">Supprimer</button>}
       </form>
     </div>
   );
