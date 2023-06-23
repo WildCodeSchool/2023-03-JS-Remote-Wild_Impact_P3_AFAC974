@@ -10,6 +10,10 @@ function CategoriesAdmin() {
 
   const [categories, setCategories] = useState([]);
 
+  const handleCategory = (name, value) => {
+    setCategory({ ...category, [name]: value });
+  };
+
   const getCategories = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`)
       .then((res) => res.json())
@@ -21,8 +25,12 @@ function CategoriesAdmin() {
     getCategories();
   }, []);
 
-  const handleCategory = (name, value) => {
-    setCategory({ ...category, [name]: value });
+  const refreshCategory = (id) => {
+    if (id === "") {
+      setCategory(categoryModel);
+    } else {
+      setCategory(categories.find((cat) => cat.id === +id));
+    }
   };
 
   const postCategory = (event) => {
@@ -53,6 +61,20 @@ function CategoriesAdmin() {
       .catch((err) => console.error(err));
   };
 
+  const updateCategory = (event) => {
+    event.preventDefault();
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories/${category.id}`, {
+      method: "PUT",
+      body: JSON.stringify(category),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => getCategories())
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
@@ -64,10 +86,9 @@ function CategoriesAdmin() {
           className="flex flex-col font-semibold w-80"
         >
           <select
-            onChange={(e) =>
-              setCategory(categories.find((cat) => cat.id === +e.target.value))
-            }
-            className="border border-black h-7 mt-10 text-black"
+            onChange={(event) => refreshCategory(event.target.value)}
+            value={category.id}
+             className="border border-black h-7 mt-10 text-black"
           >
             <option value="">Choisir la catégorie</option>
             {categories.map((cat) => (
@@ -109,9 +130,9 @@ function CategoriesAdmin() {
           >
             Supprimer
           </button>
-          {/* <button type="button" onClick={() => setCategory(categoryModel)}>
-            Ajouter une nouvelle catégorie
-          </button> */}
+          <button type="button" onClick={(e) => updateCategory(e)}>
+            Modifier
+          </button>
         </div>
       )}
     </div>

@@ -9,11 +9,21 @@ function TechniquesAdmin() {
 
   const [techniques, setTechniques] = useState([]);
 
-  const getTechniques = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/techniques`)
-      .then((res) => res.json())
-      .then((data) => setTechniques(data))
-      .catch((err) => console.error(err));
+  const refreshTechnique = (id) => {
+    if (id === "") {
+      setTechnique(techniqueModel);
+    } else {
+      setTechnique(techniques.find((tech) => tech.id === +id));
+    }
+  };
+
+  const getTechniques = async () => {
+    try {
+      const tech = await connexion.get("/techniques");
+      setTechniques(tech);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -27,8 +37,8 @@ function TechniquesAdmin() {
   const postTechnique = async (e) => {
     e.preventDefault();
     try {
-      const newTechnique = await connexion.post("/techniques", technique);
-      setTechnique(newTechnique);
+      const tech = await connexion.post("/techniques", technique);
+      setTechnique(tech);
       setTechnique(techniqueModel);
       getTechniques();
     } catch (err) {
@@ -36,11 +46,25 @@ function TechniquesAdmin() {
     }
   };
 
+  const updateTechnique = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.put(`/techniques/${technique.id}`, technique);
+      getTechniques();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const deleteTechnique = async (e) => {
     e.preventDefault();
-    await connexion.delete(`/techniques/${technique.id}`);
-    setTechnique(techniqueModel);
-    getTechniques();
+    try {
+      await connexion.delete(`/techniques/${technique.id}`);
+      setTechnique(techniqueModel);
+      getTechniques();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -49,13 +73,20 @@ function TechniquesAdmin() {
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des techniques</h2>
 
       <Outlet />
+    
       <form className="ml-10" onSubmit={(e) => postTechnique(e)}>
         <label
           htmlFor="Select techniques"
           className="flex flex-col font-semibold w-80"
         >
+          Selectionner une technique
           <select
-            onChange={(e) =>
+            onChange={(e) => refreshTechnique(e.target.value)}
+            value={technique.id}
+            className="border border-black h-7 mt-10 text-black"
+          >
+            <select
+              onChange={(e) =>
               setTechnique(
                 techniques.find((tech) => tech.id === +e.target.value)
               )
@@ -70,7 +101,6 @@ function TechniquesAdmin() {
             ))}
           </select>
         </label>
-
         <label
           htmlFor="Write technique"
           className="flex flex-col font-semibold w-80"
@@ -93,27 +123,28 @@ function TechniquesAdmin() {
           )}
         </div>
       </form>
+      {technique.id && (
+        <button
+          type="button"
+          className="bg-black text-white py-2 px-4"
+          name="name"
+          onClick={(e) => updateTechnique(e)}
+        >
+          Modifier
+        </button>
+      )}
 
-      <div className="pt-10 pr-10">
-        {technique.id && (
-          <button type="button" className="bg-black text-white py-2 px-4">
-            Modifier
-          </button>
-        )}
-
-        {technique.id && (
-          <button
-            type="button"
-            className="bg-black text-white py-2 px-4"
-            name="name"
-            value={technique.id}
-            onClick={(e) => deleteTechnique(e)}
-          >
-            Supprimer
-          </button>
-        )}
-      </div>
-    </div>
+      {technique.id && (
+        <button
+          type="button"
+         className="bg-black text-white py-2 px-4"
+          name="name"
+          onClick={(e) => deleteTechnique(e)}
+        >
+          Supprimer
+        </button>
+      )}
+    </>
   );
 }
 
