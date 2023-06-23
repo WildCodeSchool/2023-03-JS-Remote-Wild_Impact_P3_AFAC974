@@ -42,7 +42,7 @@ const connexion = {
   get: (url) => getData(url),
   post: (path, data) => postData(path, data),
   put: (url, body) => updateData(url, body),
-  delete: (path, id) => deleteData(path, id),
+  delete: (path) => deleteData(path),
 };
 
 export default connexion;
