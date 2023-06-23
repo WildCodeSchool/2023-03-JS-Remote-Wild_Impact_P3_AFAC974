@@ -10,6 +10,25 @@ function CategoriesAdmin() {
 
   const [categories, setCategories] = useState([]);
 
+  // const getCategoryToUpdate = (event) => {
+  //   event.preventDefault();
+  //   fetch(
+  //     `${import.meta.env.VITE_BACKEND_URL}/categories/${event.target.value}`,
+  //     {
+  //       method: "PUT",
+  //       body: JSON.stringify(category),
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //     }
+  //   );
+  // };
+
+  const handleCategory = (name, value) => {
+    setCategory({ ...category, [name]: value });
+  };
+
   const getCategories = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`)
       .then((res) => res.json())
@@ -21,8 +40,12 @@ function CategoriesAdmin() {
     getCategories();
   }, []);
 
-  const handleCategory = (name, value) => {
-    setCategory({ ...category, [name]: value });
+  const refreshCategory = (id) => {
+    if (id === "") {
+      setCategory(categoryModel);
+    } else {
+      setCategory(categories.find((cat) => cat.id === +id));
+    }
   };
 
   const postCategory = (event) => {
@@ -62,9 +85,8 @@ function CategoriesAdmin() {
         >
           Selectionner une catégorie
           <select
-            onChange={(e) =>
-              setCategory(categories.find((cat) => cat.id === +e.target.value))
-            }
+            onChange={(event) => refreshCategory(event.target.value)}
+            value={category.id}
             className="bg-gray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
             <option value="">Choisir la catégorie</option>
