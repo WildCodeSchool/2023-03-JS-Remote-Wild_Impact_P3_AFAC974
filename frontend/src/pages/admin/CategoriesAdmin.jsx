@@ -72,10 +72,6 @@ function CategoriesAdmin() {
       },
     })
       .then(() => getCategories())
-      // .then(() => {
-      //   setCategory();
-      //   getCategories();
-      // })
       .catch((err) => console.error(err));
   };
 
