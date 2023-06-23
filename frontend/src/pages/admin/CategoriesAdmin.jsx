@@ -76,17 +76,19 @@ function CategoriesAdmin() {
   };
 
   return (
-    <div>
-      <form onSubmit={(event) => postCategory(event)}>
+    <div className="flex-1">
+      <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
+      <h2 className="text-xl font-bold p-4 pb-10">Gestion des catégories</h2>
+
+      <form className="ml-10" onSubmit={(event) => postCategory(event)}>
         <label
           htmlFor="Select categories"
-          className="block mb-2 text-sm font-medium text-gray dark:text-white"
+          className="flex flex-col font-semibold w-80"
         >
-          Selectionner une catégorie
           <select
             onChange={(event) => refreshCategory(event.target.value)}
             value={category.id}
-            className="bg-gray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            className="border border-black h-7 mt-10 text-black"
           >
             <option value="">Choisir la catégorie</option>
             {categories.map((cat) => (
@@ -97,11 +99,12 @@ function CategoriesAdmin() {
           </select>
         </label>
 
-        <label htmlFor="">
-          Nom de la catégorie
+        <label htmlFor="" className="flex flex-col font-semibold w-80">
           <input
+            className="border border-black h-7 mt-10"
             type="text"
             minLength={4}
+            placeholder="Tapez ici le nom de la catégorie"
             name="name"
             onChange={(event) =>
               handleCategory(event.target.name, event.target.value)
@@ -109,12 +112,22 @@ function CategoriesAdmin() {
             value={category.name}
           />
         </label>
-        {!category.id && <button type="submit">Ajouter</button>}
+        <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+          {!category.id && (
+            <button className="bg-black text-white py-2 px-4" type="submit">
+              Ajouter
+            </button>
+          )}
+        </div>
       </form>
 
       {category.id && (
-        <div>
-          <button type="button" onClick={(e) => deleteCategory(e)}>
+        <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+          <button
+            className="bg-black text-white py-2 px-4"
+            type="button"
+            onClick={(e) => deleteCategory(e)}
+          >
             Supprimer
           </button>
           <button type="button" onClick={(e) => updateCategory(e)}>
