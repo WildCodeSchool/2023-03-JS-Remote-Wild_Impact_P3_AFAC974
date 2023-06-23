@@ -9,11 +9,21 @@ function TechniquesAdmin() {
 
   const [techniques, setTechniques] = useState([]);
 
-  const getTechniques = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/techniques`)
-      .then((res) => res.json())
-      .then((data) => setTechniques(data))
-      .catch((err) => console.error(err));
+  const refreshTechnique = (id) => {
+    if (id === "") {
+      setTechnique(techniqueModel);
+    } else {
+      setTechnique(techniques.find((tech) => tech.id === +id));
+    }
+  };
+
+  const getTechniques = async () => {
+    try {
+      const tech = await connexion.get("/techniques");
+      setTechniques(tech);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -27,8 +37,8 @@ function TechniquesAdmin() {
   const postTechnique = async (e) => {
     e.preventDefault();
     try {
-      const newTechnique = await connexion.post("/techniques", technique);
-      setTechnique(newTechnique);
+      const tech = await connexion.post("/techniques", technique);
+      setTechnique(tech);
       setTechnique(techniqueModel);
       getTechniques();
     } catch (err) {
@@ -36,11 +46,25 @@ function TechniquesAdmin() {
     }
   };
 
+  const updateTechnique = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.put(`/techniques/${technique.id}`, technique);
+      getTechniques();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const deleteTechnique = async (e) => {
     e.preventDefault();
-    await connexion.delete(`/techniques/${technique.id}`);
-    setTechnique(techniqueModel);
-    getTechniques();
+    try {
+      await connexion.delete(`/techniques/${technique.id}`);
+      setTechnique(techniqueModel);
+      getTechniques();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -55,9 +79,8 @@ function TechniquesAdmin() {
       >
         Selectionner une technique
         <select
-          onChange={(e) =>
-            setTechnique(techniques.find((tech) => tech.id === +e.target.value))
-          }
+          onChange={(e) => refreshTechnique(e.target.value)}
+          value={technique.id}
           className="bg-gray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option value="">Choisir la technique</option>
@@ -96,28 +119,27 @@ function TechniquesAdmin() {
         )}
       </form>
 
-      <div className="Button">
-        {technique.id && (
-          <button
-            type="button"
-            className="inline-block rounded-full bg-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-{0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-          >
-            Modifier
-          </button>
-        )}
+      {technique.id && (
+        <button
+          type="button"
+          className="inline-block rounded-full bg-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-{0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+          name="name"
+          onClick={(e) => updateTechnique(e)}
+        >
+          Modifier
+        </button>
+      )}
 
-        {technique.id && (
-          <button
-            type="button"
-            className="inline-block rounded-full bg-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-            name="name"
-            value={technique.id}
-            onClick={(e) => deleteTechnique(e)}
-          >
-            Supprimer
-          </button>
-        )}
-      </div>
+      {technique.id && (
+        <button
+          type="button"
+          className="inline-block rounded-full bg-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+          name="name"
+          onClick={(e) => deleteTechnique(e)}
+        >
+          Supprimer
+        </button>
+      )}
     </>
   );
 }
