@@ -11,9 +11,9 @@ function WorksAdmin() {
     summary2: "",
     summary3: "",
     summary4: "",
-    techniques_id: 1,
+    techniques_id: "",
     format: "",
-    categories_id: 2,
+    categories_id: "",
     image_src: "",
     image_alt: "",
   });
@@ -43,6 +43,19 @@ function WorksAdmin() {
 
   useEffect(() => {
     getTechniques();
+  }, []);
+
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`)
+      .then((res) => res.json())
+      .then((data) => setCategories(data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getCategories();
   }, []);
 
   return (
@@ -230,6 +243,11 @@ function WorksAdmin() {
                   <option value="">
                     Choisissez la catégorie à associer avec l'oeuvre
                   </option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.name}
+                    </option>
+                  ))}
                 </select>
               </label>
             </div>
