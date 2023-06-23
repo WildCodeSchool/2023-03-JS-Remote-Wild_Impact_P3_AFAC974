@@ -206,7 +206,14 @@ function WorksAdmin() {
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Technique
-                <select className="border border-black h-7" type="text">
+                <select
+                  className="border border-black h-7"
+                  name="techniques_id"
+                  type="text"
+                  onChange={(event) =>
+                    handleWork(event.target.name, +event.target.value)
+                  }
+                >
                   <option value="">
                     Choisissez la technique à associer avec l'oeuvre
                   </option>
@@ -239,7 +246,14 @@ function WorksAdmin() {
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Catégorie
-                <select className="border border-black h-7 " type="text">
+                <select
+                  className="border border-black h-7 "
+                  name="categories_id"
+                  type="text"
+                  onChange={(event) =>
+                    handleWork(event.target.name, +event.target.value)
+                  }
+                >
                   <option value="">
                     Choisissez la catégorie à associer avec l'oeuvre
                   </option>
