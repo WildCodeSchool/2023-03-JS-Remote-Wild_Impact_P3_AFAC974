@@ -10,21 +10,6 @@ function CategoriesAdmin() {
 
   const [categories, setCategories] = useState([]);
 
-  // const getCategoryToUpdate = (event) => {
-  //   event.preventDefault();
-  //   fetch(
-  //     `${import.meta.env.VITE_BACKEND_URL}/categories/${event.target.value}`,
-  //     {
-  //       method: "PUT",
-  //       body: JSON.stringify(category),
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //     }
-  //   );
-  // };
-
   const handleCategory = (name, value) => {
     setCategory({ ...category, [name]: value });
   };
