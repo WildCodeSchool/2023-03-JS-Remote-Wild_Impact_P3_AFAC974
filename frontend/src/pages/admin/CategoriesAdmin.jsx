@@ -76,6 +76,24 @@ function CategoriesAdmin() {
       .catch((err) => console.error(err));
   };
 
+  const updateCategory = (event) => {
+    event.preventDefault();
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories/${category.id}`, {
+      method: "PUT",
+      body: JSON.stringify(category),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => getCategories())
+      // .then(() => {
+      //   setCategory();
+      //   getCategories();
+      // })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div>
       <form onSubmit={(event) => postCategory(event)}>
@@ -118,9 +136,9 @@ function CategoriesAdmin() {
           <button type="button" onClick={(e) => deleteCategory(e)}>
             Supprimer
           </button>
-          {/* <button type="button" onClick={() => setCategory(categoryModel)}>
-            Ajouter une nouvelle catégorie
-          </button> */}
+          <button type="button" onClick={(e) => updateCategory(e)}>
+            Modifier
+          </button>
         </div>
       )}
     </div>
