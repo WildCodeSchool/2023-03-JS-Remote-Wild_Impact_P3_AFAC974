@@ -88,7 +88,7 @@ function CategoriesAdmin() {
           <select
             onChange={(event) => refreshCategory(event.target.value)}
             value={category.id}
-             className="border border-black h-7 mt-10 text-black"
+            className="border border-black h-7 mt-10 text-black"
           >
             <option value="">Choisir la catégorie</option>
             {categories.map((cat) => (
