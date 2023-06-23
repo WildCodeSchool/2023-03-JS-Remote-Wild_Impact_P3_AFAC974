@@ -101,7 +101,6 @@ function TechniquesAdmin() {
             ))}
           </select>
         </label>
-          
         <label
           htmlFor="Write technique"
           className="flex flex-col font-semibold w-80"
