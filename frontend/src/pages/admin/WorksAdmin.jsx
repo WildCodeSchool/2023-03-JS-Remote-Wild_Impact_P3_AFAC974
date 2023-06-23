@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import connexion from "../../services/connexion";
 
 function WorksAdmin() {
@@ -31,6 +31,19 @@ function WorksAdmin() {
       console.error(error);
     }
   };
+
+  const [techniques, setTechniques] = useState([]);
+
+  const getTechniques = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/techniques`)
+      .then((res) => res.json())
+      .then((data) => setTechniques(data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getTechniques();
+  }, []);
 
   return (
     <div className="flex-1">
@@ -184,6 +197,11 @@ function WorksAdmin() {
                   <option value="">
                     Choisissez la technique à associer avec l'oeuvre
                   </option>
+                  {techniques.map((tech) => (
+                    <option key={tech.id} value={tech.id}>
+                      {tech.name}
+                    </option>
+                  ))}
                 </select>
               </label>
             </div>
