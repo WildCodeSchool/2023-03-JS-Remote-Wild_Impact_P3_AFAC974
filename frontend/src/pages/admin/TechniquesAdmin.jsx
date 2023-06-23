@@ -73,7 +73,6 @@ function TechniquesAdmin() {
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des techniques</h2>
 
       <Outlet />
-    
       <form className="ml-10" onSubmit={(e) => postTechnique(e)}>
         <label
           htmlFor="Select techniques"
@@ -129,7 +128,7 @@ function TechniquesAdmin() {
       {technique.id && (
         <button
           type="button"
-         className="bg-black text-white py-2 px-4"
+          className="bg-black text-white py-2 px-4"
           name="name"
           onClick={(e) => deleteTechnique(e)}
         >
