@@ -44,64 +44,59 @@ function TechniquesAdmin() {
   };
 
   return (
-    <>
-      <h1 className="font-bold 700">Techniques</h1>
+    <div className="flex-1">
+      <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
+      <h2 className="text-xl font-bold p-4 pb-10">Gestion des techniques</h2>
 
       <Outlet />
-
-      <label
-        htmlFor="Select techniques"
-        className="block mb-2 text-sm font-medium text-gray dark:text-white"
-      >
-        Selectionner une technique
-        <select
-          onChange={(e) =>
-            setTechnique(techniques.find((tech) => tech.id === +e.target.value))
-          }
-          className="bg-gray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      <form className="ml-10" onSubmit={(e) => postTechnique(e)}>
+        <label
+          htmlFor="Select techniques"
+          className="flex flex-col font-semibold w-80"
         >
-          <option value="">Choisir la technique</option>
-          {techniques.map((tech) => (
-            <option key={tech.id} value={tech.id}>
-              {tech.name}
-            </option>
-          ))}
-        </select>
-      </label>
+          <select
+            onChange={(e) =>
+              setTechnique(
+                techniques.find((tech) => tech.id === +e.target.value)
+              )
+            }
+            className="border border-black h-7 mt-10 text-black"
+          >
+            <option value="">Choisir la technique</option>
+            {techniques.map((tech) => (
+              <option key={tech.id} value={tech.id}>
+                {tech.name}
+              </option>
+            ))}
+          </select>
+        </label>
 
-      <form onSubmit={(e) => postTechnique(e)}>
         <label
           htmlFor="Write technique"
-          className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+          className="flex flex-col font-semibold w-80"
         >
-          Saisir le nom de la technique
           <input
             required
             type="text"
-            className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5  dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
-            placeholder=""
+            className="border border-black h-7 mt-10"
+            placeholder="Tapez ici le nom de la catégorie"
             name="name"
             value={technique.name}
             onChange={(e) => handleTechnique(e.target.name, e.target.value)}
           />
         </label>
-
-        {!technique.id && (
-          <button
-            type="submit"
-            className="inline-block rounded-full bg-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-          >
-            Ajouter
-          </button>
-        )}
+        <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+          {!technique.id && (
+            <button type="submit" className="bg-black text-white py-2 px-4">
+              Ajouter
+            </button>
+          )}
+        </div>
       </form>
 
-      <div className="Button">
+      <div className="pt-10 pr-10">
         {technique.id && (
-          <button
-            type="button"
-            className="inline-block rounded-full bg-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-{0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
-          >
+          <button type="button" className="bg-black text-white py-2 px-4">
             Modifier
           </button>
         )}
@@ -109,7 +104,7 @@ function TechniquesAdmin() {
         {technique.id && (
           <button
             type="button"
-            className="inline-block rounded-full bg-black px-6 pb-2 pt-2.5 text-xs font-medium uppercase leading-normal text-white shadow-[0_4px_9px_-4px_#3b71ca] transition duration-150 ease-in-out hover:bg-primary-600 hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:bg-primary-600 focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] focus:outline-none focus:ring-0 active:bg-primary-700 active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.3),0_4px_18px_0_rgba(59,113,202,0.2)] dark:shadow-[0_4px_9px_-4px_rgba(59,113,202,0.5)] dark:hover:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:focus:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)] dark:active:shadow-[0_8px_9px_-4px_rgba(59,113,202,0.2),0_4px_18px_0_rgba(59,113,202,0.1)]"
+            className="bg-black text-white py-2 px-4"
             name="name"
             value={technique.id}
             onClick={(e) => deleteTechnique(e)}
@@ -118,7 +113,7 @@ function TechniquesAdmin() {
           </button>
         )}
       </div>
-    </>
+    </div>
   );
 }
 
