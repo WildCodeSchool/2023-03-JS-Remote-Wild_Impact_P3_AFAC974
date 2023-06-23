@@ -35,17 +35,17 @@ function WorksAdmin() {
   return (
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
-      <h2 className="text-xl font-bold p-4">Gérer les oeuvres</h2>
+      <h2 className="text-xl font-bold p-4 pb-10">Gestion des oeuvres</h2>
       <form
         className="flex justify-around"
         onSubmit={(event) => postWork(event)}
       >
         <div className="w-80">
           <div>
-            <label className="flex flex-col font-semibold pb-5">
+            <label className="flex flex-col font-semibold">
               Référence
               <input
-                className="border border-black"
+                className="border border-black h-7"
                 type="text"
                 required
                 placeholder="Tapez ici la référence de l'oeuvre"
@@ -63,7 +63,7 @@ function WorksAdmin() {
             <label className="flex flex-col font-semibold pb-5">
               Titre de l'oeuvre
               <input
-                className="border border-black"
+                className="border border-black h-7"
                 type="text"
                 required
                 placeholder="Titre de l'oeuvre"
@@ -81,7 +81,7 @@ function WorksAdmin() {
             <label className="flex flex-col font-semibold pb-5">
               Titre Résumé
               <input
-                className="border border-black"
+                className="border border-black h-7"
                 type="text"
                 required
                 placeholder="Titre Résumé"
@@ -96,10 +96,10 @@ function WorksAdmin() {
             </label>
           </div>
           <div>
-            <label className="flex flex-col font-semibold pb-5">
+            <label className="flex flex-col font-semibold  pb-5 ">
               Année de réalisation
               <input
-                className="border border-black"
+                className="border border-black h-7"
                 type="text"
                 required
                 placeholder="Année de réalisation"
@@ -176,11 +176,11 @@ function WorksAdmin() {
           </div>
         </div>
         <div>
-          <div className="pt-60">
+          <div className="pt-50">
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Technique
-                <select className="border border-black" type="text">
+                <select className="border border-black h-7" type="text">
                   <option value="">
                     Choisissez la technique à associer avec l'oeuvre
                   </option>
@@ -191,7 +191,7 @@ function WorksAdmin() {
               <label className="flex flex-col font-semibold pb-5">
                 Dimensions
                 <input
-                  className="border border-black"
+                  className="border border-black h-7"
                   type="text"
                   required
                   placeholder="Notez ici les dimensions de l'oeuvre, en cm"
@@ -208,7 +208,7 @@ function WorksAdmin() {
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Catégorie
-                <select className="border border-black" type="text">
+                <select className="border border-black h-7 " type="text">
                   <option value="">
                     Choisissez la catégorie à associer avec l'oeuvre
                   </option>
@@ -219,7 +219,7 @@ function WorksAdmin() {
               <label className="flex flex-col font-semibold pb-5">
                 Texte alternatif de l'image
                 <input
-                  className="border border-black"
+                  className="border border-black h-7"
                   type="text"
                   required
                   placeholder="Décrivez l'oeuvre en quelques mots (à destination des personnes déficientes visuelles"
@@ -235,7 +235,7 @@ function WorksAdmin() {
               <label className="flex flex-col font-semibold pb-5">
                 Image
                 <input
-                  className="border border-black"
+                  className="border border-black h-7"
                   type="file"
                   required
                   placeholder="Image"
@@ -246,20 +246,19 @@ function WorksAdmin() {
                   value={work.image_src}
                 />
               </label>
+              <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+                <button type="submit" className="bg-black text-white py-2 px-4">
+                  Ajouter
+                </button>
+                <button type="button" className="bg-black text-white py-2 px-4">
+                  Modifier
+                </button>
+                <button type="button" className="bg-black text-white py-2 px-4">
+                  Supprimer
+                </button>
+              </div>
             </div>
           </div>
-        </div>
-
-        <div className="flex justify-end pt-10 pb-5 pr-10 gap-10">
-          <button type="submit" className="bg-black text-white py-2 px-4">
-            Ajouter
-          </button>
-          <button type="button" className="bg-black text-white py-2 px-4">
-            Modifier
-          </button>
-          <button type="button" className="bg-black text-white py-2 px-4">
-            Supprimer
-          </button>
         </div>
       </form>
     </div>
