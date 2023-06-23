@@ -9,6 +9,14 @@ function TechniquesAdmin() {
 
   const [techniques, setTechniques] = useState([]);
 
+  const refreshTechnique = (id) => {
+    if (id === "") {
+      setTechnique(techniqueModel);
+    } else {
+      setTechnique(techniques.find((tech) => tech.id === +id));
+    }
+  };
+
   const getTechniques = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/techniques`)
       .then((res) => res.json())
@@ -67,9 +75,8 @@ function TechniquesAdmin() {
       >
         Selectionner une technique
         <select
-          onChange={(e) =>
-            setTechnique(techniques.find((tech) => tech.id === +e.target.value))
-          }
+          onChange={(e) => refreshTechnique(e.target.value)}
+          value={technique.id}
           className="bg-gray border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-black dark:focus:ring-blue-500 dark:focus:border-blue-500"
         >
           <option value="">Choisir la technique</option>
