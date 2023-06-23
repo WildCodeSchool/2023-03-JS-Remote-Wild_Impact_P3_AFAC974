@@ -85,14 +85,6 @@ function TechniquesAdmin() {
             value={technique.id}
             className="border border-black h-7 mt-10 text-black"
           >
-            <select
-              onChange={(e) =>
-              setTechnique(
-                techniques.find((tech) => tech.id === +e.target.value)
-              )
-            }
-            className="border border-black h-7 mt-10 text-black"
-          >
             <option value="">Choisir la technique</option>
             {techniques.map((tech) => (
               <option key={tech.id} value={tech.id}>
