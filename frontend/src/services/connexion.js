@@ -1,5 +1,5 @@
 const getData = (url) => {
-  return fetch(`${import.meta.env.VITE_BACKEND_URL}/${url}`)
+  return fetch(`${import.meta.env.VITE_BACKEND_URL}${url}`)
     .then((res) => res.json())
     .catch((err) => console.error(err));
 };
@@ -19,15 +19,13 @@ const postData = (path, data) => {
 
 const updateData = (url, body) => {
   return fetch(`${import.meta.env.VITE_BACKEND_URL}${url}`, {
+    method: "PUT",
     body: JSON.stringify(body),
-    methode: "PUT",
     headers: {
-      accept: "application/json",
       "Content-Type": "application/json",
+      accept: "application/json",
     },
-  })
-    .then((res) => res.json())
-    .catch((err) => console.error(err));
+  }).catch((err) => console.error(err));
 };
 
 const deleteData = (path) => {
