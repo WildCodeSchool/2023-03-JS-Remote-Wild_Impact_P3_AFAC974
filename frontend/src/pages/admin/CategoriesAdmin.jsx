@@ -112,7 +112,7 @@ function CategoriesAdmin() {
             value={category.name}
           />
         </label>
-        <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+        <div className="flex justify-end pb-5 pr-10 gap-10">
           {!category.id && (
             <button className="bg-black text-white py-2 px-4" type="submit">
               Ajouter
@@ -120,9 +120,8 @@ function CategoriesAdmin() {
           )}
         </div>
       </form>
-
-      {category.id && (
-        <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+      <div className="flex justify-end pb-5 pr-10 gap-10">
+        {category.id && (
           <button
             className="bg-black text-white py-2 px-4"
             type="button"
@@ -130,11 +129,17 @@ function CategoriesAdmin() {
           >
             Supprimer
           </button>
-          <button type="button" onClick={(e) => updateCategory(e)}>
+        )}
+        {category.id && (
+          <button
+            className="bg-black text-white py-2 px-4"
+            type="button"
+            onClick={(e) => updateCategory(e)}
+          >
             Modifier
           </button>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 }
