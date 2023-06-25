@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import connexion from "../../services/connexion";
 
 function WorksAdmin() {
@@ -11,9 +11,9 @@ function WorksAdmin() {
     summary2: "",
     summary3: "",
     summary4: "",
-    techniques_id: 1,
+    techniques_id: "",
     format: "",
-    categories_id: 2,
+    categories_id: "",
     image_src: "",
     image_alt: "",
   });
@@ -31,6 +31,32 @@ function WorksAdmin() {
       console.error(error);
     }
   };
+
+  const [techniques, setTechniques] = useState([]);
+
+  const getTechniques = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/techniques`)
+      .then((res) => res.json())
+      .then((data) => setTechniques(data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getTechniques();
+  }, []);
+
+  const [categories, setCategories] = useState([]);
+
+  const getCategories = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`)
+      .then((res) => res.json())
+      .then((data) => setCategories(data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getCategories();
+  }, []);
 
   return (
     <div className="flex-1">
@@ -180,10 +206,22 @@ function WorksAdmin() {
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Technique
-                <select className="border border-black h-7" type="text">
+                <select
+                  className="border border-black h-7"
+                  name="techniques_id"
+                  type="text"
+                  onChange={(event) =>
+                    handleWork(event.target.name, +event.target.value)
+                  }
+                >
                   <option value="">
                     Choisissez la technique à associer avec l'oeuvre
                   </option>
+                  {techniques.map((tech) => (
+                    <option key={tech.id} value={tech.id}>
+                      {tech.name}
+                    </option>
+                  ))}
                 </select>
               </label>
             </div>
@@ -208,10 +246,22 @@ function WorksAdmin() {
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Catégorie
-                <select className="border border-black h-7 " type="text">
+                <select
+                  className="border border-black h-7 "
+                  name="categories_id"
+                  type="text"
+                  onChange={(event) =>
+                    handleWork(event.target.name, +event.target.value)
+                  }
+                >
                   <option value="">
                     Choisissez la catégorie à associer avec l'oeuvre
                   </option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.name}
+                    </option>
+                  ))}
                 </select>
               </label>
             </div>
