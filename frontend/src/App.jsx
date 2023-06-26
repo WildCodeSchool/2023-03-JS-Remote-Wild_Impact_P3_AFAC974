@@ -2,7 +2,6 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import UserLayout from "./pages/layout/UserLayout";
 
-
 import HomePage from "./pages/HomePage";
 import Gallery from "./pages/Gallery";
 import OneImage from "./pages/OneImage";
