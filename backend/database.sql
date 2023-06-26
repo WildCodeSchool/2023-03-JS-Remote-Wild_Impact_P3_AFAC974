@@ -13,9 +13,9 @@ DROP TABLE IF EXISTS categories;
 
 DROP TABLE IF EXISTS techniques;
 
-DROP TABLE IF EXISTS about;
+DROP TABLE IF EXISTS sponsors;
 
-CREATE TABLE about (
+CREATE TABLE sponsors (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name varchar(255) NOT NULL,
   summary LONGTEXT NOT NULL
@@ -75,7 +75,7 @@ CREATE TABLE user_favourites (
   CONSTRAINT works_id_forkey FOREIGN KEY (works_id) REFERENCES works(id)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-INSERT INTO about (name, summary)
+INSERT INTO sponsors (name, summary)
 VALUES ('AFAC 974', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis.'),
 ('Partenaire 1' , 'Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. ');
 
