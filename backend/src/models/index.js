@@ -49,13 +49,12 @@ const TechniqueManager = require("./TechniqueManager");
 models.technique = new TechniqueManager();
 models.technique.setDatabase(pool);
 
-const UserManager = require("./UserManager");
-
-models.user = new UserManager();
-models.user.setDatabase(pool);
-
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
+const UserManager = require("./UserManager");
+
+models.users = new UserManager();
+models.users.setDatabase(pool);
 
 const handler = {
   get(obj, prop) {
