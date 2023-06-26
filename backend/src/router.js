@@ -36,5 +36,6 @@ router.delete("/techniques/:id", techniqueControllers.destroy);
 const AboutController = require("./controllers/AboutController");
 
 router.get("/about", AboutController.browse);
+router.get("/about/:id", AboutController.read);
 
 module.exports = router;
