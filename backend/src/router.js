@@ -33,4 +33,8 @@ router.put("/techniques/:id", techniqueControllers.edit);
 router.post("/techniques", techniqueControllers.add);
 router.delete("/techniques/:id", techniqueControllers.destroy);
 
+const sponsorControllers = require("./controllers/SponsorController");
+
+router.get("/sponsors", sponsorControllers.browse);
+
 module.exports = router;
