@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import UserLayout from "./pages/layout/UserLayout";
 
+
 import HomePage from "./pages/HomePage";
 import Gallery from "./pages/Gallery";
 import OneImage from "./pages/OneImage";
@@ -14,6 +15,7 @@ import UserFavourites from "./pages/UserFavourites";
 
 import AdminLayout from "./pages/layout/AdminLayout";
 
+import Auth from "./pages/admin/Auth";
 import WorksAdmin from "./pages/admin/WorksAdmin";
 import ArticlesAdmin from "./pages/admin/ArticlesAdmin";
 import BiographyAdmin from "./pages/admin/BiographyAdmin";
@@ -41,6 +43,7 @@ function App() {
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="" element={<WorksAdmin />} />
+          <Route path="auth/connexion" element={<Auth />} />
           <Route path="articles" element={<ArticlesAdmin />} />
           <Route path="biography" element={<BiographyAdmin />} />
           <Route path="categories" element={<CategoriesAdmin />} />

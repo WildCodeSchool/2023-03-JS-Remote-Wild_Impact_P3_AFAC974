@@ -1,0 +1,41 @@
+import React from "react";
+
+function Auth() {
+  return (
+    <div className="flex items-center justify-center h-screen">
+      <form className="bg-white p-6 rounded-lg shadow-lg">
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="form2Example1">
+            Adresse mail
+          </label>
+          <input
+            type="email"
+            id="form2Example1"
+            className="border-black border-solid border-2 rounded py-2 px-4 w-full"
+            required
+            pattern="^[\w-\.]+@([\w-])+\.([\w-]{2,4})$"
+          />
+        </div>
+
+        <div className="mb-4">
+          <label className="block text-gray-700 text-sm font-bold mb-2" htmlFor="form2Example2">
+            Mot de passe
+          </label>
+          <input
+            type="password"
+            id="form2Example2"
+            className="border-black border-solid border-2 rounded py-2 px-4 w-full"
+            required
+          />
+        </div>
+
+        <button type="submit" className="bg-gray-800 text-black
+         rounded py-2 px-4 w-full">
+          Connexion
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default Auth;
