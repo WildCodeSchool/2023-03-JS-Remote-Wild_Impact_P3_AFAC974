@@ -78,6 +78,8 @@ CREATE TABLE
 
 CREATE TABLE
     biography (
+        id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        name VARCHAR (255) NOT NULL,
         title1 VARCHAR (255) NOT NULL,
         image1_src VARCHAR(255) NOT NULL,
         image1_alt VARCHAR(255) NOT NULL,
@@ -94,6 +96,7 @@ CREATE TABLE
 
 INSERT INTO
     biography (
+        name,
         title1,
         image1_src,
         image1_alt,
@@ -108,6 +111,7 @@ INSERT INTO
         text3
     )
 VALUES (
+        "Biographie d'Hippolyte Mortier, Duc De Trévise",
         "Hippolyte Mortier, Duc De Trévise",
         "./public/assets/images/AFAC_974_7.jpg",
         "Autoportrait du jeune Mortier, en tenue de peintre aquarelliste",
