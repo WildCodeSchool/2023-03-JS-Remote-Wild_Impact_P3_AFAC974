@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import connexion from "../../services/connexion";
 
 function WorksAdmin() {
-  const [work, setWork] = useState({
+  const workModel = {
+    id: null,
     reference: "",
     title: "",
     summary_title: "",
@@ -16,7 +17,29 @@ function WorksAdmin() {
     categories_id: "",
     image_src: "",
     image_alt: "",
-  });
+  };
+  const [work, setWork] = useState(workModel);
+  const [techniques, setTechniques] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [works, setWorks] = useState([]);
+
+  const refreshWork = (id) => {
+    if (id === "") {
+      setWork(workModel);
+    } else {
+      const find = works.find((w) => w.id === +id);
+      setWork(find);
+    }
+  };
+
+  const getWorks = async () => {
+    try {
+      const w = await connexion.get("/works");
+      setWorks(w);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleWork = (name, value) => {
     setWork({ ...work, [name]: value });
@@ -25,14 +48,25 @@ function WorksAdmin() {
   const postWork = async (event) => {
     event.preventDefault();
     try {
-      const works = await connexion.post("/works", work);
-      setWork(works);
+      const w = await connexion.post("/works", work);
+      setWork(w);
+      setWork(workModel);
+      getWorks();
     } catch (error) {
       console.error(error);
     }
   };
 
-  const [techniques, setTechniques] = useState([]);
+  const deleteWork = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.delete(`/works/${work.id}`);
+      setWork(workModel);
+      getWorks();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const getTechniques = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/techniques`)
@@ -40,12 +74,6 @@ function WorksAdmin() {
       .then((data) => setTechniques(data))
       .catch((err) => console.error(err));
   };
-
-  useEffect(() => {
-    getTechniques();
-  }, []);
-
-  const [categories, setCategories] = useState([]);
 
   const getCategories = () => {
     fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`)
@@ -56,6 +84,8 @@ function WorksAdmin() {
 
   useEffect(() => {
     getCategories();
+    getTechniques();
+    getWorks();
   }, []);
 
   return (
@@ -68,6 +98,24 @@ function WorksAdmin() {
       >
         <div className="w-80">
           <div>
+            <label className="flex flex-col font-semibold pb-5">
+              Oeuvre à modifier ou supprimer :
+              <select
+                onChange={(e) => refreshWork(e.target.value)}
+                value={work.id}
+                className="border border-black h-7"
+              >
+                <option value="">
+                  Sélectionnez le nom de l'oeuvre à modifier ou supprimer
+                </option>
+                {works.map((w) => (
+                  <option key={w.id} value={w.id}>
+                    {w.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <h1>Enregistrement d'une nouvelle oeuvre</h1>
             <label className="flex flex-col font-semibold">
               Référence
               <input
@@ -213,6 +261,7 @@ function WorksAdmin() {
                   onChange={(event) =>
                     handleWork(event.target.name, +event.target.value)
                   }
+                  value={work.techniques_id}
                 >
                   <option value="">
                     Choisissez la technique à associer avec l'oeuvre
@@ -253,6 +302,7 @@ function WorksAdmin() {
                   onChange={(event) =>
                     handleWork(event.target.name, +event.target.value)
                   }
+                  value={work.categories_id}
                 >
                   <option value="">
                     Choisissez la catégorie à associer avec l'oeuvre
@@ -286,7 +336,7 @@ function WorksAdmin() {
                 Image
                 <input
                   className="border border-black h-7"
-                  type="file"
+                  type="text"
                   required
                   placeholder="Image"
                   name="image_src"
@@ -300,10 +350,11 @@ function WorksAdmin() {
                 <button type="submit" className="bg-black text-white py-2 px-4">
                   Ajouter
                 </button>
-                <button type="button" className="bg-black text-white py-2 px-4">
-                  Modifier
-                </button>
-                <button type="button" className="bg-black text-white py-2 px-4">
+                <button
+                  type="button"
+                  className="bg-black text-white py-2 px-4"
+                  onClick={(e) => deleteWork(e)}
+                >
                   Supprimer
                 </button>
               </div>
