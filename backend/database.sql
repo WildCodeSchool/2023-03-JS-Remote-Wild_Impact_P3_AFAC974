@@ -427,3 +427,5 @@ INSERT INTO works (
         1,
         4
     );
+    INSERT INTO users (email, firstname, hashed_password, is_admin)
+VALUES ('admin@afac.com', 'Admin', 'afac', 1);

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import connexion from "../../services/connexion";
-import { useCurrentUser } from "../../components/contexts/UserContexts";
+import connexion from "../services/connexion";
+import { useCurrentUser } from "../contexts/UserContexts";
 
 function Auth() {
   const [userToLog, setUserToLog] = useState({
@@ -21,7 +21,7 @@ function Auth() {
       const log = await connexion.post("/login", userToLog);
       setUser(log.msg);
       setTimeout(() => {
-        navigate("/administration/articles");
+        navigate("/");
       }, 1000);
     } catch (error) {
       console.error(error);

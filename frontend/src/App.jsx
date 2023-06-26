@@ -14,7 +14,7 @@ import UserFavourites from "./pages/UserFavourites";
 
 import AdminLayout from "./pages/layout/AdminLayout";
 
-import Auth from "./pages/admin/Auth";
+import Auth from "./pages/Auth";
 import WorksAdmin from "./pages/admin/WorksAdmin";
 import ArticlesAdmin from "./pages/admin/ArticlesAdmin";
 import BiographyAdmin from "./pages/admin/BiographyAdmin";
@@ -41,8 +41,8 @@ function App() {
           <Route path="favourites" element={<UserFavourites />} />
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="" element={<WorksAdmin />} />
           <Route path="auth/connexion" element={<Auth />} />
+          <Route path="" element={<WorksAdmin />} />
           <Route path="articles" element={<ArticlesAdmin />} />
           <Route path="biography" element={<BiographyAdmin />} />
           <Route path="categories" element={<CategoriesAdmin />} />
