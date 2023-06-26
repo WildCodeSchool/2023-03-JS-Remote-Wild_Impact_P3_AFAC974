@@ -24,7 +24,7 @@ function AboutAdmin() {
 
   useEffect(() => {
     getAbouts();
-  });
+  }, []);
 
   const refreshAbout = (id) => {
     if (id === "") {
@@ -34,12 +34,33 @@ function AboutAdmin() {
     }
   };
 
+  const postAbout = (event) => {
+    event.preventDefault();
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/about`, {
+      method: "POST",
+      body: JSON.stringify(about),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then(() => {
+        setAbout(aboutModel);
+        getAbouts();
+      })
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion du à propos</h2>
       <form className="ml-10">
-        <label className="flex flex-col font-semibold w-80 pb-5">
+        <label
+          className="flex flex-col font-semibold w-80 pb-5"
+          onSubmit={(event) => postAbout(event)}
+        >
           <select
             className="border border-black h-7 mt-10"
             onChange={(event) => refreshAbout(event.target.value)}
