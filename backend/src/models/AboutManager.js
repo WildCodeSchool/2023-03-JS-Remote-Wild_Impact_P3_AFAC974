@@ -2,19 +2,19 @@ const AbstractManager = require("./AbstractManager");
 
 class SponsorManager extends AbstractManager {
   constructor() {
-    super({ table: "sponsors" });
+    super({ table: "about" });
   }
 
-  insert(sponsors) {
+  insert(about) {
     return this.database.query(`insert into ${this.table} (name) values (?)`, [
-      sponsors.name,
+      about.name,
     ]);
   }
 
-  update(sponsors) {
+  update(about) {
     return this.database.query(
       `update ${this.table} set name = ? where id = ?`,
-      [sponsors.name, sponsors.id]
+      [about.name, about.id]
     );
   }
 }

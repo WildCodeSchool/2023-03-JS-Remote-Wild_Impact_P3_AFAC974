@@ -49,10 +49,10 @@ const TechniqueManager = require("./TechniqueManager");
 models.technique = new TechniqueManager();
 models.technique.setDatabase(pool);
 
-const SponsorManager = require("./SponsorManager");
+const AboutManager = require("./AboutManager");
 
-models.sponsor = new SponsorManager();
-models.sponsor.setDatabase(pool);
+models.about = new AboutManager();
+models.about.setDatabase(pool);
 
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
