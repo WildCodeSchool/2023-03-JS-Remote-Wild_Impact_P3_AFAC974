@@ -13,6 +13,13 @@ DROP TABLE IF EXISTS categories;
 
 DROP TABLE IF EXISTS techniques;
 
+DROP TABLE IF EXISTS about;
+
+CREATE TABLE about (
+  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  summary LONGTEXT NOT NULL
+  ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 CREATE TABLE techniques (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
@@ -67,6 +74,10 @@ CREATE TABLE user_favourites (
   CONSTRAINT users_id_fk FOREIGN KEY (users_id) REFERENCES users(id),
   CONSTRAINT works_id_forkey FOREIGN KEY (works_id) REFERENCES works(id)
   ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+INSERT INTO about (name, summary)
+VALUES ('AFAC 974', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis.'),
+('Partenaire 1' , 'Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. ');
 
 INSERT INTO techniques (name)
 VALUES ('Aquarelle'), ('Dessin à la mine de plomb'), ('Dessin');
