@@ -33,6 +33,10 @@ router.put("/techniques/:id", techniqueControllers.edit);
 router.post("/techniques", techniqueControllers.add);
 router.delete("/techniques/:id", techniqueControllers.destroy);
 
+const authControllers = require("./controllers/authControllers");
+
+router.post("/login", authControllers.login);
+
 const userControllers = require("./controllers/userControllers");
 
 router.post("/users", userControllers.add);
