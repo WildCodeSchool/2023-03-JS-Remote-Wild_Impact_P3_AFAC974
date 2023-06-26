@@ -6,9 +6,10 @@ class SponsorManager extends AbstractManager {
   }
 
   insert(about) {
-    return this.database.query(`insert into ${this.table} (name) values (?)`, [
-      about.name,
-    ]);
+    return this.database.query(
+      `insert into ${this.table} (name, summary) values (?, ?)`,
+      [about.name, about.summary]
+    );
   }
 
   update(about) {

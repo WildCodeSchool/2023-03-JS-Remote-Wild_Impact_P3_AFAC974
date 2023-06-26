@@ -37,5 +37,6 @@ const AboutController = require("./controllers/AboutController");
 
 router.get("/about", AboutController.browse);
 router.get("/about/:id", AboutController.read);
+router.post("/about", AboutController.add);
 
 module.exports = router;
