@@ -57,6 +57,16 @@ function WorksAdmin() {
     }
   };
 
+  const updateWork = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.put(`/works/${work.id}`, work);
+      getWorks();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const deleteWork = async (e) => {
     e.preventDefault();
     try {
@@ -349,6 +359,13 @@ function WorksAdmin() {
               <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
                 <button type="submit" className="bg-black text-white py-2 px-4">
                   Ajouter
+                </button>
+                <button
+                  type="button"
+                  className="bg-black text-white py-2 px-4"
+                  onClick={(e) => updateWork(e)}
+                >
+                  Mettre à jour
                 </button>
                 <button
                   type="button"
