@@ -18,6 +18,14 @@ router.put("/works/:id", workControllers.edit);
 router.post("/works", workControllers.add);
 router.delete("/works/:id", workControllers.destroy);
 
+const biographyControllers = require("./controllers/biographyControllers");
+
+router.get("/biographies", biographyControllers.browse);
+router.get("/biographies/:id", biographyControllers.read);
+router.put("/biographies/:id", biographyControllers.edit);
+router.post("/biographies", biographyControllers.add);
+router.delete("/biographies/:id", biographyControllers.destroy);
+
 const categoryControllers = require("./controllers/categoryControllers");
 
 router.get("/categories", categoryControllers.browse);
