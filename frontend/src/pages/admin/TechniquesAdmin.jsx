@@ -110,7 +110,7 @@ function TechniquesAdmin() {
           )}
         </div>
       </form>
-      <div className="flex justify-end pb-5 pr-10 gap-10">
+      <div className="flex pl-10 pb-5 pr-10 gap-10">
         {technique.id && (
           <button
             type="button"

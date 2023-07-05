@@ -155,27 +155,29 @@ function ArticlesAdmin() {
           )}
         </div>
       </form>
-      {article.id && (
-        <button
-          type="button"
-          className="bg-black text-white py-2 px-4"
-          name="name"
-          onClick={(e) => updateArticle(e)}
-        >
-          Modifier
-        </button>
-      )}
+      <div className="flex pl-10 gap-5">
+        {article.id && (
+          <button
+            type="button"
+            className="bg-black text-white py-2 px-4"
+            name="name"
+            onClick={(e) => updateArticle(e)}
+          >
+            Modifier
+          </button>
+        )}
 
-      {article.id && (
-        <button
-          type="button"
-          className="bg-black text-white py-2 px-4"
-          name="name"
-          onClick={(e) => deleteArticle(e)}
-        >
-          Supprimer
-        </button>
-      )}
+        {article.id && (
+          <button
+            type="button"
+            className="bg-black text-white py-2 px-4"
+            name="name"
+            onClick={(e) => deleteArticle(e)}
+          >
+            Supprimer
+          </button>
+        )}
+      </div>
     </div>
   );
 }
