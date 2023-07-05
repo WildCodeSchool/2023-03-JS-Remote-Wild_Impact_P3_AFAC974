@@ -2,11 +2,10 @@ import React, { useState, useEffect } from "react";
 import connexion from "../../services/connexion";
 
 function ArticlesAdmin() {
-  const articleModel = { id: null, name: "" };
-
+  const articleModel = { id: null, name: "", src: "", works_id: "" };
   const [article, setArticle] = useState({ articleModel });
-
   const [articles, setArticles] = useState([]);
+  const [works, setWorks] = useState([]);
 
   const refreshArticle = (id) => {
     if (id === "") {
@@ -66,6 +65,18 @@ function ArticlesAdmin() {
     }
   };
 
+  const getWorks = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/works`)
+      .then((res) => res.json())
+      .then((data) => setWorks(data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getArticles();
+    getWorks();
+  }, []);
+
   return (
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
@@ -102,6 +113,39 @@ function ArticlesAdmin() {
             value={article.name}
             onChange={(e) => handleArticle(e.target.name, e.target.value)}
           />
+        </label>
+        <label
+          htmlFor="Write article"
+          className="flex flex-col font-semibold w-80"
+        >
+          <input
+            required
+            type="text"
+            className="border border-black h-7 mt-10"
+            placeholder="Lien de l'article"
+            name="src"
+            value={article.src}
+            onChange={(e) => handleArticle(e.target.name, e.target.value)}
+          />
+        </label>
+        <label className="flex flex-col font-semibold pt-5 pb-5 w-80">
+          Oeuvres associée
+          <select
+            className="border border-black h-7"
+            name="works_id"
+            type="text"
+            onChange={(event) =>
+              handleArticle(event.target.name, +event.target.value)
+            }
+            value={article.works_id}
+          >
+            <option value="">Choisissez l'oeuvre a associer</option>
+            {works.map((work) => (
+              <option key={work.id} value={work.id}>
+                {work.title}
+              </option>
+            ))}
+          </select>
         </label>
         <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
           {!article.id && (
