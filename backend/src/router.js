@@ -50,5 +50,4 @@ router.put("/about/:id", AboutController.edit);
 router.post("/about", AboutController.add);
 router.delete("/about/:id", AboutController.destroy);
 
-
 module.exports = router;
