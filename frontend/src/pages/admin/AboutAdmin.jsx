@@ -51,6 +51,16 @@ function AboutAdmin() {
       .catch((err) => console.error(err));
   };
 
+  const deleteAbout = (event) => {
+    event.preventDefault();
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/about/${about.id}`, {
+      method: "DELETE",
+    })
+      .then(() => setAbout(aboutModel))
+      .then(() => getAbouts())
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
@@ -96,17 +106,29 @@ function AboutAdmin() {
           />
         </label>
         <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
-          <button type="submit" className="bg-black text-white py-2 px-4">
-            Ajouter
-          </button>
-          <button type="button" className="bg-black text-white py-2 px-4">
-            Modifier
-          </button>
-          <button type="button" className="bg-black text-white py-2 px-4">
-            Supprimer
-          </button>
+          {!about.id && (
+            <button type="submit" className="bg-black text-white py-2 px-4">
+              Ajouter
+            </button>
+          )}
         </div>
       </form>
+      <div className="flex justify-end pb-5 pr-10 gap-10">
+        {about.id && (
+          <button
+            className="bg-black text-white py-2 px-4"
+            type="button"
+            onClick={(e) => deleteAbout(e)}
+          >
+            Supprimer
+          </button>
+        )}
+        {about.id && (
+          <button className="bg-black text-white py-2 px-4" type="button">
+            Modifier
+          </button>
+        )}
+      </div>
     </div>
   );
 }
