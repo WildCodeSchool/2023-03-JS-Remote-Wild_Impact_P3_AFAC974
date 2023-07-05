@@ -35,7 +35,7 @@ router.delete("/techniques/:id", techniqueControllers.destroy);
 
 const articleControllers = require("./controllers/articleControllers");
 
-router.get("/articles", techniqueControllers.browse);
+router.get("/articles", articleControllers.browse);
 router.get("/articles/:id", articleControllers.read);
 router.put("/articles/:id", articleControllers.edit);
 router.post("/articles", articleControllers.add);
