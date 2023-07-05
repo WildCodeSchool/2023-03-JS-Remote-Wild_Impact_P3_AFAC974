@@ -59,7 +59,6 @@ const AboutManager = require("./AboutManager");
 models.about = new AboutManager();
 models.about.setDatabase(pool);
 
-
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
 
