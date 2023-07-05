@@ -99,12 +99,12 @@ function WorksAdmin() {
   }, []);
 
   return (
-    <div>
+    <div className="flex flex-col w-full">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des oeuvres</h2>
       <div className="flex pl-10">
-        <form className="flex w-full" onSubmit={(event) => postWork(event)}>
-          <div className="w-2/5">
+        <form className="flex gap-20" onSubmit={(event) => postWork(event)}>
+          <div className="w-5/12">
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Oeuvre à modifier ou supprimer :
@@ -258,7 +258,7 @@ function WorksAdmin() {
             </div>
           </div>
 
-          <div className="pl-10">
+          <div className="w-5/12">
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Technique

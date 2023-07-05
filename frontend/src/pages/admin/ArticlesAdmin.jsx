@@ -78,7 +78,7 @@ function ArticlesAdmin() {
   }, []);
 
   return (
-    <div className="flex-1">
+    <div className="flex flex-col w-full">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des Articles</h2>
       <form className="ml-10" onSubmit={(e) => postArticle(e)}>

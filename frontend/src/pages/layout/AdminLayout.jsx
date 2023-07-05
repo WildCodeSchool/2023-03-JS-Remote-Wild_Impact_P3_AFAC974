@@ -4,11 +4,10 @@ import NavBarAdmin from "../../components/NavBarAdmin";
 
 function AdminLayout() {
   return (
-    <div className="max-w-100s">
-      <div className="flex h-screen">
-        <NavBarAdmin />
-        <Outlet />
-      </div>
+    <div className="flex">
+      <NavBarAdmin />
+
+      <Outlet />
     </div>
   );
 }
