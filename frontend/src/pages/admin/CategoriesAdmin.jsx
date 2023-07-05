@@ -58,18 +58,14 @@ function CategoriesAdmin() {
     }
   };
 
-  const updateCategory = (event) => {
-    event.preventDefault();
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories/${category.id}`, {
-      method: "PUT",
-      body: JSON.stringify(category),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => getCategories())
-      .catch((err) => console.error(err));
+  const updateCategory = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.put(`/categories/${category.id}`, category);
+      getCategories();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
