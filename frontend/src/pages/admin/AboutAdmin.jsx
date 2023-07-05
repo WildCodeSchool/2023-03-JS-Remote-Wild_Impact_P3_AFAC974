@@ -44,7 +44,6 @@ function AboutAdmin() {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
       .then(() => {
         setAbout(aboutModel);
         getAbouts();
@@ -56,11 +55,8 @@ function AboutAdmin() {
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion du à propos</h2>
-      <form className="ml-10">
-        <label
-          className="flex flex-col font-semibold w-80 pb-5"
-          onSubmit={(event) => postAbout(event)}
-        >
+      <form className="ml-10" onSubmit={(event) => postAbout(event)}>
+        <label className="flex flex-col font-semibold w-80 pb-5">
           <select
             className="border border-black h-7 mt-10"
             onChange={(event) => refreshAbout(event.target.value)}
