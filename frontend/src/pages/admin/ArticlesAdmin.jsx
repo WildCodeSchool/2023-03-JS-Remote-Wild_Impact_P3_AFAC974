@@ -85,7 +85,6 @@ function ArticlesAdmin() {
             {articles.map((art) => (
               <option key={art.id} value={art.id}>
                 {art.name}
-                {console.log(articles)}
               </option>
             ))}
           </select>
