@@ -15,7 +15,7 @@ function NavBarAdmin() {
           <Link to="/admin/articles"> Articles </Link>
         </div>
         <div className="pt-4">
-          <Link to="/admin/biography"> Biographie </Link>
+          <Link to="/admin/biographies"> Biographie </Link>
         </div>
         <div className="pt-4">
           <Link to="/admin/categories"> Catégories </Link>

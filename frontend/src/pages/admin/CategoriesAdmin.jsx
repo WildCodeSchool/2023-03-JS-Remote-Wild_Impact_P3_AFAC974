@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import connexion from "../../services/connexion";
 
 const categoryModel = {
   id: null,
@@ -14,11 +15,13 @@ function CategoriesAdmin() {
     setCategory({ ...category, [name]: value });
   };
 
-  const getCategories = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`)
-      .then((res) => res.json())
-      .then((data) => setCategories(data))
-      .catch((err) => console.error(err));
+  const getCategories = async () => {
+    try {
+      const cat = await connexion.get("/categories");
+      setCategories(cat);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -33,46 +36,36 @@ function CategoriesAdmin() {
     }
   };
 
-  const postCategory = (event) => {
-    event.preventDefault();
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`, {
-      method: "POST",
-      body: JSON.stringify(category),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then(() => {
-        setCategory(categoryModel);
-        getCategories();
-      })
-      .catch((err) => console.error(err));
+  const postCategory = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.post("/categories", category);
+      setCategory(categoryModel);
+      getCategories();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const deleteCategory = (event) => {
-    event.preventDefault();
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories/${category.id}`, {
-      method: "DELETE",
-    })
-      .then(() => setCategory(categoryModel))
-      .then(() => getCategories())
-      .catch((err) => console.error(err));
+  const deleteCategory = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.delete(`/categories/${category.id}`);
+      setCategory(categoryModel);
+      getCategories();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const updateCategory = (event) => {
-    event.preventDefault();
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories/${category.id}`, {
-      method: "PUT",
-      body: JSON.stringify(category),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => getCategories())
-      .catch((err) => console.error(err));
+  const updateCategory = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.put(`/categories/${category.id}`, category);
+      getCategories();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
