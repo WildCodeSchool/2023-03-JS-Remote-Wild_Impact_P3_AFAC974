@@ -128,8 +128,7 @@ function ArticlesAdmin() {
             onChange={(e) => handleArticle(e.target.name, e.target.value)}
           />
         </label>
-        <label className="flex flex-col font-semibold pt-5 pb-5 w-80">
-          Oeuvres associée
+        <label className="flex flex-col font-semibold pt-10 pb-5 w-80">
           <select
             className="border border-black h-7"
             name="works_id"
