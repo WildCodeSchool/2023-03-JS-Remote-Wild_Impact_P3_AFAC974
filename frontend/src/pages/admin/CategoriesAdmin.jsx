@@ -47,14 +47,15 @@ function CategoriesAdmin() {
     }
   };
 
-  const deleteCategory = (event) => {
-    event.preventDefault();
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories/${category.id}`, {
-      method: "DELETE",
-    })
-      .then(() => setCategory(categoryModel))
-      .then(() => getCategories())
-      .catch((err) => console.error(err));
+  const deleteCategory = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.delete(`/categories/${category.id}`);
+      setCategory(categoryModel);
+      getCategories();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const updateCategory = (event) => {
