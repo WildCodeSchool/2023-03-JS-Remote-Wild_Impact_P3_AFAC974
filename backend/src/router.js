@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require("multer");
 
 const router = express.Router();
 
@@ -14,8 +15,26 @@ const workControllers = require("./controllers/workControllers");
 
 router.get("/works", workControllers.browse);
 router.get("/works/:id", workControllers.read);
-router.put("/works/:id", workControllers.edit);
-router.post("/works", workControllers.add);
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, "public/assets/images");
+  },
+  filename(req, file, cb) {
+    const fileArray = file.originalname.split(".");
+    const extension = fileArray.pop();
+    const fileName = fileArray.join("-").split(" ").join("-");
+    cb(null, `${fileName}_${Date.now()}.${extension}`);
+  },
+});
+
+const upload = multer({
+  storage,
+  limits: { fileSize: "2MB" },
+});
+
+router.put("/works/:id", upload.single("image"), workControllers.edit);
+router.post("/works", upload.single("image"), workControllers.add);
 router.delete("/works/:id", workControllers.destroy);
 
 const categoryControllers = require("./controllers/categoryControllers");

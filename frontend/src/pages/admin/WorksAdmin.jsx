@@ -69,11 +69,9 @@ function WorksAdmin() {
 
   const manageWork = async (e) => {
     e.preventDefault();
-    console.log(image);
     const formData = new FormData();
     formData.append("image", image.current.files[0]);
-    formData.append("body", JSON.stringify(work));
-    console.log(formData);
+    formData.append("json", JSON.stringify(work));
     if (work.id) {
       updateWork(formData);
     } else {
@@ -371,6 +369,14 @@ function WorksAdmin() {
                   ref={image}
                 />
               </label>
+              {work.image_src && (
+                <img
+                  src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${
+                    work.image_src
+                  }`}
+                  alt={work.summary_title}
+                />
+              )}
               <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
                 <button
                   type="submit"
