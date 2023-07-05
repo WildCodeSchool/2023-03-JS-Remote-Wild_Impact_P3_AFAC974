@@ -70,9 +70,9 @@ function AboutAdmin() {
   };
 
   return (
-    <div className="flex-1">
+    <div className="flex flex-col w-full">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
-      <h2 className="text-xl font-bold p-4 pb-10">Gestion du à propos</h2>
+      <h2 className="text-xl font-bold p-4">Gestion du à propos</h2>
       <form className="ml-10" onSubmit={(event) => postAbout(event)}>
         <label className="flex flex-col font-semibold w-80 pb-5">
           <select
@@ -88,7 +88,7 @@ function AboutAdmin() {
             ))}
           </select>
           <input
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             type="text"
             minLength={4}
             placeholder="Nom du commentaire"
@@ -102,7 +102,7 @@ function AboutAdmin() {
         <label className="flex flex-col font-semibold w-80">
           Commentaire
           <textarea
-            className="border border-black"
+            className="border border-black placeholder:pl-2"
             required
             placeholder="Tapez ici votre commentaire"
             minLength={20}
@@ -113,7 +113,7 @@ function AboutAdmin() {
             value={about.summary}
           />
         </label>
-        <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+        <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!about.id && (
             <button type="submit" className="bg-black text-white py-2 px-4">
               Ajouter

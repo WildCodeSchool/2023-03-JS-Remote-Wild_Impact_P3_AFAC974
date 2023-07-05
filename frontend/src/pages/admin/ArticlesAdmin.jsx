@@ -78,7 +78,7 @@ function ArticlesAdmin() {
   }, []);
 
   return (
-    <div className="flex-1">
+    <div className="flex flex-col w-full">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des Articles</h2>
       <form className="ml-10" onSubmit={(e) => postArticle(e)}>
@@ -107,7 +107,7 @@ function ArticlesAdmin() {
           <input
             required
             type="text"
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             placeholder="Tapez ici le nom de l'article"
             name="name"
             value={article.name}
@@ -121,15 +121,14 @@ function ArticlesAdmin() {
           <input
             required
             type="text"
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             placeholder="Lien de l'article"
             name="src"
             value={article.src}
             onChange={(e) => handleArticle(e.target.name, e.target.value)}
           />
         </label>
-        <label className="flex flex-col font-semibold pt-5 pb-5 w-80">
-          Oeuvres associée
+        <label className="flex flex-col font-semibold pt-10 pb-5 w-80">
           <select
             className="border border-black h-7"
             name="works_id"
@@ -147,7 +146,7 @@ function ArticlesAdmin() {
             ))}
           </select>
         </label>
-        <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+        <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!article.id && (
             <button type="submit" className="bg-black text-white py-2 px-4">
               Ajouter
@@ -155,27 +154,29 @@ function ArticlesAdmin() {
           )}
         </div>
       </form>
-      {article.id && (
-        <button
-          type="button"
-          className="bg-black text-white py-2 px-4"
-          name="name"
-          onClick={(e) => updateArticle(e)}
-        >
-          Modifier
-        </button>
-      )}
+      <div className="flex pl-10 gap-5">
+        {article.id && (
+          <button
+            type="button"
+            className="bg-black text-white py-2 px-4"
+            name="name"
+            onClick={(e) => updateArticle(e)}
+          >
+            Modifier
+          </button>
+        )}
 
-      {article.id && (
-        <button
-          type="button"
-          className="bg-black text-white py-2 px-4"
-          name="name"
-          onClick={(e) => deleteArticle(e)}
-        >
-          Supprimer
-        </button>
-      )}
+        {article.id && (
+          <button
+            type="button"
+            className="bg-black text-white py-2 px-4"
+            name="name"
+            onClick={(e) => deleteArticle(e)}
+          >
+            Supprimer
+          </button>
+        )}
+      </div>
     </div>
   );
 }
