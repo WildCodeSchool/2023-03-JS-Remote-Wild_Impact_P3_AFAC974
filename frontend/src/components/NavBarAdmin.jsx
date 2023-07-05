@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import hexa from "../assets/hexa.png";
 
 function NavBarAdmin() {
   return (
@@ -8,26 +9,54 @@ function NavBarAdmin() {
         <h1 className="font-bold text-2xl">Tableau de bord</h1>
       </div>
       <div className="pl-10">
-        <div className="pt-4">
-          <Link to="/admin"> Oeuvres </Link>
+        <div className="flex">
+          <img className="h-8 pr-2" src={hexa} alt="logo_deconnexion" />
+          <Link className="pt-2" to="/admin">
+            {" "}
+            Oeuvres{" "}
+          </Link>
         </div>
-        <div className="pt-4">
-          <Link to="/admin/articles"> Articles </Link>
+        <div className="pt-4 flex">
+          <img className="h-8 pr-2" src={hexa} alt="logo_deconnexion" />
+          <Link className="pt-2" to="/admin/articles">
+            {" "}
+            Articles{" "}
+          </Link>
         </div>
-        <div className="pt-4">
-          <Link to="/admin/biography"> Biographie </Link>
+        <div className="pt-4 flex">
+          <img className="h-8 pr-2" src={hexa} alt="logo_deconnexion" />
+          <Link className="pt-2" to="/admin/biography">
+            {" "}
+            Biographie{" "}
+          </Link>
         </div>
-        <div className="pt-4">
-          <Link to="/admin/categories"> Catégories </Link>
+        <div className="pt-4 flex">
+          <img className="h-8 pr-2" src={hexa} alt="logo_deconnexion" />
+          <Link className="pt-2" to="/admin/categories">
+            {" "}
+            Catégories{" "}
+          </Link>
         </div>
-        <div className="pt-4">
-          <Link to="/admin/techniques"> Techniques </Link>
+        <div className="pt-4 flex">
+          <img className="h-8 pr-2" src={hexa} alt="logo_deconnexion" />
+          <Link className="pt-2" to="/admin/techniques">
+            {" "}
+            Techniques{" "}
+          </Link>
         </div>
-        <div className="pt-4">
-          <Link to="/admin/users"> Utilisateurs </Link>
+        <div className="pt-4 flex">
+          <img className="h-8 pr-2" src={hexa} alt="logo_deconnexion" />
+          <Link className="pt-2" to="/admin/users">
+            {" "}
+            Utilisateurs{" "}
+          </Link>
         </div>
-        <div className="pt-4">
-          <Link to="/admin/about"> A propos </Link>
+        <div className="pt-4 flex">
+          <img className="h-8 pr-2" src={hexa} alt="logo_deconnexion" />
+          <Link className="pt-2" to="/admin/about">
+            {" "}
+            A propos{" "}
+          </Link>
         </div>
       </div>
       <div className="pt-80 pr-4">
