@@ -46,12 +46,24 @@ function BiographiesAdmin() {
     setBiography({ ...biography, [name]: value });
   };
 
+  const postBiography = async (event) => {
+    event.preventDefault();
+    try {
+      const bio = await connexion.post("/biographies", biography);
+      setBiography(bio);
+      setBiography(biographyModel);
+      getBiographies();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des Biographies</h2>
 
-      <form>
+      <form onSubmit={(event) => postBiography(event)}>
         <label
           htmlFor="Select biographies"
           className="flex flex-col font-semibold w-80"
