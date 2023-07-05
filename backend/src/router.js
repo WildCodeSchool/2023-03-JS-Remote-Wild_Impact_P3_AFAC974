@@ -10,13 +10,20 @@ const router = express.Router();
 // router.post("/items", itemControllers.add);
 // router.delete("/items/:id", itemControllers.destroy);
 
+const authControllers = require("./controllers/authControllers");
+const { checkUserData } = require("./services/auth");
+const { checkUser } = require("./services/jwt");
+
+router.post("/signup", checkUserData, authControllers.signup);
+router.post("/login", checkUserData, authControllers.login);
+
 const workControllers = require("./controllers/workControllers");
 
 router.get("/works", workControllers.browse);
 router.get("/works/:id", workControllers.read);
-router.put("/works/:id", workControllers.edit);
-router.post("/works", workControllers.add);
-router.delete("/works/:id", workControllers.destroy);
+router.put("/works/:id", checkUser, workControllers.edit);
+router.post("/works", checkUser, workControllers.add);
+router.delete("/works/:id", checkUser, workControllers.destroy);
 
 const biographyControllers = require("./controllers/biographyControllers");
 
@@ -29,18 +36,17 @@ router.delete("/biographies/:id", biographyControllers.destroy);
 const categoryControllers = require("./controllers/categoryControllers");
 
 router.get("/categories", categoryControllers.browse);
-router.get("/categories/:id", categoryControllers.read);
-router.post("/categories", categoryControllers.add);
-router.put("/categories/:id", categoryControllers.edit);
-router.delete("/categories/:id", categoryControllers.destroy);
+router.post("/categories", checkUser, categoryControllers.add);
+router.put("/categories/:id", checkUser, categoryControllers.edit);
+router.delete("/categories/:id", checkUser, categoryControllers.destroy);
 
 const techniqueControllers = require("./controllers/techniqueControllers");
 
 router.get("/techniques", techniqueControllers.browse);
 router.get("/techniques/:id", techniqueControllers.read);
-router.put("/techniques/:id", techniqueControllers.edit);
-router.post("/techniques", techniqueControllers.add);
-router.delete("/techniques/:id", techniqueControllers.destroy);
+router.put("/techniques/:id", checkUser, techniqueControllers.edit);
+router.post("/techniques", checkUser, techniqueControllers.add);
+router.delete("/techniques/:id", checkUser, techniqueControllers.destroy);
 
 const articleControllers = require("./controllers/articleControllers");
 

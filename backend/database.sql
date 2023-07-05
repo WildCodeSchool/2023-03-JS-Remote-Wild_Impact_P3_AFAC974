@@ -28,6 +28,7 @@ CREATE TABLE about (
   id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
   name varchar(255) NOT NULL,
   summary LONGTEXT NOT NULL
+    ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 CREATE TABLE
     categories (
