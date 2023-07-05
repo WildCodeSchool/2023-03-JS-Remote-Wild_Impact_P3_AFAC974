@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.technique
+  models.about
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,7 +13,7 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.technique
+  models.about
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
@@ -29,14 +29,11 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const technique = req.body;
+  const about = req.body;
+  about.id = parseInt(req.params.id, 10);
 
-  // TODO validations (length, format...)
-
-  technique.id = parseInt(req.params.id, 10);
-
-  models.technique
-    .update(technique)
+  models.about
+    .update(about)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -51,17 +48,14 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const techniques = req.body;
+  const about = req.body;
 
   // TODO validations (length, format...)
 
-  models.technique
-    .insert(techniques)
+  models.about
+    .insert(about)
     .then(([result]) => {
-      res
-        .location(`/techniques/${result.insertId}`)
-        .status(201)
-        .json({ id: result.insertId, technique: techniques.technique });
+      res.location(`/about/${result.insertId}`).sendStatus(201);
     })
     .catch((err) => {
       console.error(err);
@@ -70,7 +64,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.technique
+  models.about
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {

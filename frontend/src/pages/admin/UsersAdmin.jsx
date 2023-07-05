@@ -1,31 +1,91 @@
-import React from "react";
+import React, { useState } from "react";
+import connexion from "../../services/connexion";
 
 function UsersAdmin() {
+  const [user, setUser] = useState({
+    email: "",
+    firstname: "",
+  });
+
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const handleUser = (name, value) => {
+    if (name === "email") {
+      if (!validateEmail(value)) {
+        console.error("Adresse e-mail invalide");
+        return;
+      }
+    }
+    setUser({ ...user, [name]: value });
+  };
+
+  const postUser = async (event) => {
+    event.preventDefault();
+    try {
+      const users = await connexion.post("/users", user);
+      setUser(users);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des utilisateurs</h2>
-      <form className="ml-10">
-        <label className="flex flex-col font-semibold w-80">
-          <select className="border border-black h-7 mt-10">
-            <option value="">Choisir un utilisateur</option>
-          </select>
-          <input
-            className="border border-black h-7 mt-10"
-            type="text"
-            placeholder="Tapez ici le nom de l'utilisateur"
-          />
-        </label>
-        <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
-          <button type="submit" className="bg-black text-white py-2 px-4">
-            Ajouter
-          </button>
-          <button type="button" className="bg-black text-white py-2 px-4">
-            Modifier
-          </button>
-          <button type="button" className="bg-black text-white py-2 px-4">
-            Supprimer
-          </button>
+      <form
+        className="flex justify-around"
+        onSubmit={(event) => postUser(event)}
+      >
+        <div className="w-80">
+          <div>
+            <label className="flex flex-col font-semibold">
+              Référence
+              <input
+                className="border border-black h-7"
+                type="text"
+                required
+                placeholder="Tapez ici la référence de l'utilisateur"
+                minLength={5}
+                maxLength={12}
+                name="firstname"
+                onChange={(event) =>
+                  handleUser(event.target.name, event.target.value)
+                }
+                value={user.firstname}
+              />
+            </label>
+          </div>
+          <div className="pt-5">
+            <label className="flex flex-col font-semibold pb-5">
+              Adresse e-mail
+              <input
+                className="border border-black h-7 w-full"
+                type="email"
+                required
+                placeholder="Adresse e-mail"
+                name="email"
+                onChange={(event) =>
+                  handleUser(event.target.name, event.target.value)
+                }
+                value={user.email}
+              />
+            </label>
+          </div>
+          <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+            <button type="submit" className="bg-black text-white py-2 px-4">
+              Ajouter
+            </button>
+            <button type="button" className="bg-black text-white py-2 px-4">
+              Modifier
+            </button>
+            <button type="button" className="bg-black text-white py-2 px-4">
+              Supprimer
+            </button>
+          </div>
         </div>
       </form>
     </div>
