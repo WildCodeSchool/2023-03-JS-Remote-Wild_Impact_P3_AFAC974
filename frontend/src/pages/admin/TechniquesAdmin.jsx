@@ -102,7 +102,7 @@ function TechniquesAdmin() {
             onChange={(e) => handleTechnique(e.target.name, e.target.value)}
           />
         </label>
-        <div className="flex justify-end pb-5 pr-10 gap-10">
+        <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!technique.id && (
             <button type="submit" className="bg-black text-white py-2 px-4">
               Ajouter

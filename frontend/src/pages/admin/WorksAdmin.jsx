@@ -356,7 +356,7 @@ function WorksAdmin() {
                   value={work.image_src}
                 />
               </label>
-              <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+              <div className="flex pt-10 pb-5 pr-10 gap-10">
                 <button type="submit" className="bg-black text-white py-2 px-4">
                   Ajouter
                 </button>

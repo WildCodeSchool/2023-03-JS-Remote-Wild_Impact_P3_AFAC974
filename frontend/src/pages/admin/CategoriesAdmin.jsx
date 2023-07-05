@@ -111,7 +111,7 @@ function CategoriesAdmin() {
             value={category.name}
           />
         </label>
-        <div className="flex justify-end pb-5 pr-10 gap-10">
+        <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!category.id && (
             <button className="bg-black text-white py-2 px-4" type="submit">
               Ajouter
