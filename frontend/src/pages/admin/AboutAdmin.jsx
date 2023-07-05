@@ -61,6 +61,20 @@ function AboutAdmin() {
       .catch((err) => console.error(err));
   };
 
+  const updateAbout = (event) => {
+    event.preventDefault();
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/about/${about.id}`, {
+      method: "PUT",
+      body: JSON.stringify(about),
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+    })
+      .then(() => getAbouts())
+      .catch((err) => console.error(err));
+  };
+
   return (
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
@@ -124,7 +138,11 @@ function AboutAdmin() {
           </button>
         )}
         {about.id && (
-          <button className="bg-black text-white py-2 px-4" type="button">
+          <button
+            className="bg-black text-white py-2 px-4"
+            type="button"
+            onClick={(e) => updateAbout(e)}
+          >
             Modifier
           </button>
         )}
