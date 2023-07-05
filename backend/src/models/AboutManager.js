@@ -14,8 +14,8 @@ class SponsorManager extends AbstractManager {
 
   update(about) {
     return this.database.query(
-      `update ${this.table} set name = ? where id = ?`,
-      [about.name, about.id]
+      `update ${this.table} set name = ?, summary = ? where id = ?`,
+      [about.name, about.summary, about.id]
     );
   }
 }
