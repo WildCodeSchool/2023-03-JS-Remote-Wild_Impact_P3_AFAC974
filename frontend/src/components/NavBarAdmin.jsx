@@ -25,7 +25,7 @@ function NavBarAdmin() {
         </div>
         <div className="pt-4 flex">
           <img className="h-8 pr-2" src={hexa} alt="logo_deconnexion" />
-          <Link className="pt-2" to="/admin/biography">
+          <Link className="pt-2" to="/admin/biographies">
             {" "}
             Biographie{" "}
           </Link>

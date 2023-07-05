@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import connexion from "../../services/connexion";
 
 function AboutAdmin() {
   const aboutModel = {
@@ -15,11 +16,13 @@ function AboutAdmin() {
     setAbout({ ...about, [name]: value });
   };
 
-  const getAbouts = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/about`)
-      .then((res) => res.json())
-      .then((data) => setAbouts(data))
-      .catch((err) => console.error(err));
+  const getAbouts = async () => {
+    try {
+      const ab = await connexion.get("/about");
+      setAbouts(ab);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -34,45 +37,36 @@ function AboutAdmin() {
     }
   };
 
-  const postAbout = (event) => {
+  const postAbout = async (event) => {
     event.preventDefault();
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/about`, {
-      method: "POST",
-      body: JSON.stringify(about),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => {
-        setAbout(aboutModel);
-        getAbouts();
-      })
-      .catch((err) => console.error(err));
+    try {
+      await connexion.post("/about", about);
+      setAbout(aboutModel);
+      getAbouts();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
-  const deleteAbout = (event) => {
+  const deleteAbout = async (event) => {
     event.preventDefault();
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/about/${about.id}`, {
-      method: "DELETE",
-    })
-      .then(() => setAbout(aboutModel))
-      .then(() => getAbouts())
-      .catch((err) => console.error(err));
+    try {
+      await connexion.delete(`/about/${about.id}`);
+      setAbout(aboutModel);
+      getAbouts();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const updateAbout = (event) => {
+  const updateAbout = async (event) => {
     event.preventDefault();
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/about/${about.id}`, {
-      method: "PUT",
-      body: JSON.stringify(about),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => getAbouts())
-      .catch((err) => console.error(err));
+    try {
+      await connexion.put(`/about/${about.id}`, about);
+      getAbouts();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
