@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import connexion from "../../services/connexion";
 
 function WorksAdmin() {
@@ -15,13 +15,13 @@ function WorksAdmin() {
     techniques_id: "",
     format: "",
     categories_id: "",
-    image_src: "",
     image_alt: "",
   };
   const [work, setWork] = useState(workModel);
   const [techniques, setTechniques] = useState([]);
   const [categories, setCategories] = useState([]);
   const [works, setWorks] = useState([]);
+  const image = useRef();
 
   const refreshWork = (id) => {
     if (id === "") {
@@ -33,9 +33,11 @@ function WorksAdmin() {
   };
 
   const getWorks = async () => {
+    const w = await connexion.get("/works");
     try {
-      const w = await connexion.get("/works");
-      setWorks(w);
+      if (w) {
+        setWorks(w);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -45,10 +47,9 @@ function WorksAdmin() {
     setWork({ ...work, [name]: value });
   };
 
-  const postWork = async (event) => {
-    event.preventDefault();
+  const postWork = async (form) => {
     try {
-      const w = await connexion.post("/works", work);
+      const w = await connexion.postFile("/works", form);
       setWork(w);
       setWork(workModel);
       getWorks();
@@ -57,13 +58,26 @@ function WorksAdmin() {
     }
   };
 
-  const updateWork = async (e) => {
-    e.preventDefault();
+  const updateWork = async (form) => {
     try {
-      await connexion.put(`/works/${work.id}`, work);
+      await connexion.putFile(`/works/${work.id}`, form);
       getWorks();
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const manageWork = async (e) => {
+    e.preventDefault();
+    console.log(image);
+    const formData = new FormData();
+    formData.append("image", image.current.files[0]);
+    formData.append("body", JSON.stringify(work));
+    console.log(formData);
+    if (work.id) {
+      updateWork(formData);
+    } else {
+      postWork(formData);
     }
   };
 
@@ -78,18 +92,22 @@ function WorksAdmin() {
     }
   };
 
-  const getTechniques = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/techniques`)
-      .then((res) => res.json())
-      .then((data) => setTechniques(data))
-      .catch((err) => console.error(err));
+  const getTechniques = async () => {
+    try {
+      const tech = await connexion.get("/techniques");
+      setTechniques(tech);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
-  const getCategories = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`)
-      .then((res) => res.json())
-      .then((data) => setCategories(data))
-      .catch((err) => console.error(err));
+  const getCategories = async () => {
+    try {
+      const tech = await connexion.get("/categories");
+      setCategories(tech);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
@@ -346,24 +364,25 @@ function WorksAdmin() {
                 Image
                 <input
                   className="border border-black h-7"
-                  type="text"
+                  type="file"
                   required
-                  placeholder="Image"
+                  accept="jpg, png, jpeg"
                   name="image_src"
-                  onChange={(event) =>
-                    handleWork(event.target.name, event.target.value)
-                  }
-                  value={work.image_src}
+                  ref={image}
                 />
               </label>
               <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
-                <button type="submit" className="bg-black text-white py-2 px-4">
+                <button
+                  type="submit"
+                  className="bg-black text-white py-2 px-4"
+                  onClick={(e) => manageWork(e)}
+                >
                   Ajouter
                 </button>
                 <button
                   type="button"
                   className="bg-black text-white py-2 px-4"
-                  onClick={(e) => updateWork(e)}
+                  onClick={(e) => manageWork(e)}
                 >
                   Mettre à jour
                 </button>
