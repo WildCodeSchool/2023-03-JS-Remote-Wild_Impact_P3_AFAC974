@@ -46,12 +46,22 @@ function BiographiesAdmin() {
     setBiography({ ...biography, [name]: value });
   };
 
-  const postBiography = async (event) => {
-    event.preventDefault();
+  const postBiography = async (e) => {
+    e.preventDefault();
     try {
       const bio = await connexion.post("/biographies", biography);
       setBiography(bio);
       setBiography(biographyModel);
+      getBiographies();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const updateBiography = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.put(`/biographies/${biography.id}`, biography);
       getBiographies();
     } catch (error) {
       console.error(error);
@@ -74,7 +84,7 @@ function BiographiesAdmin() {
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des Biographies</h2>
 
-      <form onSubmit={(event) => postBiography(event)}>
+      <form onSubmit={(e) => postBiography(e)}>
         <label
           htmlFor="Select biographies"
           className="flex flex-col font-semibold w-80"
@@ -100,7 +110,7 @@ function BiographiesAdmin() {
             required
             type="text"
             className="border border-black h-7 mt-10"
-            placeholder="Tapez ici le nom de la catégorie"
+            placeholder="Tapez ici le nom de la biographie"
             name="name"
             value={biography.name}
             onChange={(e) => handleBiography(e.target.name, e.target.value)}
@@ -114,12 +124,10 @@ function BiographiesAdmin() {
               className="border border-black h-7"
               type="text"
               required
-              placeholder="Décrivez l'oeuvre en quelques mots (à destination des personnes déficientes visuelles"
-              name="image_alt"
-              onChange={(event) =>
-                handleBiography(event.target.name, event.target.value)
-              }
+              placeholder="Décrivez l'image en quelques mots (à destination des personnes déficientes visuelles"
+              name="image1_alt"
               value={biography.image1_alt}
+              onChange={(e) => handleBiography(e.target.name, e.target.value)}
             />
           </label>
         </div>
@@ -131,10 +139,8 @@ function BiographiesAdmin() {
               type="text"
               required
               placeholder="Image"
-              name="image_src"
-              onChange={(event) =>
-                handleBiography(event.target.name, event.target.value)
-              }
+              name="image1_src"
+              onChange={(e) => handleBiography(e.target.name, e.target.value)}
               value={biography.image1_src}
             />
           </label>
@@ -149,10 +155,8 @@ function BiographiesAdmin() {
               placeholder="Titre de la biographie"
               minLength={5}
               maxLength={255}
-              name="title"
-              onChange={(event) =>
-                handleBiography(event.target.name, event.target.value)
-              }
+              name="title1"
+              onChange={(e) => handleBiography(e.target.name, e.target.value)}
               value={biography.title1}
             />
           </label>
@@ -166,10 +170,8 @@ function BiographiesAdmin() {
               required
               placeholder="Description"
               minLength={50}
-              name="summary1"
-              onChange={(event) =>
-                handleBiography(event.target.name, event.target.value)
-              }
+              name="text1"
+              onChange={(e) => handleBiography(e.target.name, e.target.value)}
               value={biography.text1}
             />
           </label>
@@ -182,11 +184,9 @@ function BiographiesAdmin() {
               className="border border-black h-7"
               type="text"
               required
-              placeholder="Décrivez l'oeuvre en quelques mots (à destination des personnes déficientes visuelles"
-              name="image_alt"
-              onChange={(event) =>
-                handleBiography(event.target.name, event.target.value)
-              }
+              placeholder="Décrivez l'image en quelques mots (à destination des personnes déficientes visuelles"
+              name="image2_alt"
+              onChange={(e) => handleBiography(e.target.name, e.target.value)}
               value={biography.image2_alt}
             />
           </label>
@@ -199,10 +199,8 @@ function BiographiesAdmin() {
               type="text"
               required
               placeholder="Image"
-              name="image_src"
-              onChange={(event) =>
-                handleBiography(event.target.name, event.target.value)
-              }
+              name="image2_src"
+              onChange={(e) => handleBiography(e.target.name, e.target.value)}
               value={biography.image2_src}
             />
           </label>
@@ -217,10 +215,8 @@ function BiographiesAdmin() {
               placeholder="Titre de la biographie"
               minLength={5}
               maxLength={255}
-              name="title"
-              onChange={(event) =>
-                handleBiography(event.target.name, event.target.value)
-              }
+              name="title2"
+              onChange={(e) => handleBiography(e.target.name, e.target.value)}
               value={biography.title2}
             />
           </label>
@@ -232,10 +228,8 @@ function BiographiesAdmin() {
               className="border border-black"
               placeholder="Description"
               minLength={50}
-              name="summary2"
-              onChange={(event) =>
-                handleBiography(event.target.name, event.target.value)
-              }
+              name="text2"
+              onChange={(e) => handleBiography(e.target.name, e.target.value)}
               value={biography.text2}
             />
           </label>
@@ -248,11 +242,9 @@ function BiographiesAdmin() {
               className="border border-black h-7"
               type="text"
               required
-              placeholder="Décrivez l'oeuvre en quelques mots (à destination des personnes déficientes visuelles"
-              name="image_alt"
-              onChange={(event) =>
-                handleBiography(event.target.name, event.target.value)
-              }
+              placeholder="Décrivez l'image en quelques mots (à destination des personnes déficientes visuelles"
+              name="image3_alt"
+              onChange={(e) => handleBiography(e.target.name, e.target.value)}
               value={biography.image3_alt}
             />
           </label>
@@ -265,10 +257,8 @@ function BiographiesAdmin() {
               type="text"
               required
               placeholder="Image"
-              name="image_src"
-              onChange={(event) =>
-                handleBiography(event.target.name, event.target.value)
-              }
+              name="image3_src"
+              onChange={(e) => handleBiography(e.target.name, e.target.value)}
               value={biography.image3_src}
             />
           </label>
@@ -283,10 +273,8 @@ function BiographiesAdmin() {
                 placeholder="Titre de la biographie"
                 minLength={5}
                 maxLength={255}
-                name="title"
-                onChange={(event) =>
-                  handleBiography(event.target.name, event.target.value)
-                }
+                name="title3"
+                onChange={(e) => handleBiography(e.target.name, e.target.value)}
                 value={biography.title3}
               />
             </label>
@@ -298,10 +286,8 @@ function BiographiesAdmin() {
                 className="border border-black"
                 placeholder="Description"
                 minLength={50}
-                name="summary3"
-                onChange={(event) =>
-                  handleBiography(event.target.name, event.target.value)
-                }
+                name="text3"
+                onChange={(e) => handleBiography(e.target.name, e.target.value)}
                 value={biography.text3}
               />
             </label>
@@ -313,7 +299,11 @@ function BiographiesAdmin() {
               </button>
             )}
             {biography.id && (
-              <button type="button" className="bg-black text-white py-2 px-4">
+              <button
+                type="button"
+                className="bg-black text-white py-2 px-4"
+                onClick={(e) => updateBiography(e)}
+              >
                 Modifier
               </button>
             )}

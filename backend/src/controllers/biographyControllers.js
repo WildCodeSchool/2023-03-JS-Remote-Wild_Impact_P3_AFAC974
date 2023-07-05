@@ -51,14 +51,17 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const biography = req.body;
+  const biographies = req.body;
 
   // TODO validations (length, format...)
 
   models.biography
-    .insert(biography)
+    .insert(biographies)
     .then(([result]) => {
-      res.location(`/biographies/${result.insertId}`).sendStatus(201);
+      res
+        .location(`/biographies/${result.insertId}`)
+        .status(201)
+        .json({ id: result.insertId, biography: biographies.biography });
     })
     .catch((err) => {
       console.error(err);
