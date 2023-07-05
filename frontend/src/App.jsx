@@ -16,7 +16,7 @@ import AdminLayout from "./pages/layout/AdminLayout";
 
 import WorksAdmin from "./pages/admin/WorksAdmin";
 import ArticlesAdmin from "./pages/admin/ArticlesAdmin";
-import BiographyAdmin from "./pages/admin/BiographyAdmin";
+import BiographiesAdmin from "./pages/admin/BiographiesAdmin";
 import CategoriesAdmin from "./pages/admin/CategoriesAdmin";
 import TechniquesAdmin from "./pages/admin/TechniquesAdmin";
 import UsersAdmin from "./pages/admin/UsersAdmin";
@@ -42,7 +42,7 @@ function App() {
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="" element={<WorksAdmin />} />
           <Route path="articles" element={<ArticlesAdmin />} />
-          <Route path="biography" element={<BiographyAdmin />} />
+          <Route path="biographies" element={<BiographiesAdmin />} />
           <Route path="categories" element={<CategoriesAdmin />} />
           <Route path="techniques" element={<TechniquesAdmin />} />
           <Route path="users" element={<UsersAdmin />} />
