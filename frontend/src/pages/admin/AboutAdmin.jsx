@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import connexion from "../../services/connexion";
 
 function AboutAdmin() {
   const aboutModel = {
@@ -15,11 +16,20 @@ function AboutAdmin() {
     setAbout({ ...about, [name]: value });
   };
 
-  const getAbouts = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/about`)
-      .then((res) => res.json())
-      .then((data) => setAbouts(data))
-      .catch((err) => console.error(err));
+  // const getAbouts = () => {
+  //   fetch(`${import.meta.env.VITE_BACKEND_URL}/about`)
+  //     .then((res) => res.json())
+  //     .then((data) => setAbouts(data))
+  //     .catch((err) => console.error(err));
+  // };
+
+  const getAbouts = async () => {
+    try {
+      const ab = await connexion.get("/about");
+      setAbouts(ab);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
