@@ -22,7 +22,7 @@ const authSchema = () => {
       minDomainSegments: 2,
       tlds: { allow: ["com"] },
     }),
-    password: Joi.string().min(10).required(),
+    password: Joi.string().min(5).required(),
   });
 };
 

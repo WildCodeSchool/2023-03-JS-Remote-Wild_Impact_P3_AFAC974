@@ -3,7 +3,6 @@ const models = require("../models");
 const { createJwt } = require("../services/jwt");
 
 const signup = async (req, res) => {
-  // Encrypté le pmot de passe
   const hash = await hashPassword(req.body.password);
   models.users
     .insert(req.body.email, hash)
@@ -15,14 +14,12 @@ const signup = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  // 1ère étape : vérification des données du req.body
   const [user] = await models.users.findOne(req.body.email);
-  // 2ème étape : Vérifier si l'email est bon et si mot de passe correspond
+
   if (
     user[0] &&
-    (await checkPassword(user[0].encrypt_pwd, req.body.password))
+    (await checkPassword(user[0].hashed_password, req.body.password))
   ) {
-    // equivaut à user
     const token = createJwt({ email: req.body.email, role: "admin" });
 
     res

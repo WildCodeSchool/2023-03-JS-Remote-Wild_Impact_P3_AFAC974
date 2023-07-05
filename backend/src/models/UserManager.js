@@ -7,7 +7,7 @@ class UserManager extends AbstractManager {
 
   insert(email, hash) {
     return this.database.query(
-      `insert into ${this.table} (email, encrypt_pwd) values (?, ?)`,
+      `insert into ${this.table} (email,  hashed_password) values (?, ?)`,
       [email, hash]
     );
   }
