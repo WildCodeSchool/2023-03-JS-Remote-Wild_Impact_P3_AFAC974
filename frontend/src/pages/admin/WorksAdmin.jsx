@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import connexion from "../../services/connexion";
 
 function WorksAdmin() {
-  const [work, setWork] = useState({
+  const workModel = {
+    id: null,
     reference: "",
     title: "",
     summary_title: "",
@@ -11,12 +12,34 @@ function WorksAdmin() {
     summary2: "",
     summary3: "",
     summary4: "",
-    techniques_id: 1,
+    techniques_id: "",
     format: "",
-    categories_id: 2,
+    categories_id: "",
     image_src: "",
     image_alt: "",
-  });
+  };
+  const [work, setWork] = useState(workModel);
+  const [techniques, setTechniques] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [works, setWorks] = useState([]);
+
+  const refreshWork = (id) => {
+    if (id === "") {
+      setWork(workModel);
+    } else {
+      const find = works.find((w) => w.id === +id);
+      setWork(find);
+    }
+  };
+
+  const getWorks = async () => {
+    try {
+      const w = await connexion.get("/works");
+      setWorks(w);
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleWork = (name, value) => {
     setWork({ ...work, [name]: value });
@@ -25,12 +48,55 @@ function WorksAdmin() {
   const postWork = async (event) => {
     event.preventDefault();
     try {
-      const works = await connexion.post("/works", work);
-      setWork(works);
+      const w = await connexion.post("/works", work);
+      setWork(w);
+      setWork(workModel);
+      getWorks();
     } catch (error) {
       console.error(error);
     }
   };
+
+  const updateWork = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.put(`/works/${work.id}`, work);
+      getWorks();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const deleteWork = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.delete(`/works/${work.id}`);
+      setWork(workModel);
+      getWorks();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const getTechniques = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/techniques`)
+      .then((res) => res.json())
+      .then((data) => setTechniques(data))
+      .catch((err) => console.error(err));
+  };
+
+  const getCategories = () => {
+    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`)
+      .then((res) => res.json())
+      .then((data) => setCategories(data))
+      .catch((err) => console.error(err));
+  };
+
+  useEffect(() => {
+    getCategories();
+    getTechniques();
+    getWorks();
+  }, []);
 
   return (
     <div className="flex-1">
@@ -42,6 +108,24 @@ function WorksAdmin() {
       >
         <div className="w-80">
           <div>
+            <label className="flex flex-col font-semibold pb-5">
+              Oeuvre à modifier ou supprimer :
+              <select
+                onChange={(e) => refreshWork(e.target.value)}
+                value={work.id}
+                className="border border-black h-7"
+              >
+                <option value="">
+                  Sélectionnez le nom de l'oeuvre à modifier ou supprimer
+                </option>
+                {works.map((w) => (
+                  <option key={w.id} value={w.id}>
+                    {w.title}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <h1>Enregistrement d'une nouvelle oeuvre</h1>
             <label className="flex flex-col font-semibold">
               Référence
               <input
@@ -180,10 +264,23 @@ function WorksAdmin() {
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Technique
-                <select className="border border-black h-7" type="text">
+                <select
+                  className="border border-black h-7"
+                  name="techniques_id"
+                  type="text"
+                  onChange={(event) =>
+                    handleWork(event.target.name, +event.target.value)
+                  }
+                  value={work.techniques_id}
+                >
                   <option value="">
                     Choisissez la technique à associer avec l'oeuvre
                   </option>
+                  {techniques.map((tech) => (
+                    <option key={tech.id} value={tech.id}>
+                      {tech.name}
+                    </option>
+                  ))}
                 </select>
               </label>
             </div>
@@ -208,10 +305,23 @@ function WorksAdmin() {
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Catégorie
-                <select className="border border-black h-7 " type="text">
+                <select
+                  className="border border-black h-7 "
+                  name="categories_id"
+                  type="text"
+                  onChange={(event) =>
+                    handleWork(event.target.name, +event.target.value)
+                  }
+                  value={work.categories_id}
+                >
                   <option value="">
                     Choisissez la catégorie à associer avec l'oeuvre
                   </option>
+                  {categories.map((cat) => (
+                    <option key={cat.id} value={cat.id}>
+                      {cat.name}
+                    </option>
+                  ))}
                 </select>
               </label>
             </div>
@@ -236,7 +346,7 @@ function WorksAdmin() {
                 Image
                 <input
                   className="border border-black h-7"
-                  type="file"
+                  type="text"
                   required
                   placeholder="Image"
                   name="image_src"
@@ -250,10 +360,18 @@ function WorksAdmin() {
                 <button type="submit" className="bg-black text-white py-2 px-4">
                   Ajouter
                 </button>
-                <button type="button" className="bg-black text-white py-2 px-4">
-                  Modifier
+                <button
+                  type="button"
+                  className="bg-black text-white py-2 px-4"
+                  onClick={(e) => updateWork(e)}
+                >
+                  Mettre à jour
                 </button>
-                <button type="button" className="bg-black text-white py-2 px-4">
+                <button
+                  type="button"
+                  className="bg-black text-white py-2 px-4"
+                  onClick={(e) => deleteWork(e)}
+                >
                   Supprimer
                 </button>
               </div>

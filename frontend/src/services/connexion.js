@@ -26,7 +26,6 @@ const updateData = (url, body) => {
       accept: "application/json",
     },
   }).catch((err) => console.error(err));
-
 };
 
 const deleteData = (path) => {

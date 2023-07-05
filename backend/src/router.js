@@ -21,6 +21,7 @@ router.delete("/works/:id", workControllers.destroy);
 const categoryControllers = require("./controllers/categoryControllers");
 
 router.get("/categories", categoryControllers.browse);
+router.get("/categories/:id", categoryControllers.read);
 router.post("/categories", categoryControllers.add);
 router.put("/categories/:id", categoryControllers.edit);
 router.delete("/categories/:id", categoryControllers.destroy);
@@ -40,5 +41,14 @@ router.get("/articles/:id", articleControllers.read);
 router.put("/articles/:id", articleControllers.edit);
 router.post("/articles", articleControllers.add);
 router.delete("/articles/:id", articleControllers.destroy);
+
+const AboutController = require("./controllers/AboutController");
+
+router.get("/about", AboutController.browse);
+router.get("/about/:id", AboutController.read);
+router.put("/about/:id", AboutController.edit);
+router.post("/about", AboutController.add);
+router.delete("/about/:id", AboutController.destroy);
+
 
 module.exports = router;
