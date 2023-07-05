@@ -34,6 +34,14 @@ router.put("/techniques/:id", techniqueControllers.edit);
 router.post("/techniques", techniqueControllers.add);
 router.delete("/techniques/:id", techniqueControllers.destroy);
 
+const articleControllers = require("./controllers/articleControllers");
+
+router.get("/articles", articleControllers.browse);
+router.get("/articles/:id", articleControllers.read);
+router.put("/articles/:id", articleControllers.edit);
+router.post("/articles", articleControllers.add);
+router.delete("/articles/:id", articleControllers.destroy);
+
 const AboutController = require("./controllers/AboutController");
 
 router.get("/about", AboutController.browse);

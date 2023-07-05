@@ -49,6 +49,11 @@ const TechniqueManager = require("./TechniqueManager");
 models.technique = new TechniqueManager();
 models.technique.setDatabase(pool);
 
+const ArticleManager = require("./ArticleManager");
+
+models.article = new ArticleManager();
+models.article.setDatabase(pool);
+
 const AboutManager = require("./AboutManager");
 
 models.about = new AboutManager();
