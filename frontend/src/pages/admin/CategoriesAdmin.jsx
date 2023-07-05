@@ -43,7 +43,6 @@ function CategoriesAdmin() {
         "Content-Type": "application/json",
       },
     })
-      .then((res) => res.json())
       .then(() => {
         setCategory(categoryModel);
         getCategories();

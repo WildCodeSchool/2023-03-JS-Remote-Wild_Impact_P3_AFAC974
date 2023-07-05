@@ -16,11 +16,18 @@ DROP TABLE IF EXISTS categories;
 
 DROP TABLE IF EXISTS techniques;
 
+DROP TABLE IF EXISTS about;
+
 CREATE TABLE
     techniques (
         id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
         name varchar(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
+
+CREATE TABLE about (
+  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+  name varchar(255) NOT NULL,
+  summary LONGTEXT NOT NULL
 
 CREATE TABLE
     categories (
@@ -137,6 +144,10 @@ VALUES (
         Après sa mort en 1892, son épouse Emma a géré le domaine, avant de le confier à son neveu Emmanuel. Il a continué à participer activement à la vie du village.
         Le vaste réseau de relations que Mortier avait établi durant sa vie est bien documenté dans ses souvenirs, témoignant de son engagement dans la communauté."
        );
+
+INSERT INTO about (name, summary)
+VALUES ('AFAC 974', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis.'),
+('Partenaire 1' , 'Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. ');
 
 INSERT INTO techniques (name)
 VALUES ('Aquarelle'), ('Dessin à la mine de plomb'), ('Dessin');
@@ -496,4 +507,29 @@ VALUES (
         "19 X 23",
         1,
         4
+    );
+
+    INSERT INTO articles (name, src, works_id)
+VALUES ("La sucrerie de Bel Air",
+        "https://view.genial.ly/5fb636d03636f40d7f883f24",
+        3
+    ), (
+        "Victorine Samsi",
+        "https://belair.hypotheses.org/389",
+        9 
+    ), (
+        "Jamali",
+        "https://forgetmenot.objettemoin.org/index.php/fr/actus/36-jamali-gardien-de-cannes",
+        13
+    ), ("Golo",
+        "https://belair.hypotheses.org/1351",
+        17
+    ), (
+        "La caverne des Lataniers",
+        "https://view.genial.ly/6432b64851cad10018f64868/interactive-image-caverne-lataniers",
+        20
+    ), (
+        "Caille Peinte", 
+        "https://www.seor.fr/oiseau-25-caille-peinte.html",
+        24
     );
