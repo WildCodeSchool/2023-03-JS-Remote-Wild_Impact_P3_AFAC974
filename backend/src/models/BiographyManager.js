@@ -39,6 +39,14 @@ class BiographyManager extends AbstractManager {
       ]
     );
   }
+
+  delete(id) {
+    return this.database.query(`delete from ${this.table} where id = ?`, [id]);
+  }
+
+  setDatabase(database) {
+    this.database = database;
+  }
 }
 
 module.exports = BiographyManager;

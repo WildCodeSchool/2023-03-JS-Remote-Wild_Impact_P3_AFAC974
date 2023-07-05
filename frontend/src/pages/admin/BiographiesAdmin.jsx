@@ -58,6 +58,17 @@ function BiographiesAdmin() {
     }
   };
 
+  const deleteBiography = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.delete(`/biographies/${biography.id}`);
+      setBiography(biographyModel);
+      getBiographies();
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <div className="flex-1">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
@@ -296,15 +307,25 @@ function BiographiesAdmin() {
             </label>
           </div>
           <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
-            <button type="submit" className="bg-black text-white py-2 px-4">
-              Ajouter
-            </button>
-            <button type="button" className="bg-black text-white py-2 px-4">
-              Modifier
-            </button>
-            <button type="button" className="bg-black text-white py-2 px-4">
-              Supprimer
-            </button>
+            {!biography.id && (
+              <button type="submit" className="bg-black text-white py-2 px-4">
+                Ajouter
+              </button>
+            )}
+            {biography.id && (
+              <button type="button" className="bg-black text-white py-2 px-4">
+                Modifier
+              </button>
+            )}
+            {biography.id && (
+              <button
+                type="button"
+                className="bg-black text-white py-2 px-4"
+                onClick={(e) => deleteBiography(e)}
+              >
+                Supprimer
+              </button>
+            )}
           </div>
         </div>
       </form>
