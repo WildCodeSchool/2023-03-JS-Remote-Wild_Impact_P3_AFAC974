@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import deconnexion from "../assets/deconnexion.png";
 
 function NavBarAdmin() {
   return (
@@ -34,7 +33,7 @@ function NavBarAdmin() {
       <div className="pt-80 pr-4">
         <Link to="/" className="flex bg-white p-3 text-xl text-black">
           <img
-            className="h-6"
+            className="h-6 pr-2"
             src="https://cdn2.iconfinder.com/data/icons/system-interface/72/Quit-256.png"
             alt="logo_deconnexion"
           />

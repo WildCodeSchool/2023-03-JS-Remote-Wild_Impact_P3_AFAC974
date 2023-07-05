@@ -94,7 +94,7 @@ function AboutAdmin() {
             ))}
           </select>
           <input
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             type="text"
             minLength={4}
             placeholder="Nom du commentaire"
@@ -108,7 +108,7 @@ function AboutAdmin() {
         <label className="flex flex-col font-semibold w-80">
           Commentaire
           <textarea
-            className="border border-black"
+            className="border border-black placeholder:pl-2"
             required
             placeholder="Tapez ici votre commentaire"
             minLength={20}
@@ -119,7 +119,7 @@ function AboutAdmin() {
             value={about.summary}
           />
         </label>
-        <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+        <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!about.id && (
             <button type="submit" className="bg-black text-white py-2 px-4">
               Ajouter

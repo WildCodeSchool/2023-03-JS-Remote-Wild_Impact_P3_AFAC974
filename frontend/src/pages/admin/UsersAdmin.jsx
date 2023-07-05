@@ -11,7 +11,7 @@ function UsersAdmin() {
             <option value="">Choisir un utilisateur</option>
           </select>
           <input
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             type="text"
             placeholder="Tapez ici le nom de l'utilisateur"
           />

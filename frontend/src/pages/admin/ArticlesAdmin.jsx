@@ -107,7 +107,7 @@ function ArticlesAdmin() {
           <input
             required
             type="text"
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             placeholder="Tapez ici le nom de l'article"
             name="name"
             value={article.name}
@@ -121,7 +121,7 @@ function ArticlesAdmin() {
           <input
             required
             type="text"
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             placeholder="Lien de l'article"
             name="src"
             value={article.src}

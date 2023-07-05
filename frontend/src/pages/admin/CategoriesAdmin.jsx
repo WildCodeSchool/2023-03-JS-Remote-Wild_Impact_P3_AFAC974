@@ -100,7 +100,7 @@ function CategoriesAdmin() {
 
         <label htmlFor="" className="flex flex-col font-semibold w-80">
           <input
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             type="text"
             minLength={4}
             placeholder="Tapez ici le nom de la catégorie"

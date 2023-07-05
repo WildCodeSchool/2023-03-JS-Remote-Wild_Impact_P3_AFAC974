@@ -11,7 +11,7 @@ function BiographyAdmin() {
             <option value="">Choisir une biographie</option>
           </select>
           <input
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             type="text"
             placeholder="Tapez ici le nom de l'article"
           />

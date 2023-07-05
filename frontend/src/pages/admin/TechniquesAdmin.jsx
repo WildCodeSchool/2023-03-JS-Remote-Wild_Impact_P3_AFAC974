@@ -95,7 +95,7 @@ function TechniquesAdmin() {
           <input
             required
             type="text"
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             placeholder="Tapez ici le nom de la catégorie"
             name="name"
             value={technique.name}
