@@ -36,21 +36,15 @@ function CategoriesAdmin() {
     }
   };
 
-  const postCategory = (event) => {
-    event.preventDefault();
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`, {
-      method: "POST",
-      body: JSON.stringify(category),
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-      },
-    })
-      .then(() => {
-        setCategory(categoryModel);
-        getCategories();
-      })
-      .catch((err) => console.error(err));
+  const postCategory = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.post("/categories", category);
+      setCategory(categoryModel);
+      getCategories();
+    } catch (err) {
+      console.error(err);
+    }
   };
 
   const deleteCategory = (event) => {
