@@ -427,3 +427,28 @@ INSERT INTO works (
         1,
         4
     );
+
+    INSERT INTO articles (name, src, works_id)
+VALUES ("La sucrerie de Bel Air",
+        "https://view.genial.ly/5fb636d03636f40d7f883f24",
+        3
+    ), (
+        "Victorine Samsi",
+        "https://belair.hypotheses.org/389",
+        9 
+    ), (
+        "Jamali",
+        "https://forgetmenot.objettemoin.org/index.php/fr/actus/36-jamali-gardien-de-cannes",
+        13
+    ), ("Golo",
+        "https://belair.hypotheses.org/1351",
+        17
+    ), (
+        "La caverne des Lataniers",
+        "https://view.genial.ly/6432b64851cad10018f64868/interactive-image-caverne-lataniers",
+        20
+    ), (
+        "Caille Peinte", 
+        "https://www.seor.fr/oiseau-25-caille-peinte.html",
+        24
+    );
