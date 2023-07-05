@@ -29,14 +29,14 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const item = req.body;
+  const technique = req.body;
 
   // TODO validations (length, format...)
 
-  item.id = parseInt(req.params.id, 10);
+  technique.id = parseInt(req.params.id, 10);
 
   models.technique
-    .update(item)
+    .update(technique)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
