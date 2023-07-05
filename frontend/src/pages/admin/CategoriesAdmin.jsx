@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import connexion from "../../services/connexion";
 
 const categoryModel = {
   id: null,
@@ -14,11 +15,13 @@ function CategoriesAdmin() {
     setCategory({ ...category, [name]: value });
   };
 
-  const getCategories = () => {
-    fetch(`${import.meta.env.VITE_BACKEND_URL}/categories`)
-      .then((res) => res.json())
-      .then((data) => setCategories(data))
-      .catch((err) => console.error(err));
+  const getCategories = async () => {
+    try {
+      const cat = await connexion.get("/categories");
+      setCategories(cat);
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   useEffect(() => {
