@@ -1,4 +1,5 @@
 const express = require("express");
+const multer = require("multer");
 
 const router = express.Router();
 
@@ -21,9 +22,38 @@ const workControllers = require("./controllers/workControllers");
 
 router.get("/works", workControllers.browse);
 router.get("/works/:id", workControllers.read);
-router.put("/works/:id", checkUser, checkAdmin, workControllers.edit);
-router.post("/works", checkUser, workControllers.add);
-router.delete("/works/:id", checkUser, workControllers.destroy);
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, "public/assets/images");
+  },
+  filename(req, file, cb) {
+    const fileArray = file.originalname.split(".");
+    const extension = fileArray.pop();
+    const fileName = fileArray.join("-").split(" ").join("-");
+    cb(null, `${fileName}_${Date.now()}.${extension}`);
+  },
+});
+
+const upload = multer({
+  storage,
+  limits: { fileSize: "2MB" },
+});
+
+router.put(
+  "/works/:id",
+  checkUser,
+  checkAdmin,
+  upload.single("image"),
+  workControllers.edit
+);
+router.post("/works", checkUser, upload.single("image"), workControllers.add);
+router.delete(
+  "/works/:id",
+  checkUser,
+  upload.single("image"),
+  workControllers.destroy
+);
 
 const biographyControllers = require("./controllers/biographyControllers");
 
