@@ -6,7 +6,7 @@ const CurrentUserContext = createContext();
 export const useCurrentUser = () => useContext(CurrentUserContext);
 
 export function CurrentUserProvider({ children }) {
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState();
 
   const contextValue = useMemo(() => ({ user, setUser }), [user, setUser]);
 

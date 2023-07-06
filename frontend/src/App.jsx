@@ -8,7 +8,6 @@ import OneImage from "./pages/OneImage";
 import Author from "./pages/Author";
 import About from "./pages/About";
 import UserSubscription from "./pages/UserSubscription";
-import UserLogin from "./pages/UserLogin";
 import UserProfile from "./pages/UserProfile";
 import UserFavourites from "./pages/UserFavourites";
 
@@ -36,12 +35,11 @@ function App() {
           <Route path="author" element={<Author />} />
           <Route path="about" element={<About />} />
           <Route path="subscription" element={<UserSubscription />} />
-          <Route path="login" element={<UserLogin />} />
           <Route path="profile" element={<UserProfile />} />
           <Route path="favourites" element={<UserFavourites />} />
+          <Route path="auth/connexion" element={<Auth />} />
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
-          <Route path="auth/connexion" element={<Auth />} />
           <Route path="" element={<WorksAdmin />} />
           <Route path="articles" element={<ArticlesAdmin />} />
           <Route path="biographies" element={<BiographiesAdmin />} />
