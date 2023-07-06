@@ -4,7 +4,7 @@ const browse = (req, res) => {
   models.work
     .findAll()
     .then(([rows]) => {
-      res.send(rows);
+      res.status(200).json(rows);
     })
     .catch((err) => {
       console.error(err);
@@ -19,7 +19,7 @@ const read = (req, res) => {
       if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        res.status(200).json(rows[0]);
       }
     })
     .catch((err) => {
@@ -38,7 +38,7 @@ const edit = (req, res) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
       } else {
-        res.sendStatus(204);
+        res.status(204).json();
       }
     })
     .catch((err) => {
@@ -48,7 +48,8 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const work = req.body;
+  const work = JSON.parse(req.body.json);
+  work.image_src = req.file.filename;
 
   models.work
     .insert(work)
@@ -71,7 +72,7 @@ const destroy = (req, res) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
       } else {
-        res.sendStatus(204);
+        res.status(204).json();
       }
     })
     .catch((err) => {

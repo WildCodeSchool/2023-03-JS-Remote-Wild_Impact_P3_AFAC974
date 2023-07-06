@@ -24,7 +24,6 @@ app.use(
     credentials: true,
   })
 );
-
 // import and mount the API routes
 
 const router = require("./router");
