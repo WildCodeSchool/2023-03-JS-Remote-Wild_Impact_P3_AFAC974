@@ -13,9 +13,10 @@ const verifyToken = (token) => {
 };
 
 const checkUser = (req, res, next) => {
-  if (req.cookies.blog_token) {
-    const token = verifyToken(req.cookies.blog_token);
+  if (req.cookies.afac_token) {
+    const token = verifyToken(req.cookies.afac_token);
     if (token) {
+      req.token = token;
       next();
     } else {
       res.status(401).json({ msg: "Unauthorized" });
@@ -25,4 +26,12 @@ const checkUser = (req, res, next) => {
   }
 };
 
-module.exports = { createJwt, checkUser };
+const checkAdmin = (req, res, next) => {
+  if (req.token.role === 1) {
+    next();
+  } else {
+    res.status(401).json({ msg: "Unauthorized" });
+  }
+};
+
+module.exports = { createJwt, checkUser, checkAdmin };

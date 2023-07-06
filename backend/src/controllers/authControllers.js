@@ -20,14 +20,14 @@ const login = async (req, res) => {
     user[0] &&
     (await checkPassword(user[0].hashed_password, req.body.password))
   ) {
-    const token = createJwt({ email: req.body.email, role: "admin" });
+    const token = createJwt({ email: req.body.email, role: user[0].is_admin });
 
     res
       .status(200)
-      .cookie("blog_token", token, {
+      .cookie("afac_token", token, {
         httpOnly: true,
       })
-      .json({ msg: "Connected" });
+      .json({ msg: "Connected", admin: user[0].is_admin });
   } else {
     res.status(401).json({ msg: "Wrong credentials" });
   }

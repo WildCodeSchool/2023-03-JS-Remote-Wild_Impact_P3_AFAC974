@@ -13,7 +13,7 @@ const router = express.Router();
 
 const authControllers = require("./controllers/authControllers");
 const { checkUserData } = require("./services/auth");
-const { checkUser } = require("./services/jwt");
+const { checkUser, checkAdmin } = require("./services/jwt");
 
 router.post("/signup", checkUserData, authControllers.signup);
 router.post("/login", checkUserData, authControllers.login);
@@ -43,6 +43,7 @@ const upload = multer({
 router.put(
   "/works/:id",
   checkUser,
+  checkAdmin,
   upload.single("image"),
   workControllers.edit
 );

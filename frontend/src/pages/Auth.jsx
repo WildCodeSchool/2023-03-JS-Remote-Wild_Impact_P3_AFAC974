@@ -19,9 +19,9 @@ function Auth() {
     event.preventDefault();
     try {
       const log = await connexion.post("/login", userToLog);
-      setUser(log.msg);
+      setUser(log);
       setTimeout(() => {
-        navigate("/");
+        navigate("/admin");
       }, 1000);
     } catch (error) {
       console.error(error);
