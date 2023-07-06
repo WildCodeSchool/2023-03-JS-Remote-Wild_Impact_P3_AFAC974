@@ -1,3 +1,4 @@
+-- SQLBook: Code
 -- Active: 1684940650999@@127.0.0.1@3306@afac974
 
 -- SQLBook: Code
@@ -534,3 +535,11 @@ VALUES ("La sucrerie de Bel Air",
         "https://www.seor.fr/oiseau-25-caille-peinte.html",
         24
     );
+
+INSERT INTO
+    users (
+        email,
+        hashed_password,
+        is_admin
+    )
+VALUES ("admin@admin.com", "$argon2id$v=19$m=65536,t=3,p=1$/CzR6UY8uiZYTaxJuv96vA$88z7x2E/HDrlbib+XWrj2EpgUPtoGioj3KtkZRFeAzY", 1), ("user@users.com", "$argon2id$v=19$m=65536,t=3,p=1$2On/bpEHz9AobMjjOuMxiA$IjDynbhQCWrFNVwyL1FquDH1y6Ym1ZjlwmqUFKdShxY", 0);
