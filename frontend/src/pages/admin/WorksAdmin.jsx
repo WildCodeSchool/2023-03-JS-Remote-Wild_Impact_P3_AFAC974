@@ -359,7 +359,6 @@ function WorksAdmin() {
               <label className="flex flex-col font-semibold pb-5">
                 Image
                 <input
-                  className="border border-black h-7"
                   type="file"
                   className="border border-black h-7 placeholder:pl-2"
                   required
