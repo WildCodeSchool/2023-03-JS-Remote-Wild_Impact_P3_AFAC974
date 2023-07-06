@@ -362,7 +362,6 @@ function WorksAdmin() {
                   className="border border-black h-7"
                   type="file"
                   className="border border-black h-7 placeholder:pl-2"
-                  type="text"
                   required
                   accept="jpg, png, jpeg"
                   name="image_src"
