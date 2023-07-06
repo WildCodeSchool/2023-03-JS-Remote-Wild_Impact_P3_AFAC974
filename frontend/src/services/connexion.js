@@ -1,5 +1,7 @@
 const getData = (url) => {
-  return fetch(`${import.meta.env.VITE_BACKEND_URL}${url}`)
+  return fetch(`${import.meta.env.VITE_BACKEND_URL}${url}`, {
+    credentials: "include",
+  })
     .then((res) => res.json())
     .catch((err) => console.error(err));
 };
@@ -12,6 +14,7 @@ const postData = (path, data) => {
       Accept: "application/json",
       "Content-Type": "application/json",
     },
+    credentials: "include",
   })
     .then((res) => res.json())
     .catch((err) => console.error(err));
@@ -25,12 +28,14 @@ const updateData = (url, body) => {
       "Content-Type": "application/json",
       accept: "application/json",
     },
+    credentials: "include",
   }).catch((err) => console.error(err));
 };
 
 const deleteData = (path) => {
   return fetch(`${import.meta.env.VITE_BACKEND_URL}${path}`, {
     method: "DELETE",
+    credentials: "include",
   })
     .then((res) => res.json())
     .catch((err) => console.error(err));

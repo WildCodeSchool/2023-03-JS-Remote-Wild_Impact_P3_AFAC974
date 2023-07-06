@@ -12,7 +12,7 @@ const router = express.Router();
 
 const authControllers = require("./controllers/authControllers");
 const { checkUserData } = require("./services/auth");
-const { checkUser } = require("./services/jwt");
+const { checkUser, checkAdmin } = require("./services/jwt");
 
 router.post("/signup", checkUserData, authControllers.signup);
 router.post("/login", checkUserData, authControllers.login);
@@ -21,7 +21,7 @@ const workControllers = require("./controllers/workControllers");
 
 router.get("/works", workControllers.browse);
 router.get("/works/:id", workControllers.read);
-router.put("/works/:id", checkUser, workControllers.edit);
+router.put("/works/:id", checkUser, checkAdmin, workControllers.edit);
 router.post("/works", checkUser, workControllers.add);
 router.delete("/works/:id", checkUser, workControllers.destroy);
 
