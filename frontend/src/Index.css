@@ -1,3 +1,98 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.hexagon {
+  cursor: default;
+  position: relative;
+  width: 300px;
+  height: 173.20508075688775px;
+  background-color: #3f4450;
+  margin: 86.60254037844388px auto 0 auto;
+  box-shadow: 0 0 0px rgba(0, 255, 255, 1);
+  border-left: solid 20px #f47721;
+  border-right: solid 20px #f47721;
+  display: grid;
+  transition: 0s;
+}
+
+.hexagon:before,
+.hexagon:after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  width: 212.13203435596424px;
+  height: 212.13203435596424px;
+  transform: scaleY(0.5774) rotate(-45deg);
+  background-color: inherit;
+  left: 23.93398282201788px;
+  box-shadow: 0 0 0px rgba(0, 255, 255, 1);
+  transition: 0s;
+}
+
+.hexagon:before {
+  top: -106.06601717798212px;
+  border-top: solid 28.284271247461902px #f47721;
+  border-right: solid 28.284271247461902px #f47721;
+}
+
+.hexagon:after {
+  bottom: -106.06601717798212px;
+  border-bottom: solid 28.284271247461902px #f47721;
+  border-left: solid 28.284271247461902px #f47721;
+}
+
+.hexagon span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  font-size: 40px;
+  color: #f47721;
+  top: 11.547005383792515px;
+  left: 0;
+  width: 260px;
+  height: 150.1111px;
+  z-index: 2;
+  background: inherit;
+  transition: 0s;
+}
+
+.hexagon:hover {
+  width: 300px;
+  height: 173.20508075688775px;
+  background-color: #2b2f38;
+  margin: 86.60254037844388px auto 0 auto;
+  box-shadow: 0 0 50px rgba(0, 255, 255, 1);
+  border-left: solid 10px #f47721;
+  border-right: solid 10px #f47721;
+}
+
+.hexagon:hover:before,
+.hexagon:hover:after {
+  width: 212.13203435596424px;
+  height: 212.13203435596424px;
+  transform: scaleY(0.5774) rotate(-45deg);
+  left: 33.93398282201788px;
+  box-shadow: 0 0 50px rgba(0, 255, 255, 1);
+}
+
+.hexagon:hover:before {
+  top: -106.06601717798212px;
+  border-top: solid 14.142135623730951px #f47721;
+  border-right: solid 14.142135623730951px #f47721;
+}
+
+.hexagon:hover:after {
+  bottom: -106.06601717798212px;
+  border-bottom: solid 14.142135623730951px #f47721;
+  border-left: solid 14.142135623730951px #f47721;
+}
+
+.hexagon:hover span {
+  font-size: 25px;
+  color: #f47721;
+  top: 5.773502691896257px;
+  width: 280px;
+  height: 161.6581px;
+}
