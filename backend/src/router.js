@@ -98,5 +98,7 @@ const userControllers = require("./controllers/userControllers");
 
 router.get("/users", userControllers.browse);
 router.get("/users/:email", userControllers.find);
+router.post("/users", userControllers.add);
+router.delete("/users/:email", userControllers.destroy);
 
 module.exports = router;
