@@ -33,19 +33,16 @@ function UsersAdmin() {
   };
 
   return (
-    <div className="flex-1">
+    <div className="flex flex-col w-full">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des utilisateurs</h2>
-      <form
-        className="flex justify-around"
-        onSubmit={(event) => postUser(event)}
-      >
+      <form className="flex pl-10" onSubmit={(event) => postUser(event)}>
         <div className="w-80">
           <div>
             <label className="flex flex-col font-semibold">
               Référence
               <input
-                className="border border-black h-7"
+                className="border border-black h-7 placeholder:pl-2"
                 type="text"
                 required
                 placeholder="Tapez ici la référence de l'utilisateur"
@@ -75,7 +72,7 @@ function UsersAdmin() {
               />
             </label>
           </div>
-          <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+          <div className="flex pt-10 pb-5 pr-10 gap-10">
             <button type="submit" className="bg-black text-white py-2 px-4">
               Ajouter
             </button>
