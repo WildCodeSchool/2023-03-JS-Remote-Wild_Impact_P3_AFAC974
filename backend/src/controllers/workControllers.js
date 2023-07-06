@@ -29,9 +29,8 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const work = req.body;
+  const work = JSON.parse(req.body.json);
   work.id = parseInt(req.params.id, 10);
-
   models.work
     .update(work)
     .then(([result]) => {
