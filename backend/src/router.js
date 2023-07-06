@@ -94,4 +94,9 @@ router.put("/about/:id", AboutController.edit);
 router.post("/about", AboutController.add);
 router.delete("/about/:id", AboutController.destroy);
 
+const userControllers = require("./controllers/userControllers");
+
+router.get("/users", userControllers.browse);
+router.get("/users/:email", userControllers.find);
+
 module.exports = router;

@@ -1,17 +1,25 @@
 const models = require("../models");
 
-const add = (req, res) => {
-  const user = req.body;
-
-  // TODO validations (length, format...)
-
+const browse = (req, res) => {
   models.user
-    .insert(user)
-    .then(([result]) => {
-      res
-        .location(`/users/${result.insertId}`)
-        .status(201)
-        .json({ id: result.insertId, user });
+    .findAll()
+    .then(([users]) => {
+      res.status(200).send(users);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+const find = (req, res) => {
+  models.user
+    .findByMail(req.params.email)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows[0]);
+      }
     })
     .catch((err) => {
       console.error(err);
@@ -20,5 +28,6 @@ const add = (req, res) => {
 };
 
 module.exports = {
-  add,
+  browse,
+  find,
 };

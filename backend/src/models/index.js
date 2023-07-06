@@ -48,7 +48,6 @@ const BiographyManager = require("./BiographyManager");
 
 models.biography = new BiographyManager();
 models.biography.setDatabase(pool);
-
 const CategoryManager = require("./CategoryManager");
 
 models.category = new CategoryManager();
@@ -68,8 +67,8 @@ models.about.setDatabase(pool);
 // when asking for a non existing model
 const UserManager = require("./UserManager");
 
-models.users = new UserManager();
-models.users.setDatabase(pool);
+models.user = new UserManager();
+models.user.setDatabase(pool);
 
 const handler = {
   get(obj, prop) {
