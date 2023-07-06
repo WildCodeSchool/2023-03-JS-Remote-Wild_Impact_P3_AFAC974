@@ -27,7 +27,6 @@ const checkUser = (req, res, next) => {
 };
 
 const checkAdmin = (req, res, next) => {
-  console.log(req.token)
   if (req.token.role === 1) {
     next();
   } else {
