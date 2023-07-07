@@ -1,8 +1,6 @@
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
-// const privateKey = "masuperclesecretedefoliequiesttroplongue";
-
 const createJwt = (payload) => {
   return jwt.sign(payload, process.env.privateKey, {
     expiresIn: "1h",
