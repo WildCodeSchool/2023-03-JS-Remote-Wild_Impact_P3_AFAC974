@@ -63,14 +63,18 @@ router.put(
   "/biographies/:id",
   checkUser,
   checkAdmin,
-  upload.single("image"),
+  upload.single("image1"),
+  upload.single("image2"),
+  upload.single("image3"),
   biographyControllers.edit
 );
 router.post(
   "/biographies",
   checkUser,
   checkAdmin,
-  upload.single("image"),
+  upload.single("image1"),
+  upload.single("image2"),
+  upload.single("image3"),
   biographyControllers.add
 );
 router.delete("/biographies/:id", checkUser, biographyControllers.destroy);
