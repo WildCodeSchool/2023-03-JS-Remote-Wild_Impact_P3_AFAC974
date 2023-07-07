@@ -19,7 +19,7 @@ const read = (req, res) => {
       if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        res.status(200).json(rows[0]);
       }
     })
     .catch((err) => {
@@ -29,7 +29,7 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const biography = req.body;
+  const biography = JSON.parse(req.body.json);
 
   // TODO validations (length, format...)
 
@@ -41,7 +41,7 @@ const edit = (req, res) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
       } else {
-        res.sendStatus(204);
+        res.status(204).json();
       }
     })
     .catch((err) => {
@@ -51,7 +51,8 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const biographies = req.body;
+  const biographies = JSON.parse(req.body.json);
+  biographies.image_src = req.file.filename;
 
   // TODO validations (length, format...)
 

@@ -59,9 +59,21 @@ const biographyControllers = require("./controllers/biographyControllers");
 
 router.get("/biographies", biographyControllers.browse);
 router.get("/biographies/:id", biographyControllers.read);
-router.put("/biographies/:id", biographyControllers.edit);
-router.post("/biographies", biographyControllers.add);
-router.delete("/biographies/:id", biographyControllers.destroy);
+router.put(
+  "/biographies/:id",
+  checkUser,
+  checkAdmin,
+  upload.single("image"),
+  biographyControllers.edit
+);
+router.post(
+  "/biographies",
+  checkUser,
+  checkAdmin,
+  upload.single("image"),
+  biographyControllers.add
+);
+router.delete("/biographies/:id", checkUser, biographyControllers.destroy);
 
 const categoryControllers = require("./controllers/categoryControllers");
 

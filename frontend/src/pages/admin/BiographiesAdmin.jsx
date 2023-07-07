@@ -1,25 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import connexion from "../../services/connexion";
 
 function BiographiesAdmin() {
   const biographyModel = {
     name: "",
     title1: "",
-    image1_src: "",
     image1_alt: "",
     text1: "",
     title2: "",
-    image2_src: "",
     image2_alt: "",
     text2: "",
     title3: "",
-    image3_src: "",
     image3_alt: "",
     text3: "",
   };
 
   const [biography, setBiography] = useState({ biographyModel });
   const [biographies, setBiographies] = useState([]);
+  const image = useRef();
 
   const refreshBiography = (id) => {
     if (id === "") {
@@ -65,6 +63,18 @@ function BiographiesAdmin() {
       getBiographies();
     } catch (error) {
       console.error(error);
+    }
+  };
+
+  const manageBiography = async (e) => {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("image", image.current.files[0]);
+    formData.append("json", JSON.stringify(biography));
+    if (biography.id) {
+      updateBiography(formData);
+    } else {
+      postBiography(formData);
     }
   };
 
@@ -137,12 +147,11 @@ function BiographiesAdmin() {
               Image part.1
               <input
                 className="border border-black h-7 placeholder:pl-2"
-                type="text"
+                type="file"
+                accept="jpg, png, jpeg"
                 required
-                placeholder="Image"
                 name="image1_src"
-                onChange={(e) => handleBiography(e.target.name, e.target.value)}
-                value={biography.image1_src}
+                ref={image}
               />
             </label>
           </div>
@@ -197,12 +206,11 @@ function BiographiesAdmin() {
               Image part.2
               <input
                 className="border border-black h-7 placeholder:pl-2"
-                type="text"
+                type="file"
+                accept="jpg, png, jpeg"
                 required
-                placeholder="Image"
                 name="image2_src"
-                onChange={(e) => handleBiography(e.target.name, e.target.value)}
-                value={biography.image2_src}
+                ref={image}
               />
             </label>
           </div>
@@ -257,12 +265,11 @@ function BiographiesAdmin() {
               Image part.3
               <input
                 className="border border-black h-7 placeholder:pl-2"
-                type="text"
+                type="file"
+                accept="jpg, png, jpeg"
                 required
-                placeholder="Image"
                 name="image3_src"
-                onChange={(e) => handleBiography(e.target.name, e.target.value)}
-                value={biography.image3_src}
+                ref={image}
               />
             </label>
 
@@ -301,7 +308,11 @@ function BiographiesAdmin() {
             </div>
             <div className="flex justify-end pt-10 pb-5 pr-10 gap-10">
               {!biography.id && (
-                <button type="submit" className="bg-black text-white py-2 px-4">
+                <button
+                  type="submit"
+                  className="bg-black text-white py-2 px-4"
+                  onClick={(e) => manageBiography(e)}
+                >
                   Ajouter
                 </button>
               )}
@@ -309,7 +320,7 @@ function BiographiesAdmin() {
                 <button
                   type="button"
                   className="bg-black text-white py-2 px-4"
-                  onClick={(e) => updateBiography(e)}
+                  onClick={(e) => manageBiography(e)}
                 >
                   Modifier
                 </button>
