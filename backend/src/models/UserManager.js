@@ -5,18 +5,23 @@ class UserManager extends AbstractManager {
     super({ table: "users" });
   }
 
-  insert(email, hash) {
-    return this.database.query(
-      `insert into ${this.table} (email,  hashed_password) values (?, ?)`,
-      [email, hash]
-    );
-  }
-
-  findOne(email) {
+  findByMail(email) {
     return this.database.query(`select * from  ${this.table} where email = ?`, [
       email,
     ]);
   }
-}
 
+  insert(email, password) {
+    return this.database.query(
+      `insert into ${this.table} (email, hashed_password) values (?, ?)`,
+      [email, password]
+    );
+  }
+
+  deleteByMail(email) {
+    return this.database.query(`delete from ${this.table} where email = ?`, [
+      email,
+    ]);
+  }
+}
 module.exports = UserManager;
