@@ -1,16 +1,20 @@
 import React from "react";
-import { Outlet } from "react-router-dom";
+import { Outlet, Navigate } from "react-router-dom";
 import NavBarAdmin from "../../components/NavBarAdmin";
+import { useCurrentUser } from "../../contexts/UserContexts";
 
 function AdminLayout() {
-  return (
-    <div className="max-w-100s">
-      <div className="flex h-screen">
+  const { user } = useCurrentUser();
+
+  if (user?.admin) {
+    return (
+      <div className="flex">
         <NavBarAdmin />
         <Outlet />
       </div>
-    </div>
-  );
+    );
+  }
+  return <Navigate to="/" replace />;
 }
 
 export default AdminLayout;

@@ -67,9 +67,9 @@ function TechniquesAdmin() {
   };
 
   return (
-    <div className="flex-1">
+    <div className="flex flex-col w-full">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
-      <h2 className="text-xl font-bold p-4 pb-10">Gestion des techniques</h2>
+      <h2 className="text-xl font-bold p-4">Gestion des techniques</h2>
       <form className="ml-10" onSubmit={(e) => postTechnique(e)}>
         <label
           htmlFor="Select techniques"
@@ -95,14 +95,14 @@ function TechniquesAdmin() {
           <input
             required
             type="text"
-            className="border border-black h-7 mt-10"
+            className="border border-black h-7 mt-10 placeholder:pl-2"
             placeholder="Tapez ici le nom de la catégorie"
             name="name"
             value={technique.name}
             onChange={(e) => handleTechnique(e.target.name, e.target.value)}
           />
         </label>
-        <div className="flex justify-end pb-5 pr-10 gap-10">
+        <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!technique.id && (
             <button type="submit" className="bg-black text-white py-2 px-4">
               Ajouter
@@ -110,7 +110,7 @@ function TechniquesAdmin() {
           )}
         </div>
       </form>
-      <div className="flex justify-end pb-5 pr-10 gap-10">
+      <div className="flex pl-10 pb-5 pr-10 gap-10">
         {technique.id && (
           <button
             type="button"

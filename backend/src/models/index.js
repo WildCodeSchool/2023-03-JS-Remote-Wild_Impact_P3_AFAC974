@@ -39,6 +39,15 @@ const WorkManager = require("./WorkManager");
 models.work = new WorkManager();
 models.work.setDatabase(pool);
 
+const ArticleManager = require("./ArticleManager");
+
+models.article = new ArticleManager();
+models.article.setDatabase(pool);
+
+const BiographyManager = require("./BiographyManager");
+
+models.biography = new BiographyManager();
+models.biography.setDatabase(pool);
 const CategoryManager = require("./CategoryManager");
 
 models.category = new CategoryManager();
@@ -49,8 +58,17 @@ const TechniqueManager = require("./TechniqueManager");
 models.technique = new TechniqueManager();
 models.technique.setDatabase(pool);
 
+const AboutManager = require("./AboutManager");
+
+models.about = new AboutManager();
+models.about.setDatabase(pool);
+
 // bonus: use a proxy to personalize error message,
 // when asking for a non existing model
+const UserManager = require("./UserManager");
+
+models.user = new UserManager();
+models.user.setDatabase(pool);
 
 const handler = {
   get(obj, prop) {

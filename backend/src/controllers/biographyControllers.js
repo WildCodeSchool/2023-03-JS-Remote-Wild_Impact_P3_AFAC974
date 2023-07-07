@@ -1,7 +1,7 @@
 const models = require("../models");
 
 const browse = (req, res) => {
-  models.technique
+  models.biography
     .findAll()
     .then(([rows]) => {
       res.send(rows);
@@ -13,13 +13,13 @@ const browse = (req, res) => {
 };
 
 const read = (req, res) => {
-  models.technique
+  models.biography
     .find(req.params.id)
     .then(([rows]) => {
       if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        res.status(200).json(rows[0]);
       }
     })
     .catch((err) => {
@@ -29,19 +29,19 @@ const read = (req, res) => {
 };
 
 const edit = (req, res) => {
-  const technique = req.body;
+  const biography = JSON.parse(req.body.json);
 
   // TODO validations (length, format...)
 
-  technique.id = parseInt(req.params.id, 10);
+  biography.id = parseInt(req.params.id, 10);
 
-  models.technique
-    .update(technique)
+  models.biography
+    .update(biography)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
       } else {
-        res.sendStatus(204);
+        res.status(204).json();
       }
     })
     .catch((err) => {
@@ -51,17 +51,18 @@ const edit = (req, res) => {
 };
 
 const add = (req, res) => {
-  const techniques = req.body;
+  const biographies = JSON.parse(req.body.json);
+  biographies.image_src = req.file.filename;
 
   // TODO validations (length, format...)
 
-  models.technique
-    .insert(techniques)
+  models.biography
+    .insert(biographies)
     .then(([result]) => {
       res
-        .location(`/techniques/${result.insertId}`)
+        .location(`/biographies/${result.insertId}`)
         .status(201)
-        .json({ id: result.insertId, technique: techniques.technique });
+        .json({ id: result.insertId, biography: biographies.biography });
     })
     .catch((err) => {
       console.error(err);
@@ -70,7 +71,7 @@ const add = (req, res) => {
 };
 
 const destroy = (req, res) => {
-  models.technique
+  models.biography
     .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
