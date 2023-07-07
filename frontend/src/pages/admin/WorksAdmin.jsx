@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
 
 function WorksAdmin() {
   const workModel = {
@@ -47,22 +49,61 @@ function WorksAdmin() {
     setWork({ ...work, [name]: value });
   };
 
+  const notifyWrong = () =>
+    toast("Un problème est survenu, veuillez recommencer.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  const notifyAdd = () =>
+    toast("L'oeuvre a été correctement ajoutée à la base de données.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   const postWork = async (form) => {
     try {
       const w = await connexion.postFile("/works", form);
       setWork(w);
       setWork(workModel);
+      notifyAdd();
       getWorks();
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
+  const notifyUpdate = () =>
+    toast("L'oeuvre a été correctement mise à jour.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
   const updateWork = async (form) => {
     try {
       await connexion.putFile(`/works/${work.id}`, form);
       getWorks();
+      notifyUpdate();
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
@@ -79,13 +120,27 @@ function WorksAdmin() {
     }
   };
 
+  const notifyDelete = () =>
+    toast("L'oeuvre a bien été supprimée de la base de données.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   const deleteWork = async (e) => {
     e.preventDefault();
     try {
       await connexion.delete(`/works/${work.id}`);
       setWork(workModel);
       getWorks();
+      notifyDelete();
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
@@ -375,6 +430,18 @@ function WorksAdmin() {
                   alt={work.summary_title}
                 />
               )}
+              <ToastContainer
+                position="bottom-right"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+              />
               <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
                 <button
                   type="submit"
