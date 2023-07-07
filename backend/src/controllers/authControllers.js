@@ -4,7 +4,7 @@ const { createJwt } = require("../services/jwt");
 
 const signup = async (req, res) => {
   const hash = await hashPassword(req.body.password);
-  models.users
+  models.user
     .insert(req.body.email, hash)
     .then(() => res.status(200).json({ msg: "User created" }))
     .catch((err) => {
@@ -14,7 +14,7 @@ const signup = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const [user] = await models.users.findOne(req.body.email);
+  const [user] = await models.user.findByMail(req.body.email);
 
   if (
     user[0] &&
