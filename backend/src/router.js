@@ -116,5 +116,6 @@ router.get("/users", userControllers.browse);
 router.get("/users/:email", userControllers.find);
 router.post("/users", userControllers.add);
 router.delete("/users/:email", userControllers.destroy);
+router.put("/users/:email", userControllers.edit);
 
 module.exports = router;

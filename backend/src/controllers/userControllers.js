@@ -56,9 +56,31 @@ const destroy = (req, res) => {
     });
 };
 
+const edit = (req, res) => {
+  const user = req.body;
+
+  const exEmail = req.params.email;
+  const newEmail = req.body.email;
+
+  models.user
+    .update(user, exEmail, newEmail)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   find,
   add,
   destroy,
+  edit,
 };
