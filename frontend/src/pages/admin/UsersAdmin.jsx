@@ -3,6 +3,7 @@ import connexion from "../../services/connexion";
 
 function UsersAdmin() {
   const userModel = {
+    id: null,
     email: "",
     firstname: "",
   };
@@ -33,18 +34,18 @@ function UsersAdmin() {
     getUsers();
   }, []);
 
-  // const validateEmail = (email) => {
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   return emailRegex.test(email);
-  // };
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
 
   const handleUser = (name, value) => {
-    // if (name === "email") {
-    //   if (!validateEmail(value)) {
-    //     console.error("Adresse e-mail invalide");
-    //     return;
-    //   }
-    // }
+    if (name === "email") {
+      if (!validateEmail(value)) {
+        console.error("Adresse e-mail invalide");
+        return;
+      }
+    }
 
     setUser({ ...user, [name]: value });
   };
@@ -88,14 +89,14 @@ function UsersAdmin() {
                 className="border border-black h-7 placeholder:pl-2"
                 type="text"
                 required
-                placeholder="Tapez ici la référence de l'utilisateur"
+                placeholder="Tapez ici le nom de l'utilisateur"
                 minLength={5}
                 maxLength={12}
                 name="firstname"
                 onChange={(event) =>
                   handleUser(event.target.name, event.target.value)
                 }
-                value={user.firstname}
+                value={user.firstname === null ? "" : user.firstname}
               />
             </label>
           </div>
