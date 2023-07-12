@@ -1,18 +1,54 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import user from "../assets/user.svg";
 import logo from "../assets/logo.png";
 
 function NavBarUser() {
   return (
-    <div className="pt-2 pl-10">
+    <div className="pt-2 pl-10 text-white">
       <ul className="flex justify-between items-center">
         <img className="h-20" src={logo} alt="logo" />
         <div className="flex gap-5">
-          <Link to="/">Accueil</Link>
-          <Link to="/gallery">Gallerie</Link>
-          <Link to="/author">Biographie</Link>
-          <Link to="/about">A propos</Link>
+          <NavLink
+            to="/"
+            className={({ isActive }) =>
+              isActive
+                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                : ""
+            }
+          >
+            Accueil
+          </NavLink>
+          <NavLink
+            to="/gallery"
+            className={({ isActive }) =>
+              isActive
+                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                : ""
+            }
+          >
+            Gallerie
+          </NavLink>
+          <NavLink
+            to="/author"
+            className={({ isActive }) =>
+              isActive
+                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                : ""
+            }
+          >
+            Biographie
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) =>
+              isActive
+                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                : ""
+            }
+          >
+            A propos
+          </NavLink>
         </div>
         <div className="flex items-center pr-10">
           <img className="h-6 pr-4" src={user} alt="user" />
