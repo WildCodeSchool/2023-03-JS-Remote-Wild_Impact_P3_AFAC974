@@ -5,13 +5,13 @@ import bouton from "../assets/bouton.png";
 function HomePage() {
   return (
     <div className="bg-cover h-screen w-screen bg-[url('src/assets/background.jpg')] flex flex-col justify-center items-center">
-      <h2 className="text-white text-3xl text-center pr-[450px] pb-2">
+      <h2 className="text-white text-2xl text-center pr-[450px] pb-2">
         Exposition dédiée à
       </h2>
-      <h1 className="text-white text-6xl font-bold text-center">
+      <h1 className="text-white text-5xl font-bold text-center">
         Hippolyte Mortier
       </h1>
-      <h1 className="text-white text-6xl font-bold text-center pr-[14rem]">
+      <h1 className="text-white text-5xl font-bold text-center pr-[11.5rem]">
         De Trévise
       </h1>
       <div className="ml-10">
