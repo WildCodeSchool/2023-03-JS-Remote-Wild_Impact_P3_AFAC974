@@ -22,54 +22,60 @@ function Author() {
   }, []);
 
   return (
-    <div className="bg-black h-screen">
+    <div className="bg-black h-full">
       <h1
-        className="text-right text-white underline-offset-8 font-bold text-2xl"
+        className="text-right text-white underline-offset-8 font-bold text-2xl pt-5 pr-20"
         type="text"
         value="text"
       >
         BIOGRAPHIE
       </h1>
-      <div className="border-t-4 border-pink h-100 w-full"> </div>
+      <div className="border-t-4 border-pink h-100 w-5/6 ml-20"> </div>
       {biographies.map((biographie) => (
         <div className="flex flex-col  m-10 text-white " key={biographie.id}>
-          <div className="flex">
-            <img className="w-10 h-10" src={hexa} alt="logo" />
-            <h3 className="mt-2 font-bold text-2xl">{biographie.title1}</h3>
-          </div>
           <div className="flex m-5">
             <img
-              className="w-40 h-50 mr-5"
+              className="w-50 h-80 mr-10"
               src={AFAC_974_7}
               alt={biographie.image1_alt}
             />
-            <p className="text-justify "> {biographie.text1}</p>
+            <div className="flex-col">
+              <div className="flex pb-5">
+                <img className="w-10 h-10" src={hexa} alt="logo" />
+                <h3 className="mt-2 font-bold text-2xl">{biographie.title1}</h3>
+              </div>
+              <p className="text-justify "> {biographie.text1}</p>
+            </div>
           </div>
 
-          <div className="flex">
-            <img className="w-10 h-10" src={hexa} alt="logo" />
-            <h3 className="mt-2 font-bold text-2xl">{biographie.title2}</h3>
-          </div>
           <div className="flex flex-row-reverse items-center m-5">
             <img
-              className="w-50 h-60 ml-5"
+              className="w-50 h-80 ml-10"
               src={AFAC_974_3}
               alt={biographie.image1_alt}
             />
-            <p className="text-justify"> {biographie.text2}</p>
+            <div>
+              <div className="flex pb-5">
+                <img className="w-10 h-10" src={hexa} alt="logo" />
+                <h3 className="mt-2 font-bold text-2xl">{biographie.title2}</h3>
+              </div>
+              <p className="text-justify"> {biographie.text2}</p>
+            </div>
           </div>
 
-          <div className="flex">
-            <img className="w-10 h-10" src={hexa} alt="logo" />
-            <h3 className="mt-2 font-bold text-2xl">{biographie.title3}</h3>
-          </div>
           <div className="flex m-5">
             <img
-              className="w-60 h-40 mr-5"
+              className="w-50 h-60 mr-10"
               src={ChâteauDeCoupvray}
               alt={biographie.image3_alt}
             />
-            <p className="text-justify"> {biographie.text3}</p>
+            <div className="flex-col">
+              <div className="flex pb-5">
+                <img className="w-10 h-10" src={hexa} alt="logo" />
+                <h3 className="mt-2 font-bold text-2xl">{biographie.title3}</h3>
+              </div>
+              <p className="text-justify"> {biographie.text3}</p>
+            </div>
           </div>
         </div>
       ))}
