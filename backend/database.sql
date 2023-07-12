@@ -1,4 +1,5 @@
 -- SQLBook: Code
+
 -- Active: 1684940650999@@127.0.0.1@3306@afac974
 
 -- SQLBook: Code
@@ -25,10 +26,11 @@ CREATE TABLE
         name varchar(255) NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
-CREATE TABLE about (
-  id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  name varchar(255) NOT NULL,
-  summary LONGTEXT NOT NULL
+CREATE TABLE
+    about (
+        id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
+        name varchar(255) NOT NULL,
+        summary LONGTEXT NOT NULL
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 CREATE TABLE
@@ -88,16 +90,16 @@ CREATE TABLE
 CREATE TABLE
     biography (
         id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
-        name VARCHAR (255) NOT NULL,
-        title1 VARCHAR (255) NOT NULL,
+        name VARCHAR(255) NOT NULL,
+        title1 VARCHAR(255) NOT NULL,
         image1_src VARCHAR(255) NOT NULL,
         image1_alt VARCHAR(255) NOT NULL,
         text1 LONGTEXT NOT NULL,
-        title2 VARCHAR (255),
+        title2 VARCHAR(255),
         image2_src VARCHAR(255),
         image2_alt VARCHAR(255),
         text2 LONGTEXT,
-        title3 VARCHAR (255),
+        title3 VARCHAR(255),
         image3_src VARCHAR(255),
         image3_alt VARCHAR(255),
         text3 LONGTEXT
@@ -112,7 +114,7 @@ INSERT INTO
         text1,
         title2,
         image2_src,
-        image2_alt, 
+        image2_alt,
         text2,
         title3,
         image3_src,
@@ -122,7 +124,7 @@ INSERT INTO
 VALUES (
         "Biographie d'Hippolyte Mortier, Duc De Trévise",
         "Hippolyte Mortier, Duc De Trévise",
-        "./public/assets/images/AFAC_974_7.jpg",
+        "AFAC_974_7.jpg",
         "Autoportrait du jeune Mortier, en tenue de peintre aquarelliste",
         "Hippolyte Charles Napoléon Mortier, Duc de Trévise, est né le 4 mai 1835 à Paris, issu d'une famille de noblesse acquise grâce à Napoléon 1er.
         Il a eu une carrière prestigieuse, servant comme secrétaire d'ambassade sous Napoléon III, et occupant les postes de pair de France et sénateur.
@@ -134,22 +136,28 @@ VALUES (
         L'arrivée de la IIIe République l'a éloigné du pouvoir politique, mais il a continué à exercer une certaine influence dans les cercles économiques.
         Le couple Mortier n'a pas eu d'enfants.",
         "Les Oeuvres",
-        "./public/assets/images/AFAC_974_3.jpg ",
+        "AFAC_974_3.jpg ",
         "Illustration de travailleurs dans les champs",
         "Il y a des indications que Mortier a peut - être effectué plus de deux voyages à La Réunion, puisque certaines de ses œuvres d'art sont datées de différentes années.
         Il a laissé une collection remarquable d'œuvres d 'art, en particulier des scènes de l'usine du Tampon et des travailleurs du sud de l'île ainsi que des dessins de Géricault, qu'il admirait particulièrement.",
         "L’Héritage",
-        "https://belair.hypotheses.org/files/2023/02/lettre-MTr-1861-1891.jpg",
+        "Château_de_Coupvray.png",
         "Lettre de la main de Hippolyte Ch.N.Mortier, Duc de Trévise, rédigée en 1891.",
         "Il a également passé du temps au château de Coupvray, en Seine - et - Marne, à partir de 1869.
         Après la guerre de 1870, il s'est investi dans la vie du village local, ouvrant une école privée pour jeunes filles et une classe maternelle.
         Après sa mort en 1892, son épouse Emma a géré le domaine, avant de le confier à son neveu Emmanuel. Il a continué à participer activement à la vie du village.
         Le vaste réseau de relations que Mortier avait établi durant sa vie est bien documenté dans ses souvenirs, témoignant de son engagement dans la communauté."
-       );
+    );
 
-INSERT INTO about (name, summary)
-VALUES ('AFAC 974', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis.'),
-('Partenaire 1' , 'Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. ');
+INSERT INTO
+    about (name, summary)
+VALUES (
+        'AFAC 974',
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis.'
+    ), (
+        'Partenaire 1',
+        'Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. '
+    );
 
 INSERT INTO techniques (name)
 VALUES ('Aquarelle'), ('Dessin à la mine de plomb'), ('Dessin');
@@ -177,7 +185,7 @@ VALUES (
         "Effet de nuit sur la Cheminée usine du Tampon",
         "Cheminée du Tampon",
         "1866",
-        "./public/assets/images/AFAC_974_1.jpg",
+        "AFAC_974_1.jpg",
         "Lorem Ipsum",
         "40FI79",
         'Attribuée parfois à l\'usine du Grand Tampon, mais c\'est peu probable: l\'usine du Grand Tampon ayant été une scierie. Or, ici, il s\'agit sans doute de l\'usine de Bel Air: on reconnaît les deux corps principaux du bâtiment industriel (purgerie et bâtiment abritant la machine à vapeur) en parallèle, comme sur les figures 2 et 3. La cheminée carrée est sur le côté Nord, construite en basalte, avec intercalation de poutres deux côtés par deux côtés. Devant, un gardien, dont l\'ombre se projette sur la cheminée. En arrière-plan, une allée de palmiers, qui semble mener vers la maison de maître. La disposition des lieux correspond à celle qui existait à Bel Air. Scène d\'apparence paisible ?',
@@ -191,7 +199,7 @@ VALUES (
         "Arrivée à l'établissement du Tampon",
         "L'Établissement",
         "1866",
-        "./public/assets/images/AFAC_974_2.jpg",
+        "AFAC_974_2.jpg",
         "Lorem Ipsum",
         "40FI78",
         'Le chemin de l\'Etablissement existe toujours aujourd\'hui, à 400 mètres d\'altitude. Les deux cavaliers sont sans doute Ch. H. N; Mortier de Trévise lui-même, et son beau-frère (Denis-André de K/véguen)? En avant, 3 autres personnages cheminent à pied. La route traverse le lit desseché de la Rivière d\'Abord, et remonte légèrement vers l\'Etablissement (c\'est-à-dire l\'ensemble du fonds avec usine, bâtiments annexes, et camp des travailleurs engagés, non représenté ici. L\'usine elle-même est composée de deux corps parallèles de bâtiments, flanqués chacun d\'une cheminée: l\'une pour évacuer les fumées de combustion pour la batterie Gimart, l\'autre la fumée de la machine à vapeur. En quinconce, un autre bâtiment à l\'avant, abritant les "tables" pour le séchage du sucre? ',
@@ -205,7 +213,7 @@ VALUES (
         "Tampon- Une usine",
         "Usine du Tampon",
         "10 février 1866",
-        "./public/assets/images/AFAC_974_3.jpg",
+        "AFAC_974_3.jpg",
         "Lorem Ipsum",
         "40FI80",
         'Une autre vue de l\'usine de Bel Air, au Tampon: on retrouve le bâtiment en quinconce accolé au corps de l\'usine, avec ses deux cheminées. Au premier plan, sur le chemin de l\'Etablissement (400 m. d\'altitude), on distingue un groupe de travailleurs engagés, près d\'un point d\'eau: un homme, une femme avec un bébé qui porte une jarre sur la tête, et un autre personnage. L\'auteur note le nom des arbres et plantes (aloés divers, vacoas, palmiers)',
@@ -219,7 +227,7 @@ VALUES (
         "Quartier St Pierre. Etablissement de la Rivière, montagnes de l'Entre Deux",
         "Établissement de la Rivière",
         "1861 ou 1866",
-        "./public/assets/images/AFAC_974_4.jpg",
+        "AFAC_974_4.jpg",
         "Lorem Ipsum",
         "40FI106",
         'L\'usine (Etablissement) est installée rive gauche de la Rivière Saint-Etienne, au débouché du lieu-dit l\'Entre-Deux. Elle semble présenter la même physionomie que les autres établissements achetés ou construits par Gabriel de K/Véguen: 2 corps principaux de bâtiments, ici décalés l\'un par rapport à l\'autre, avec des ouvertures en arc de cercle pou évacuer la chaleur, la cheminée qui évacue les fumées de la batterie Gimart, et, à l\'arrière, un ou deux bâtiments pour le séchage du sucre. Au Premier plan, une escouade (une "bande") de travailleurs engagés effectue la "trouaison", pour la replantation de cannes à sucre, sous la direction d\'un Commandeur, vêtu d\'un pantalon de toile bleue. Un vacoa est ici le témoin indispensable de l\'usage de ses feuilles pour le tressage de sacs, destinés ensuite à transporter le sucre produit. ',
@@ -233,7 +241,7 @@ VALUES (
         "Boutchiana- Indien",
         "Lorem Ipsum",
         "juillet 1871",
-        "./public/assets/images/AFAC_974_5.jpg",
+        "AFAC_974_5.jpg",
         "Lorem Ipsum",
         "40FI",
         'Boutchiana est devenu le domestique personnel de Ch.Mortier de Trévise, et il a vieilli de 6 ans.',
@@ -247,7 +255,7 @@ VALUES (
         "Boutchiana- Casernes",
         "Lorem Ipsum",
         "24 août 1865",
-        "./public/assets/images/AFAC_974_6.jpg",
+        "AFAC_974_6.jpg",
         "Lorem Ipsum",
         "40FI91",
         'Travailleur engagé depuis l\'Inde à l\'Etablissement des Casernes, il tient une lance, peut-être a-t-il une fonction de gardien? Sur sa fiche d\'engagement, il était recensé comme tailleur',
@@ -261,7 +269,7 @@ VALUES (
         "Boutchiana-Casernes, de face",
         "Lorem Ipsum",
         "1865",
-        "./public/assets/images/AFAC_974_7.jpg",
+        "AFAC_974_7.jpg",
         "Lorem Ipsum",
         "40FI90",
         'Complète la précédente aquarelle. On devine la jeunesse de Boutchiana, engagé à l\'adolescence. Arrivé à bord de Yanaon, en Inde, à bord du navire de la famille Kerveguen, Le Canova, on le dit âgé de 17 ans',
@@ -275,7 +283,7 @@ VALUES (
         "Cafrine et son petit au Tampon",
         "Lorem Ipsum",
         "1861",
-        "./public/assets/images/AFAC_974_8.jpg",
+        "AFAC_974_8.jpg",
         "Lorem Ipsum",
         "40FI76",
         'C\'est une engagée, ou alors une affranchie. Elle porte la robe de toile bleue, dont la fourniture est obligatoire par l\'employeur, selon les termes du contrat d\'engagement. La pratique ne change guère de ce qui était déjà prévu avant 1848 pour les esclaves, par le "Code noir" de 1723. ',
@@ -289,7 +297,7 @@ VALUES (
         "La vieille (Victorine) Mme Samsi Casernes",
         "Lorem Ipsum",
         "15 décembre 1865",
-        "./public/assets/images/AFAC_974_9.jpg",
+        "AFAC_974_9.jpg",
         "Lorem Ipsum",
         "40FI52",
         'La vieille dame est assise sur une natte, vêtue de la traditionnelle robe de toile bleue fournie par l\'employeur. Son foulard noué sur la tête est taillé dans la même toile. ',
@@ -511,19 +519,22 @@ VALUES (
         4
     );
 
-    INSERT INTO articles (name, src, works_id)
-VALUES ("La sucrerie de Bel Air",
+INSERT INTO
+    articles (name, src, works_id)
+VALUES (
+        "La sucrerie de Bel Air",
         "https://view.genial.ly/5fb636d03636f40d7f883f24",
         3
     ), (
         "Victorine Samsi",
         "https://belair.hypotheses.org/389",
-        9 
+        9
     ), (
         "Jamali",
         "https://forgetmenot.objettemoin.org/index.php/fr/actus/36-jamali-gardien-de-cannes",
         13
-    ), ("Golo",
+    ), (
+        "Golo",
         "https://belair.hypotheses.org/1351",
         17
     ), (
@@ -531,7 +542,7 @@ VALUES ("La sucrerie de Bel Air",
         "https://view.genial.ly/6432b64851cad10018f64868/interactive-image-caverne-lataniers",
         20
     ), (
-        "Caille Peinte", 
+        "Caille Peinte",
         "https://www.seor.fr/oiseau-25-caille-peinte.html",
         24
     );
@@ -542,4 +553,12 @@ INSERT INTO
         hashed_password,
         is_admin
     )
-VALUES ("admin@admin.com", "$argon2id$v=19$m=65536,t=3,p=1$/CzR6UY8uiZYTaxJuv96vA$88z7x2E/HDrlbib+XWrj2EpgUPtoGioj3KtkZRFeAzY", 1), ("user@users.com", "$argon2id$v=19$m=65536,t=3,p=1$2On/bpEHz9AobMjjOuMxiA$IjDynbhQCWrFNVwyL1FquDH1y6Ym1ZjlwmqUFKdShxY", 0);
+VALUES (
+        "admin@admin.com",
+        "$argon2id$v=19$m=65536,t=3,p=1$/CzR6UY8uiZYTaxJuv96vA$88z7x2E/HDrlbib+XWrj2EpgUPtoGioj3KtkZRFeAzY",
+        1
+    ), (
+        "user@users.com",
+        "$argon2id$v=19$m=65536,t=3,p=1$2On/bpEHz9AobMjjOuMxiA$IjDynbhQCWrFNVwyL1FquDH1y6Ym1ZjlwmqUFKdShxY",
+        0
+    );

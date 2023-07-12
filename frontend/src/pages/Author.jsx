@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import connexion from "../services/connexion";
-import AFAC_974_7 from "../assets/AFAC_974_7.jpg";
-import AFAC_974_3 from "../assets/AFAC_974_3.jpg";
-import ChâteauDeCoupvray from "../assets/ChâteauDeCoupvray.png";
+import ImageCard from "../components/ImageCard";
 import hexa from "../assets/hexa.png";
 
 function Author() {
@@ -34,9 +32,9 @@ function Author() {
       {biographies.map((biographie) => (
         <div className="flex flex-col  m-10 text-white " key={biographie.id}>
           <div className="flex m-5">
-            <img
-              className="w-50 h-80 mr-10"
-              src={AFAC_974_7}
+            <ImageCard
+              cls="w-50 h-80 mr-10"
+              src={biographie.image1_src}
               alt={biographie.image1_alt}
             />
             <div className="flex-col">
@@ -49,10 +47,10 @@ function Author() {
           </div>
 
           <div className="flex flex-row-reverse items-center m-5">
-            <img
-              className="w-50 h-80 ml-10"
-              src={AFAC_974_3}
-              alt={biographie.image1_alt}
+            <ImageCard
+              cls="w-50 h-80 ml-10"
+              src={biographie.image2_src}
+              alt={biographie.image2_alt}
             />
             <div>
               <div className="flex pb-5">
@@ -64,9 +62,9 @@ function Author() {
           </div>
 
           <div className="flex m-5">
-            <img
-              className="w-50 h-60 mr-10"
-              src={ChâteauDeCoupvray}
+            <ImageCard
+              cls="w-80 h-60 mr-10"
+              src={biographie.image3_src}
               alt={biographie.image3_alt}
             />
             <div className="flex-col">
