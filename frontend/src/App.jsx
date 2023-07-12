@@ -29,7 +29,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<UserLayout />}>
-          <Route path="" element={<HomePage />} />
+          <Route path="/home" element={<HomePage />} />
           <Route path="gallery" element={<Gallery />} />
           <Route path="gallery/:id" element={<OneImage />} />
           <Route path="author" element={<Author />} />
