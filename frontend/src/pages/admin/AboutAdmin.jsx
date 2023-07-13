@@ -31,7 +31,7 @@ function AboutAdmin() {
     });
 
   const notifyAdd = () =>
-    toast("La section à propos a été correctement été mise à jour.", {
+    toast("La section à propos a été correctement mise à jour.", {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
