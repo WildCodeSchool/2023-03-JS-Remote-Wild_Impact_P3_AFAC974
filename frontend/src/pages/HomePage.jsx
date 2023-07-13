@@ -33,8 +33,8 @@ function HomePage() {
             alt="logo_deconnexion"
           />
           <Link
+            to="/gallery"
             className="absolute bottom-[60px] right-[20px] text-white text-3xl"
-            to="/admin/techniques"
           >
             ENTREZ
           </Link>

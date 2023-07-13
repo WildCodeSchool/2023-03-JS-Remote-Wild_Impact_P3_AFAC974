@@ -7,7 +7,10 @@ function NavBarUser() {
   return (
     <div className="pt-2 pl-10 text-white">
       <ul className="flex justify-between items-center">
-        <img className="h-20" src={logo} alt="logo" />
+        <NavLink to="/">
+          <img className="h-20" src={logo} alt="logo" />
+        </NavLink>
+
         <div className="flex gap-5">
           <NavLink
             to="/"
