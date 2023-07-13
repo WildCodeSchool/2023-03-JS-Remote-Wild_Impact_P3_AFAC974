@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 
 function NavBarUser() {
   return (
-    <div className="pt-2 pl-10 text-white">
+    <div className="bg-black pt-2 pl-10 text-white">
       <ul className="flex justify-between items-center">
         <NavLink to="/">
           <img className="h-20" src={logo} alt="logo" />
@@ -30,7 +30,7 @@ function NavBarUser() {
                 : ""
             }
           >
-            Gallerie
+            Galerie
           </NavLink>
           <NavLink
             to="/author"
@@ -54,8 +54,10 @@ function NavBarUser() {
           </NavLink>
         </div>
         <div className="flex items-center pr-10">
-          <img className="h-6 pr-4" src={user} alt="user" />
           <Link className="pt-1" to="/favourites">
+            <img className="h-6 pr-4" src={user} alt="user" />
+          </Link>
+          <Link className="pt-1" to="/auth/connexion">
             Connexion
           </Link>
         </div>

@@ -29,7 +29,7 @@ function Auth() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen">
+    <div className="bg-black flex items-center justify-center h-screen">
       <form
         className="bg-white p-6 rounded-lg shadow-lg"
         onSubmit={(event) => login(event)}
