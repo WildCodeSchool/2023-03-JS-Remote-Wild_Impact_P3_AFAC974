@@ -18,12 +18,6 @@ class UserManager extends AbstractManager {
     );
   }
 
-  deleteByMail(email) {
-    return this.database.query(`delete from ${this.table} where email = ?`, [
-      email,
-    ]);
-  }
-
   update(user) {
     return this.database.query(
       `update ${this.table} set email = ?, firstname = ? where id = ?`,
