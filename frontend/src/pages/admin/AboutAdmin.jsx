@@ -55,7 +55,7 @@ function AboutAdmin() {
     });
 
   const notifyDelete = () =>
-    toast("La section à propos a été supprimé de la base de données.", {
+    toast("La section à propos a été supprimée de la base de données.", {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
