@@ -22,7 +22,7 @@ function ArticlesAdmin() {
     });
 
   const notifyAdd = () =>
-    toast("L'article a été correctement mis à jour.", {
+    toast("L'article a été correctement ajouté.", {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,

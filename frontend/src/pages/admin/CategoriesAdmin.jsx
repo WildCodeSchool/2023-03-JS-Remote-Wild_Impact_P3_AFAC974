@@ -21,7 +21,7 @@ const notifyWrong = () =>
   });
 
 const notifyAdd = () =>
-  toast("La catégorie a été correctement mise à jour.", {
+  toast("La catégorie a été correctement ajoutée.", {
     position: "bottom-right",
     autoClose: 5000,
     hideProgressBar: false,
