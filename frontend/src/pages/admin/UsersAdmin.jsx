@@ -20,33 +20,32 @@ function UsersAdmin() {
     }
   };
 
+  useEffect(() => {
+    getUsers();
+  }, []);
+
   const updateUser = async (event) => {
     event.preventDefault();
     try {
-      await connexion.put(`/users/${user.email}`, user);
+      await connexion.put(`/users/${user.id}`, user);
       getUsers();
     } catch (error) {
       console.error(error);
     }
   };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
-
-  const validateEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
+  const deleteUser = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.delete(`/users/${user.id}`);
+      setUser(userModel);
+      getUsers();
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   const handleUser = (name, value) => {
-    if (name === "email") {
-      if (!validateEmail(value)) {
-        console.error("Adresse e-mail invalide");
-        return;
-      }
-    }
-
     setUser({ ...user, [name]: value });
   };
 
@@ -126,7 +125,11 @@ function UsersAdmin() {
             >
               Modifier
             </button>
-            <button type="button" className="bg-black text-white py-2 px-4">
+            <button
+              type="button"
+              className="bg-black text-white py-2 px-4"
+              onClick={(e) => deleteUser(e)}
+            >
               Supprimer
             </button>
           </div>
