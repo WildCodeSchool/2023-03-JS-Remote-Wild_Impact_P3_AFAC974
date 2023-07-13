@@ -30,7 +30,10 @@ function Author() {
       </h1>
       <div className="border-t-4 border-pink h-100 w-5/6 ml-20"> </div>
       {biographies.map((biographie) => (
-        <div className="flex flex-col  m-10 text-white " key={biographie.id}>
+        <div
+          className="flex flex-col  mt-10 mr-10 ml-10 text-white "
+          key={biographie.id}
+        >
           <div className="flex m-5">
             <ImageCard
               cls="w-50 h-80 mr-10"
