@@ -45,11 +45,11 @@ function OneImage() {
         <p className="text-left text-sm ml-5 mr-5 pb-5 ">{oneImage.summary4}</p>
         <div className="border-t-2 border-pink h-100 m-5" />
         <p className="text-left text-sm ml-5 mr-5">
-          Technique : {oneImage.techniquesId}
+          Technique : {oneImage.technique}
         </p>
         <div className="border-t-2 border-pink h-100 m-5" />
         <p className="text-left text-sm ml-5 mr-5">
-          Catégorie : {oneImage.categoriesId}
+          Catégorie : {oneImage.category}
         </p>
         <div className="border-t-2 border-pink h-100 m-5" />
         <p className="text-left text-sm ml-5 mr-5">

@@ -1,11 +1,61 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
 
 function ArticlesAdmin() {
   const articleModel = { id: null, name: "", src: "", works_id: "" };
   const [article, setArticle] = useState({ articleModel });
   const [articles, setArticles] = useState([]);
   const [works, setWorks] = useState([]);
+
+  const notifyWrong = () =>
+    toast("Un problème est survenu, veuillez recommencer.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  const notifyAdd = () =>
+    toast("L'article a été correctement mis à jour.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  const notifyUpdate = () =>
+    toast("L'article a été correctement mis à jour.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  const notifyDelete = () =>
+    toast("L'article été supprimé de la base de données.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
   const refreshArticle = (id) => {
     if (id === "") {
@@ -20,6 +70,7 @@ function ArticlesAdmin() {
       const art = await connexion.get("/articles");
       setArticles(art);
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
@@ -39,7 +90,9 @@ function ArticlesAdmin() {
       setArticle(art);
       setArticle(articleModel);
       getArticles();
+      notifyAdd();
     } catch (err) {
+      notifyWrong();
       console.error(err);
     }
   };
@@ -49,7 +102,9 @@ function ArticlesAdmin() {
     try {
       await connexion.put(`/articles/${article.id}`, article);
       getArticles();
+      notifyUpdate();
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
@@ -60,7 +115,9 @@ function ArticlesAdmin() {
       await connexion.delete(`/articles/${article.id}`);
       setArticle(articleModel);
       getArticles();
+      notifyDelete();
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
@@ -146,6 +203,18 @@ function ArticlesAdmin() {
             ))}
           </select>
         </label>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!article.id && (
             <button type="submit" className="bg-black text-white py-2 px-4">
