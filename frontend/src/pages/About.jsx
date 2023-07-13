@@ -61,7 +61,9 @@ function About() {
                 <div className="flex pb-10">
                   <img
                     className="w-24 h-24 mr-5 pt-1"
-                    src={a.image_src}
+                    src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${
+                      a.image_src
+                    }`}
                     alt={a.image_alt}
                   />
                   <div className="flex flex-col">
