@@ -3,7 +3,7 @@ import GalleryImage from "../components/GalleryImage";
 
 function Gallery() {
   return (
-    <div>
+    <div className="bg-black">
       Gallery
       <GalleryImage />
     </div>
