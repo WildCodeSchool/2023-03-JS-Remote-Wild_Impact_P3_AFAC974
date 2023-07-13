@@ -42,7 +42,7 @@ const add = async (req, res) => {
 
 const destroy = (req, res) => {
   models.user
-    .deleteByMail(req.params.email)
+    .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -58,12 +58,10 @@ const destroy = (req, res) => {
 
 const edit = (req, res) => {
   const user = req.body;
-
-  const exEmail = req.params.email;
-  const newEmail = req.body.email;
+  user.id = parseInt(req.params.id, 10);
 
   models.user
-    .update(user, exEmail, newEmail)
+    .update(user)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
