@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
 
 function AboutAdmin() {
   const aboutModel = {
@@ -16,11 +18,60 @@ function AboutAdmin() {
     setAbout({ ...about, [name]: value });
   };
 
+  const notifyWrong = () =>
+    toast("Un problème est survenu, veuillez recommencer.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  const notifyAdd = () =>
+    toast("La section à propos a été correctement été mise à jour.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  const notifyUpdate = () =>
+    toast("La section à propos a été correctement mise à jour.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
+  const notifyDelete = () =>
+    toast("La section à propos a été supprimé de la base de données.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   const getAbouts = async () => {
     try {
       const ab = await connexion.get("/about");
       setAbouts(ab);
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
@@ -43,7 +94,9 @@ function AboutAdmin() {
       await connexion.post("/about", about);
       setAbout(aboutModel);
       getAbouts();
+      notifyAdd();
     } catch (err) {
+      notifyWrong();
       console.error(err);
     }
   };
@@ -54,7 +107,9 @@ function AboutAdmin() {
       await connexion.delete(`/about/${about.id}`);
       setAbout(aboutModel);
       getAbouts();
+      notifyDelete();
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
@@ -64,7 +119,9 @@ function AboutAdmin() {
     try {
       await connexion.put(`/about/${about.id}`, about);
       getAbouts();
+      notifyUpdate();
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
@@ -113,6 +170,18 @@ function AboutAdmin() {
             value={about.summary}
           />
         </label>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!about.id && (
             <button type="submit" className="bg-black text-white py-2 px-4">
