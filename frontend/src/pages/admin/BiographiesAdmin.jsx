@@ -17,7 +17,9 @@ function BiographiesAdmin() {
 
   const [biography, setBiography] = useState({ biographyModel });
   const [biographies, setBiographies] = useState([]);
-  const image = useRef();
+  const image1 = useRef();
+  const image2 = useRef();
+  const image3 = useRef();
 
   const refreshBiography = (id) => {
     if (id === "") {
@@ -35,10 +37,6 @@ function BiographiesAdmin() {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    getBiographies();
-  }, []);
 
   const handleBiography = (name, value) => {
     setBiography({ ...biography, [name]: value });
@@ -69,7 +67,9 @@ function BiographiesAdmin() {
   const manageBiography = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append("image", image.current.files[0]);
+    formData.append("image1", image1.current.files[0]);
+    formData.append("image2", image2.current.files[0]);
+    formData.append("image3", image3.current.files[0]);
     formData.append("json", JSON.stringify(biography));
     if (biography.id) {
       updateBiography(formData);
@@ -88,6 +88,10 @@ function BiographiesAdmin() {
       console.error(error);
     }
   };
+
+  useEffect(() => {
+    getBiographies();
+  }, []);
 
   return (
     <div className="flex flex-col w-full pr-10">
@@ -151,7 +155,7 @@ function BiographiesAdmin() {
                 accept="jpg, png, jpeg"
                 required
                 name="image1_src"
-                ref={image}
+                ref={image1}
               />
             </label>
           </div>
@@ -210,7 +214,7 @@ function BiographiesAdmin() {
                 accept="jpg, png, jpeg"
                 required
                 name="image2_src"
-                ref={image}
+                ref={image2}
               />
             </label>
           </div>
@@ -269,7 +273,7 @@ function BiographiesAdmin() {
                 accept="jpg, png, jpeg"
                 required
                 name="image3_src"
-                ref={image}
+                ref={image3}
               />
             </label>
 

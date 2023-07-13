@@ -11,6 +11,12 @@ module.exports = {
       red: "#762D3F",
       white: "#FFFFFF",
       black: "#292929",
+      purple2: {
+        500: "#716687",
+      },
+      pink2: {
+        500: "#B185AB",
+      },
     },
     extend: {
       fontFamily: {

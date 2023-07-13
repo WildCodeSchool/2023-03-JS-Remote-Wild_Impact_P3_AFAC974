@@ -42,7 +42,7 @@ const add = async (req, res) => {
 
 const destroy = (req, res) => {
   models.user
-    .deleteByMail(req.params.email)
+    .delete(req.params.id)
     .then(([result]) => {
       if (result.affectedRows === 0) {
         res.sendStatus(404);
@@ -56,9 +56,29 @@ const destroy = (req, res) => {
     });
 };
 
+const edit = (req, res) => {
+  const user = req.body;
+  user.id = parseInt(req.params.id, 10);
+
+  models.user
+    .update(user)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   find,
   add,
   destroy,
+  edit,
 };

@@ -63,14 +63,18 @@ router.put(
   "/biographies/:id",
   checkUser,
   checkAdmin,
-  upload.single("image"),
+  upload.single("image1"),
+  upload.single("image2"),
+  upload.single("image3"),
   biographyControllers.edit
 );
 router.post(
   "/biographies",
   checkUser,
   checkAdmin,
-  upload.single("image"),
+  upload.single("image1"),
+  upload.single("image2"),
+  upload.single("image3"),
   biographyControllers.add
 );
 router.delete("/biographies/:id", checkUser, biographyControllers.destroy);
@@ -111,6 +115,7 @@ const userControllers = require("./controllers/userControllers");
 router.get("/users", userControllers.browse);
 router.get("/users/:email", userControllers.find);
 router.post("/users", userControllers.add);
-router.delete("/users/:email", userControllers.destroy);
+router.delete("/users/:id", userControllers.destroy);
+router.put("/users/:id", userControllers.edit);
 
 module.exports = router;
