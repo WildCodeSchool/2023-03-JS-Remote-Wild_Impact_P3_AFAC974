@@ -36,7 +36,7 @@ function BiographiesAdmin() {
     });
 
   const notifyAdd = () =>
-    toast("La biographie a été correctement mise à jour.", {
+    toast("La biographie a été correctement ajoutée.", {
       position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
