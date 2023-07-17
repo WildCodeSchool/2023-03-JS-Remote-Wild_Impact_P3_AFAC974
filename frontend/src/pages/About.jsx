@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 import connexion from "../services/connexion";
 import hexaRose from "../assets/hexa_rose.png";
 import ImageCard from "../components/ImageCard";
