@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import connexion from "../services/connexion";
 import "./GalleryImage.css";
 import ImageCard from "./ImageCard";
-import { Parallax, ParallaxLayer } from "@react-spring/parallax";
+{/* import { Parallax, ParallaxLayer } from "@react-spring/parallax";*/}
 
 function GalleryImage() {
   const [works, setWorks] = useState([]);
