@@ -7,10 +7,9 @@ class WorkManager extends AbstractManager {
 
   find(id) {
     return this.database.query(
-      `select w.id, w.title, w.summary_title, w.date, w.image_src, w.image_alt, w.reference, w.summary1, w.summary2, w.summary3, w.summary4, w.format, c.name as category, t.name as technique, a.src as article_link, a.name as article_title from  ${this.table} as w
+      `select w.id, w.title, w.summary_title, w.date, w.image_src, w.image_alt, w.reference, w.summary1, w.summary2, w.summary3, w.summary4, w.format, c.name as category, t.name as technique from  ${this.table} as w
     inner join categories as c on c.id = w.categories_id 
     inner join techniques as t on t.id = w.techniques_id 
-    inner join articles as a on w.id = a.works_id
     where w.id = ?`,
       [id]
     );
