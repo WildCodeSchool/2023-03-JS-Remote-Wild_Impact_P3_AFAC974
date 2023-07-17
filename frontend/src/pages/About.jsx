@@ -44,7 +44,9 @@ function About() {
               <p className="text-justify ">
                 <img
                   className="w-1/2 h-1/2 float-left mr-10 mb-10"
-                  src={abouts[0].image_src}
+                  src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${
+                    abouts[0].image_src
+                  }`}
                   alt="ile paradisiaque"
                 />
                 {abouts[0].summary}
@@ -52,7 +54,7 @@ function About() {
             </div>
           </div>
         </div>
-        <div className="flex-col text-white ml-20">
+        <div className="flex-col text-white ml-20 mt-20">
           <div className="flex pb-5 justify-end">
             <img className="w-10 h-10" src={hexa} alt="logo" />
 
@@ -63,10 +65,10 @@ function About() {
             <div className="flex flex-col pb-5">
               <div className="flex" />
               {abouts.slice(1, abouts.length).map((a) => (
-                <div className="flex pb-10 mb-5">
-                  <Link to={a.url} className="w-24 h-24 mr-5 pt-1">
+                <div className="flex pb-10 mb-5" key={a.id}>
+                  <Link to={a.url} className="mr-5">
                     <img
-                      className="w-24 h-24 mr-5"
+                      className="h-20 mr-2"
                       src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${
                         a.image_src
                       }`}
