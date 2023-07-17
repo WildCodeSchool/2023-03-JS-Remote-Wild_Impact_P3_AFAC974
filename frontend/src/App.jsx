@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ParallaxProvider } from "react-scroll-parallax";
 
 import UserLayout from "./pages/layout/UserLayout";
 
@@ -27,28 +28,30 @@ import "./Index.css";
 function App() {
   return (
     <Router>
-      <Routes>
-        <Route path="/" element={<UserLayout />}>
-          <Route path="/home" element={<HomePage />} />
-          <Route path="gallery" element={<Gallery />} />
-          <Route path="gallery/:id" element={<OneImage />} />
-          <Route path="author" element={<Author />} />
-          <Route path="about" element={<About />} />
-          <Route path="subscription" element={<UserSubscription />} />
-          <Route path="profile" element={<UserProfile />} />
-          <Route path="favourites" element={<UserFavourites />} />
-          <Route path="auth/connexion" element={<Auth />} />
-        </Route>
-        <Route path="/admin" element={<AdminLayout />}>
-          <Route path="" element={<WorksAdmin />} />
-          <Route path="articles" element={<ArticlesAdmin />} />
-          <Route path="biographies" element={<BiographiesAdmin />} />
-          <Route path="categories" element={<CategoriesAdmin />} />
-          <Route path="techniques" element={<TechniquesAdmin />} />
-          <Route path="users" element={<UsersAdmin />} />
-          <Route path="about" element={<AboutAdmin />} />
-        </Route>
-      </Routes>
+      <ParallaxProvider>
+        <Routes>
+          <Route path="/" element={<UserLayout />}>
+            <Route path="/home" element={<HomePage />} />
+            <Route path="gallery" element={<Gallery />} />
+            <Route path="gallery/:id" element={<OneImage />} />
+            <Route path="author" element={<Author />} />
+            <Route path="about" element={<About />} />
+            <Route path="subscription" element={<UserSubscription />} />
+            <Route path="profile" element={<UserProfile />} />
+            <Route path="favourites" element={<UserFavourites />} />
+            <Route path="auth/connexion" element={<Auth />} />
+          </Route>
+          <Route path="/admin" element={<AdminLayout />}>
+            <Route path="" element={<WorksAdmin />} />
+            <Route path="articles" element={<ArticlesAdmin />} />
+            <Route path="biographies" element={<BiographiesAdmin />} />
+            <Route path="categories" element={<CategoriesAdmin />} />
+            <Route path="techniques" element={<TechniquesAdmin />} />
+            <Route path="users" element={<UsersAdmin />} />
+            <Route path="about" element={<AboutAdmin />} />
+          </Route>
+        </Routes>
+      </ParallaxProvider>
     </Router>
   );
 }

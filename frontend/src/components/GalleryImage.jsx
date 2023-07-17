@@ -2,8 +2,7 @@ import React, { useState, useEffect } from "react";
 import connexion from "../services/connexion";
 import "./GalleryImage.css";
 import ImageCard from "./ImageCard";
-
-const imgCls = ["slower", "slower1"];
+import { Parallax } from "react-scroll-parallax";
 
 function GalleryImage() {
   const [works, setWorks] = useState([]);
@@ -21,24 +20,21 @@ function GalleryImage() {
   }, []);
 
   return (
-    <div>
-      {works.map((work, index) => (
+    <div className="h-full grid grid-cols-2 gap-1 place-items-center">
+      {works.map((work) => (
         <div
-          className={`img-wrapper ${imgCls[index % imgCls.length]}`}
+          className="w-3/4 flex justify-center flex-col content-center flex-wrap"
           key={work.id}
         >
-          <div className="flex flex-col">
-            <h2 className="text-white">{work.title}</h2>
-            <a
-              href="https://altphotos.com/photo/retro-boy-doll-wearing-elegant-clothes-330/"
-              rel="noopener"
-            >
-              <ImageCard src={work.image_src} alt={work.image_alt} />
-            </a>
-          </div>
+          <h2 className="text-white text-1xl pb-4">{work.summary_title}</h2>
+          <ImageCard
+            cls="max-h-max bg-gradient-to-t from-pink to-purple p-1"
+            src={work.image_src}
+            alt={work.image_alt}
+          />
+          <h2 className="text-white text-right text-1xl pt-4">{work.date}</h2>
         </div>
       ))}
-      ;
     </div>
   );
 }
