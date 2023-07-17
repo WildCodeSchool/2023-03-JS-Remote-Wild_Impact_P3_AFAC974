@@ -31,7 +31,10 @@ CREATE TABLE
     about (
         id int PRIMARY KEY NOT NULL AUTO_INCREMENT,
         name varchar(255) NOT NULL,
-        summary LONGTEXT NOT NULL
+        summary LONGTEXT NOT NULL,
+        image_src VARCHAR(255) NOT NULL,
+        image_alt VARCHAR(255) NOT NULL,
+        url varchar(255)
     ) ENGINE = InnoDB DEFAULT CHARSET = utf8;
 
 CREATE TABLE
@@ -151,13 +154,33 @@ VALUES (
     );
 
 INSERT INTO
-    about (name, summary)
+    about (name, summary, image_src, image_alt, url)
 VALUES (
         'AFAC 974',
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis.'
+        'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. \r\n
+        In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. \r\n
+        Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis.',
+        'islandAbout.jpg',
+        'AFAC 974 logo',
+        ''
     ), (
-        'Partenaire 1',
-        'Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. '
+        'Objet témoin',
+        'Donec fringilla ipsum libero, quis fermentum mi gravida sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed semper mi. Fusce euismod orci mi, in suscipit est semper.',
+        'ObjetTemoin_Logo.png',
+        'Objet témoin logo',
+        'https://museo.vandanjon.com/index.php/en/'
+    ), (
+        'Département de la réunion',
+        'Curabitur pulvinar massa sed risus fringilla, ac tincidunt orci vulputate. Maecenas vitae mi risus. Curabitur gravida eros ac tortor suscipit, et ornare.',
+        'Reunion_Logo .png',
+        'Département de la réunion logo',
+        'https://www.departement974.fr'
+    ), (
+        "Iconothèque historique de l'océan Indien",
+        'Nam varius blandit eros, nec tempor lacus varius et. Aliquam dolor lectus, sodales sed neque ac, tincidunt consequat ex. Etiam pellentesque urna ex, a mollis libero venenatis vitae.',
+        'Ihoi_Logo.png',
+        "Iconothèque historique de l'océan Indien logo",
+        'https://www.ihoi.org/app/photopro.sk/ihoi_icono/?'
     );
 
 INSERT INTO techniques (name)
