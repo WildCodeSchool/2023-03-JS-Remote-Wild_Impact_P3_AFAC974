@@ -5,7 +5,7 @@ import logo from "../assets/logo.png";
 
 function NavBarUser() {
   return (
-    <div className="bg-black pt-2 pl-10 text-white">
+    <div className="mb-[-8rem] pl-10 text-white z-20 relative">
       <ul className="flex justify-between items-center">
         <NavLink to="/">
           <img className="h-20" src={logo} alt="logo" />
@@ -16,7 +16,7 @@ function NavBarUser() {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-purple"
                 : ""
             }
           >
@@ -26,7 +26,7 @@ function NavBarUser() {
             to="/gallery"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-purple"
                 : ""
             }
           >
@@ -36,7 +36,7 @@ function NavBarUser() {
             to="/author"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-purple"
                 : ""
             }
           >
@@ -46,7 +46,7 @@ function NavBarUser() {
             to="/about"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-purple"
                 : ""
             }
           >
