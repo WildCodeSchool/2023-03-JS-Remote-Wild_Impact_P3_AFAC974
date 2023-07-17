@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import hexa from "../assets/hexa.png";
-
 import bouton from "../assets/bouton.png";
 
 const customStyles = {
@@ -79,7 +78,7 @@ function HomePage() {
             Les représentations des oeuvres que vous allez consulter sur ce site
             ne sont pas libres de droit. <br /> <br />
             Elles sont la propriété de l'Iconothèque historique de l'océan
-            indien
+            indien{" "}
             <a
               href="https://www.ihoi.org/app/photopro.sk/ihoi_icono/?"
               target="_blank"
@@ -97,7 +96,6 @@ function HomePage() {
             type="button"
             className="text-black text-3xl"
           >
-            <img className="w-11 h-10 mr-2 ml-3" src={hexa} alt="logo" />
             ENTRER
           </button>
         </div>
