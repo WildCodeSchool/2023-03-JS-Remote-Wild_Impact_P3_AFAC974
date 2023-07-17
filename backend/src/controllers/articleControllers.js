@@ -28,6 +28,18 @@ const read = (req, res) => {
     });
 };
 
+const browseByWork = (req, res) => {
+  models.work
+    .findAllByWork(req.params.id)
+    .then(([rows]) => {
+      res.status(200).json(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const edit = (req, res) => {
   const articles = req.body;
 
@@ -85,6 +97,7 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
+  browseByWork,
   edit,
   add,
   destroy,

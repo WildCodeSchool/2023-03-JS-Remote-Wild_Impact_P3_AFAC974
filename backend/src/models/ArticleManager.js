@@ -14,6 +14,17 @@ class ArticleManager extends AbstractManager {
     );
   }
 
+  findAll() {
+    return this.database.query(`select * from  ${this.table}`);
+  }
+
+  findAllByWork(id) {
+    return this.database.query(
+      `select * from ${this.table} WHERE works_id = ?`,
+      [id]
+    );
+  }
+
   insert(article) {
     return this.database.query(
       `insert into ${this.table} (name, src, works_id) values (?, ? ,?)`,
