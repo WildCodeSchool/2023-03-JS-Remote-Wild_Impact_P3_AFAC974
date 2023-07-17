@@ -28,6 +28,18 @@ const read = (req, res) => {
     });
 };
 
+const browseByCategory = (req, res) => {
+  models.work
+    .findAllByCategory(req.params.id)
+    .then(([rows]) => {
+      res.status(200).json(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const edit = (req, res) => {
   const work = JSON.parse(req.body.json);
   work.id = parseInt(req.params.id, 10);
@@ -83,6 +95,7 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
+  browseByCategory,
   edit,
   add,
   destroy,

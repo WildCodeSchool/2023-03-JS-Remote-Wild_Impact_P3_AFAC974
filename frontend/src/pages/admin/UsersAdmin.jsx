@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
 
 function UsersAdmin() {
   const userModel = {
+    id: null,
     email: "",
     firstname: "",
   };
@@ -19,33 +22,58 @@ function UsersAdmin() {
     }
   };
 
+  useEffect(() => {
+    getUsers();
+  }, []);
+
+  const notifyUpdate = () =>
+    toast("L'utilisateur a été correctement mis à jour.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+
   const updateUser = async (event) => {
     event.preventDefault();
     try {
-      await connexion.put(`/users/${user.email}`, user);
+      await connexion.put(`/users/${user.id}`, user);
       getUsers();
+      notifyUpdate();
     } catch (error) {
       console.error(error);
     }
   };
 
-  useEffect(() => {
-    getUsers();
-  }, []);
+  const notifyDelete = () =>
+    toast("L'utilisateur a bien été supprimé de la base de données.", {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
 
-  // const validateEmail = (email) => {
-  //   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  //   return emailRegex.test(email);
-  // };
+  const deleteUser = async (e) => {
+    e.preventDefault();
+    try {
+      await connexion.delete(`/users/${user.id}`);
+      setUser(userModel);
+      getUsers();
+      notifyDelete();
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   const handleUser = (name, value) => {
-    // if (name === "email") {
-    //   if (!validateEmail(value)) {
-    //     console.error("Adresse e-mail invalide");
-    //     return;
-    //   }
-    // }
-
     setUser({ ...user, [name]: value });
   };
 
@@ -88,14 +116,14 @@ function UsersAdmin() {
                 className="border border-black h-7 placeholder:pl-2"
                 type="text"
                 required
-                placeholder="Tapez ici la référence de l'utilisateur"
+                placeholder="Tapez ici le nom de l'utilisateur"
                 minLength={5}
                 maxLength={12}
                 name="firstname"
                 onChange={(event) =>
                   handleUser(event.target.name, event.target.value)
                 }
-                value={user.firstname}
+                value={user.firstname === null ? "" : user.firstname}
               />
             </label>
           </div>
@@ -108,7 +136,6 @@ function UsersAdmin() {
                 required
                 placeholder="Adresse e-mail"
                 minLength={5}
-                maxLength={30}
                 name="email"
                 onChange={(event) =>
                   handleUser(event.target.name, event.target.value)
@@ -117,6 +144,18 @@ function UsersAdmin() {
               />
             </label>
           </div>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
           <div className="flex pt-10 pb-5 pr-10 gap-10">
             <button
               type="button"
@@ -125,7 +164,11 @@ function UsersAdmin() {
             >
               Modifier
             </button>
-            <button type="button" className="bg-black text-white py-2 px-4">
+            <button
+              type="button"
+              className="bg-black text-white py-2 px-4"
+              onClick={(e) => deleteUser(e)}
+            >
               Supprimer
             </button>
           </div>

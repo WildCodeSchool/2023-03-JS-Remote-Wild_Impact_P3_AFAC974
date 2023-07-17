@@ -1,5 +1,55 @@
 import React, { useState, useEffect } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
+
+const notifyWrong = () =>
+  toast("Un problème est survenu, veuillez recommencer.", {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+
+const notifyAdd = () =>
+  toast("La catégorie a été correctement ajoutée.", {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+
+const notifyUpdate = () =>
+  toast("La catégorie a été correctement mise à jour.", {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+
+const notifyDelete = () =>
+  toast("La catégorie été supprimée de la base de données.", {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
 
 function TechniquesAdmin() {
   const techniqueModel = { id: null, name: "" };
@@ -40,7 +90,9 @@ function TechniquesAdmin() {
       setTechnique(tech);
       setTechnique(techniqueModel);
       getTechniques();
+      notifyAdd();
     } catch (err) {
+      notifyWrong();
       console.error(err);
     }
   };
@@ -50,7 +102,9 @@ function TechniquesAdmin() {
     try {
       await connexion.put(`/techniques/${technique.id}`, technique);
       getTechniques();
+      notifyUpdate();
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
@@ -61,7 +115,9 @@ function TechniquesAdmin() {
       await connexion.delete(`/techniques/${technique.id}`);
       setTechnique(techniqueModel);
       getTechniques();
+      notifyDelete();
     } catch (error) {
+      notifyWrong();
       console.error(error);
     }
   };
@@ -102,6 +158,18 @@ function TechniquesAdmin() {
             onChange={(e) => handleTechnique(e.target.name, e.target.value)}
           />
         </label>
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
         <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!technique.id && (
             <button type="submit" className="bg-black text-white py-2 px-4">
