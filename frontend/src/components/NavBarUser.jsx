@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+
 import user from "../assets/user.svg";
 import logo from "../assets/logo.png";
 
@@ -53,12 +54,16 @@ function NavBarUser() {
             A propos
           </NavLink>
         </div>
-        <div className="flex items-center pr-10">
+        <div className="flex items-center pr-10 text-xs">
           <Link className="pt-1" to="/favourites">
             <img className="h-6 pr-4" src={user} alt="user" />
           </Link>
           <Link className="pt-1" to="/auth/connexion">
             Connexion
+          </Link>
+          <div className="flex items-center pr-10" />
+          <Link className="pt-1" to="/subscription">
+            Inscription
           </Link>
         </div>
       </ul>
