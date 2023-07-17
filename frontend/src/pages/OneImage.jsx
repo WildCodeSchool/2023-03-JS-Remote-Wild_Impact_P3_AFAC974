@@ -1,8 +1,10 @@
+/* eslint-disable import/no-named-as-default */
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import connexion from "../services/connexion";
 import ImageCard from "../components/ImageCard";
 import hexa from "../assets/hexa.png";
+import Carousel from "../components/Carousel";
 
 function OneImage() {
   const { id } = useParams();
@@ -63,6 +65,7 @@ function OneImage() {
         <img className="w-11 h-10 mr-2 ml-3" src={hexa} alt="logo" />
         <h3 className="mt-2 font-bold text-xl">Oeuvres similaires</h3>
       </div>
+      <Carousel />
     </div>
   );
 }

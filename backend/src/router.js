@@ -20,6 +20,7 @@ router.post("/login", checkUserData, authControllers.login);
 
 const workControllers = require("./controllers/workControllers");
 
+router.get("/categories/:id/works", workControllers.browseByCategory);
 router.get("/works", workControllers.browse);
 router.get("/works/:id", workControllers.read);
 
