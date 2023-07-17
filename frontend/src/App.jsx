@@ -1,5 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ParallaxProvider } from "react-scroll-parallax";
 
 import UserLayout from "./pages/layout/UserLayout";
 
