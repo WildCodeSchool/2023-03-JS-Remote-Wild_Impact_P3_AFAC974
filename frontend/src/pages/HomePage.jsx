@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
-import hexa from "../assets/hexa.png";
 import bouton from "../assets/bouton.png";
 
 const customStyles = {
@@ -15,18 +14,20 @@ const customStyles = {
   },
 };
 
+Modal.setAppElement("#root");
+
 function HomePage() {
   const [modalIsOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
 
-  function openModal() {
+  const openModal = () => {
     setIsOpen(true);
-  }
+  };
 
-  function closeModal() {
+  const closeModal = () => {
     setIsOpen(false);
     navigate("/gallery");
-  }
+  };
 
   return (
     <div className="bg-cover h-screen w-screen bg-[url('src/assets/background.jpg')] flex flex-col justify-center items-center">
@@ -90,6 +91,8 @@ function HomePage() {
             . <br /> <br />
             En cliquant sur "Entrer", vous reconnaissez avoir pris connaissance
             de cette information.
+            <br />
+            <br />
           </h2>
           <button
             onClick={closeModal}
