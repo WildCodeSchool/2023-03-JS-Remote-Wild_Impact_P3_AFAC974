@@ -8,7 +8,7 @@ class UserFavouriteManager extends AbstractManager {
   findFavouritesuser() {
     return this.database.query(
       `
-        SELECT summary_title, image_src, user_favourites.works_id, user_favourites.users_id
+        SELECT summary_title, image_src, image_alt, user_favourites.works_id, user_favourites.users_id
         FROM works
         INNER JOIN  user_favourites on works.id = user_favourites.works_id
         INNER JOIN users on users.id = user_favourites.users_id;          
