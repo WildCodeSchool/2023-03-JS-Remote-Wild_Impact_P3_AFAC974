@@ -27,26 +27,37 @@ function GalleryImage() {
           className="w-3/4 flex justify-center flex-col content-center flex-wrap"
           key={work.id}
         >
-          {/* <ParallaxLayer offset={1.5} speed={1.5}> */}
-          <h2 className="text-white text-1xl pb-4">{work.summary_title}</h2>
-          <ImageCard
-            cls="max-h-[32rem] bg-gradient-to-t from-pink to-purple p-1"
-            src={work.image_src}
-            alt={work.image_alt}
-          />
-          <div className="flex justify-between pt-4">
-            <Link to={`/gallery/${work.id}`}>
-              <button
-                type="button"
-                className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple to-pink group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
-              >
-                <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-                  En savoir plus
-                </span>
-              </button>
-            </Link>
-            <h2 className="text-white text-right text-1xl pt-3">{work.date}</h2>
-            {/* </ParallaxLayer> */}
+          <div
+            data-aos="fade-left"
+            data-aos-offset="1000"
+            data-aos-mirror="true"
+            data-aos-easing="ease-in-out"
+            data-aos-delay="150"
+            data-aos-duration="1000"
+          >
+            {/* <ParallaxLayer offset={1.5} speed={1.5}> */}
+            <h2 className="text-white text-1xl pb-4">{work.summary_title}</h2>
+            <ImageCard
+              cls="max-h-[32rem] bg-gradient-to-t from-pink to-purple p-1"
+              src={work.image_src}
+              alt={work.image_alt}
+            />
+            <div className="flex justify-between pt-4">
+              <Link to={`/gallery/${work.id}`}>
+                <button
+                  type="button"
+                  className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple to-pink group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+                >
+                  <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                    En savoir plus
+                  </span>
+                </button>
+              </Link>
+              <h2 className="text-white text-right text-1xl pt-3">
+                {work.date}
+              </h2>
+              {/* </ParallaxLayer> */}
+            </div>
           </div>
         </div>
       ))}
