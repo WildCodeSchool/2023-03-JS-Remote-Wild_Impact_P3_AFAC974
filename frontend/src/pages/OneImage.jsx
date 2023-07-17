@@ -31,7 +31,7 @@ function OneImage() {
       <div className="border-t-2 border-pink h-100 ml-20 mr-5 mb-10" />
       <div className="flex justify-center">
         <ImageCard
-          cls="max-h-sm max-w-sm content-center"
+          cls="max-h-m max-w-m content-center"
           src={oneImage.image_src}
           alt={oneImage.image_alt}
         />
