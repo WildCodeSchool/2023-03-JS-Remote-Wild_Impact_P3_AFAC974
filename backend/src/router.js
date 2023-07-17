@@ -118,4 +118,8 @@ router.post("/users", userControllers.add);
 router.delete("/users/:id", userControllers.destroy);
 router.put("/users/:id", userControllers.edit);
 
+const userFavouritesController = require("./controllers/userFavouriteControllers");
+
+router.get("/favourites/", userFavouritesController.browse);
+
 module.exports = router;

@@ -586,3 +586,16 @@ VALUES (
         "$argon2id$v=19$m=65536,t=3,p=1$2On/bpEHz9AobMjjOuMxiA$IjDynbhQCWrFNVwyL1FquDH1y6Ym1ZjlwmqUFKdShxY",
         0
     );
+
+    INSERT INTO
+        user_favourites (
+            users_id,
+            works_id
+        )
+    VALUES (
+        2, 1
+    ) , (
+        2,3
+    ) , (
+        2,8
+    );
