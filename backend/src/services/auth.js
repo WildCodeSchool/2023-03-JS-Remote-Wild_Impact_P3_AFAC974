@@ -23,6 +23,7 @@ const authSchema = () => {
       tlds: { allow: ["com"] },
     }),
     password: Joi.string().min(5).required(),
+    firstname: Joi.string().optional().allow(""),
   });
 };
 

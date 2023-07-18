@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import connexion from "../services/connexion";
 import { useCurrentUser } from "../contexts/UserContexts";
 
@@ -79,6 +79,10 @@ function Auth() {
               Connexion
             </span>
           </button>
+          <p className="text-center mt-4">Vous n'avez pas de compte ?</p>
+          <Link to="/subscription">
+            <p className="text-center underline">Cliquez ici</p>
+          </Link>
         </div>
       </form>
     </div>
