@@ -19,8 +19,20 @@ const read = (req, res) => {
       if (rows[0] == null) {
         res.sendStatus(404);
       } else {
-        res.send(rows[0]);
+        res.status(200).json(rows[0]);
       }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
+const browseByWork = (req, res) => {
+  models.article
+    .findAllByWork(req.params.id)
+    .then(([row]) => {
+      res.status(200).json(row[0]);
     })
     .catch((err) => {
       console.error(err);
@@ -85,6 +97,7 @@ const destroy = (req, res) => {
 module.exports = {
   browse,
   read,
+  browseByWork,
   edit,
   add,
   destroy,

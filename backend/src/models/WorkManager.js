@@ -19,6 +19,13 @@ class WorkManager extends AbstractManager {
     return this.database.query(`select * from  ${this.table}`);
   }
 
+  findAllByCategory(id) {
+    return this.database.query(
+      `select * from ${this.table} WHERE categories_id = ? ORDER BY rand() LIMIT 5`,
+      [id]
+    );
+  }
+
   insert(work) {
     return this.database.query(
       `insert into ${this.table} (title, summary_title, date, image_src, image_alt, reference, summary1, summary2, summary3, summary4, format, techniques_id, categories_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,

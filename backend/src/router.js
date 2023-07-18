@@ -20,6 +20,7 @@ router.post("/login", checkUserData, authControllers.login);
 
 const workControllers = require("./controllers/workControllers");
 
+router.get("/categories/:id/works", workControllers.browseByCategory);
 router.get("/works", workControllers.browse);
 router.get("/works/:id", workControllers.read);
 
@@ -98,6 +99,7 @@ const articleControllers = require("./controllers/articleControllers");
 
 router.get("/articles", articleControllers.browse);
 router.get("/articles/:id", articleControllers.read);
+router.get("/works/:id/articles", articleControllers.browseByWork);
 router.put("/articles/:id", articleControllers.edit);
 router.post("/articles", articleControllers.add);
 router.delete("/articles/:id", articleControllers.destroy);
