@@ -81,8 +81,8 @@ function Auth() {
           </button>
           <p className="text-center mt-4">Vous n'avez pas de compte ?</p>
           <Link to="/subscription">
-          <p className="text-center underline">Cliquez ici</p>
-        </Link>
+            <p className="text-center underline">Cliquez ici</p>
+          </Link>
         </div>
       </form>
     </div>
