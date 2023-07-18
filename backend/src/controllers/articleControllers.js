@@ -29,10 +29,10 @@ const read = (req, res) => {
 };
 
 const browseByWork = (req, res) => {
-  models.work
+  models.article
     .findAllByWork(req.params.id)
-    .then(([rows]) => {
-      res.status(200).json(rows);
+    .then(([row]) => {
+      res.status(200).json(row[0]);
     })
     .catch((err) => {
       console.error(err);
