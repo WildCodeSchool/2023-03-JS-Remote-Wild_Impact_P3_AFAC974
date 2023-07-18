@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+
 import connexion from "../services/connexion";
 
 function UserFavourites() {
@@ -52,7 +54,9 @@ function UserFavourites() {
                     alt={fav.image_alt}
                   />
                   <div className="flex flex-col justify-end ml-4">
-                    <p className="font-bold text-xl">{fav.title}</p>
+                    <Link to={`/gallery/${fav.works_id}`}>
+                      <p className="font-bold text-xl">{fav.title}</p>
+                    </Link>
                     <button
                       type="button"
                       className="w-fit relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple to-pink group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
