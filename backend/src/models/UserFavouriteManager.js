@@ -5,15 +5,42 @@ class UserFavouriteManager extends AbstractManager {
     super({ table: "user_favourites" });
   }
 
-  findFavouritesuser() {
+  findFavouritesUser() {
     return this.database.query(
       `
-        SELECT summary_title, image_src, image_alt, user_favourites.works_id, user_favourites.users_id
-        FROM works
-        INNER JOIN  user_favourites on works.id = user_favourites.works_id
-        INNER JOIN users on users.id = user_favourites.users_id;          
+        SELECT user_favourites.users_id, user_favourites.works_id, summary_title, image_src, image_alt
+        FROM ${this.table}
+        INNER JOIN  works on works.id = user_favourites.works_id
+        INNER JOIN users on users.id = user_favourites.users_id       
+        ORDER BY user_favourites.users_id ASC;
       `,
       []
+    );
+  }
+
+  findFavouritesByIdUser(idUser) {
+    return this.database.query(
+      `
+        SELECT user_favourites.users_id, user_favourites.works_id, summary_title, image_src, image_alt
+        FROM ${this.table}
+        INNER JOIN  works on works.id = user_favourites.works_id
+        INNER JOIN users on users.id = user_favourites.users_id
+        WHERE user_favourites.users_id = ?;
+      `,
+      [idUser]
+    );
+  }
+
+  findFavouritesByEmailUser(emailUser) {
+    return this.database.query(
+      `
+        SELECT user_favourites.users_id, user_favourites.works_id, summary_title, image_src, image_alt
+        FROM ${this.table}
+        INNER JOIN  works on works.id = user_favourites.works_id
+        INNER JOIN users on users.id = user_favourites.users_id
+        WHERE users.email = ?;
+      `,
+      [emailUser]
     );
   }
 

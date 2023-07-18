@@ -2,7 +2,7 @@ const models = require("../models");
 
 const browse = (req, res) => {
   models.userFavourites
-    .findFavouritesuser()
+    .findFavouritesUser()
     .then(([rows]) => {
       res.send(rows);
     })
@@ -12,6 +12,23 @@ const browse = (req, res) => {
     });
 };
 
+const read = (req, res) => {
+  models.userFavourites
+    .findFavouritesByEmailUser(req.token.email)
+    .then(([rows]) => {
+      if (rows[0] == null) {
+        res.sendStatus(404);
+      } else {
+        res.send(rows);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
+  read,
 };

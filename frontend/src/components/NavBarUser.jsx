@@ -54,7 +54,7 @@ function NavBarUser() {
           </NavLink>
         </div>
         <div className="flex items-center pr-10">
-          <Link className="pt-1" to="/favourites">
+          <Link className="pt-1" to="/favourites/">
             <img className="h-6 pr-4" src={user} alt="user" />
           </Link>
           <Link className="pt-1" to="/auth/connexion">

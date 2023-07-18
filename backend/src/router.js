@@ -120,6 +120,6 @@ router.put("/users/:id", userControllers.edit);
 
 const userFavouritesController = require("./controllers/userFavouriteControllers");
 
-router.get("/favourites/", userFavouritesController.browse);
+router.get("/favourites", checkUser, userFavouritesController.read);
 
 module.exports = router;
