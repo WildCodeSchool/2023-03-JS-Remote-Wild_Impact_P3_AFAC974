@@ -17,6 +17,7 @@ const { checkUser, checkAdmin } = require("./services/jwt");
 
 router.post("/signup", checkUserData, authControllers.signup);
 router.post("/login", checkUserData, authControllers.login);
+router.post("/logout", checkUser, authControllers.logout);
 
 const workControllers = require("./controllers/workControllers");
 

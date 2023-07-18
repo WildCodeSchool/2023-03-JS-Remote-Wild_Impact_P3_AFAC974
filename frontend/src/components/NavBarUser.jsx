@@ -1,11 +1,24 @@
 import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
+import connexion from "../services/connexion";
 import UserIcon from "../assets/user.svg";
 import logo from "../assets/logo.png";
 import { useCurrentUser } from "../contexts/UserContexts";
 
 function NavBarUser() {
-  const { user } = useCurrentUser();
+  const { user, setUser } = useCurrentUser();
+  const navigate = useNavigate();
+
+  const logout = async (event) => {
+    event.preventDefault();
+    try {
+      await connexion.post("/logout");
+      setUser();
+      navigate("/");
+    } catch (error) {
+      console.error(error);
+    }
+  };
 
   return (
     <div className="mb-[-8rem] pl-10 text-white z-20 relative">
@@ -57,12 +70,16 @@ function NavBarUser() {
           </NavLink>
         </div>
         <div className="flex items-center pr-10 text-xs">
-          {user && (
-            <Link className="pt-1" to="/favourites/">
-              <img className="h-6 pr-4" src={UserIcon} alt="user" />
-            </Link>
-          )}
-          {!user && (
+          {user ? (
+            <>
+              <Link className="pt-1" to="/favourites/">
+                <img className="h-6 pr-4" src={UserIcon} alt="user" />
+              </Link>
+              <button type="button" className="pt-1" onClick={logout}>
+                Déconnexion
+              </button>
+            </>
+          ) : (
             <>
               <Link className="pt-1" to="/auth/connexion">
                 Connexion

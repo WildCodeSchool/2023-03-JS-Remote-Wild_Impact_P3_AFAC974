@@ -5,6 +5,7 @@ import connexion from "../services/connexion";
 import ImageCard from "../components/ImageCard";
 import hexa from "../assets/hexa.png";
 import Carousel from "../components/Carousel";
+import FavoriteButton from "../components/FavoriteButton";
 
 function OneImage() {
   const { id } = useParams();
@@ -24,24 +25,6 @@ function OneImage() {
     try {
       const art = await connexion.get(`/works/${id}/articles`);
       setOneArticle(art);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
-  const addToFavourites = async () => {
-    try {
-      await connexion.post("/favourites", { works_id: oneImage.id });
-      getOneImage();
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  const removeToFavourites = async () => {
-    try {
-      await connexion.delete(`/favourites/${oneImage.id}`);
-      getOneImage();
     } catch (error) {
       console.error(error);
     }
@@ -107,29 +90,7 @@ function OneImage() {
         )}
       </div>
       <div className="flex flex-col justify-end ml-14">
-        {oneImage.isFavourite ? (
-          <button
-            type="button"
-            className="w-fit relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple to-pink group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
-            value={oneImage.id}
-            onClick={removeToFavourites}
-          >
-            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-              Supprimer des favoris
-            </span>
-          </button>
-        ) : (
-          <button
-            type="button"
-            className="w-fit relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple to-pink group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
-            value={oneImage.id}
-            onClick={addToFavourites}
-          >
-            <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-              Ajouter aux favoris
-            </span>
-          </button>
-        )}
+        <FavoriteButton item={oneImage} refresh={getOneImage} />
       </div>
       <div className="flex ml-10 pt-10 pb-5 text-white">
         <img className="w-11 h-10 mr-2 ml-3" src={hexa} alt="logo" />
