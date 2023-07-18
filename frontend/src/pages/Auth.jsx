@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import connexion from "../services/connexion";
 import { useCurrentUser } from "../contexts/UserContexts";
 
@@ -73,11 +73,15 @@ function Auth() {
 
         <button
           type="submit"
-          className="bg-gray-800 text-black
+          className="bg-gray-800 text-black font-bold
          rounded py-2 px-4 w-full"
         >
           Connexion
         </button>
+        <p className="text-center mt-4">Vous n'avez pas de compte ?</p>
+        <Link to="/subscription">
+          <p className="text-center underline">Cliquez ici</p>
+        </Link>
       </form>
     </div>
   );

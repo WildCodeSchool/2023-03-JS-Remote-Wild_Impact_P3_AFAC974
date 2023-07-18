@@ -1,6 +1,35 @@
 import React, { useState } from "react";
+import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
+
+const notifyWrong = () =>
+  toast("Les mots de passe ne correspondent pas.", {
+    position: "bottom-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    theme: "light",
+  });
+
+const notifyRight = () =>
+  toast(
+    "Votre compte a été créé, vous allez être redirigé·e vers la page de connexion",
+    {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    }
+  );
 
 function UserSubscription() {
   const [users, setUsers] = useState({
@@ -22,20 +51,25 @@ function UserSubscription() {
     e.preventDefault();
     if (users.password !== users.confirmPassword) {
       console.error("Les mots de passe ne correspondent pas");
+      notifyWrong();
       return;
     }
+
     try {
       const myUser = { ...users };
       delete myUser.confirmPassword;
       await connexion.post("/signup", myUser);
-      navigate("/auth/connexion");
+      notifyRight();
+      setTimeout(() => {
+        navigate("/auth/connexion");
+      }, 2000);
     } catch (error) {
       console.error(error);
     }
   };
 
   return (
-    <div>
+    <div className="bg-black flex items-center justify-center h-screen">
       <form
         className="bg-white p-6 rounded-lg shadow-lg"
         onSubmit={(e) => postUsers(e)}
@@ -94,6 +128,18 @@ function UserSubscription() {
               required
             />
           </label>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
         </div>
 
         <button
