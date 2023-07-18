@@ -1,9 +1,12 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
-import user from "../assets/user.svg";
+import UserIcon from "../assets/user.svg";
 import logo from "../assets/logo.png";
+import { useCurrentUser } from "../contexts/UserContexts";
 
 function NavBarUser() {
+  const { user } = useCurrentUser();
+
   return (
     <div className="bg-black pt-2 pl-10 text-white">
       <ul className="flex justify-between items-center">
@@ -54,12 +57,16 @@ function NavBarUser() {
           </NavLink>
         </div>
         <div className="flex items-center pr-10">
-          <Link className="pt-1" to="/favourites/">
-            <img className="h-6 pr-4" src={user} alt="user" />
-          </Link>
-          <Link className="pt-1" to="/auth/connexion">
-            Connexion
-          </Link>
+          {user && (
+            <Link className="pt-1" to="/favourites/">
+              <img className="h-6 pr-4" src={UserIcon} alt="user" />
+            </Link>
+          )}
+          {!user && (
+            <Link className="pt-1" to="/auth/connexion">
+              Connexion
+            </Link>
+          )}
         </div>
       </ul>
     </div>
