@@ -165,19 +165,19 @@ VALUES (
         ''
     ), (
         'Objet témoin',
-        'Donec fringilla ipsum libero, quis fermentum mi gravida sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed semper mi. Fusce euismod orci mi, in suscipit est semper.',
+        'Donec fringilla ipsum libero, quis fermentum mi gravida sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed semper mi. Fusce euismod orci mi, in suscipit est semper. Curabitur pulvinar massa sed risus fringilla.',
         'objet_temoin.png',
         'Objet témoin logo',
         'https://museo.vandanjon.com/index.php/en/'
     ), (
         'Département de la réunion',
-        'Curabitur pulvinar massa sed risus fringilla, ac tincidunt orci vulputate. Maecenas vitae mi risus. Curabitur gravida eros ac tortor suscipit, et ornare.',
+        'Donec fringilla ipsum libero, quis fermentum mi gravida sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed semper mi. Fusce euismod orci mi, in suscipit est semper. Curabitur pulvinar massa sed risus fringilla.',
         'reunion.png',
         'Département de la réunion logo',
         'https://www.departement974.fr'
     ), (
         "Iconothèque historique de l'océan Indien",
-        'Nam varius blandit eros, nec tempor lacus varius et. Aliquam dolor lectus, sodales sed neque ac, tincidunt consequat ex. Etiam pellentesque urna ex, a mollis libero venenatis vitae.',
+        'Donec fringilla ipsum libero, quis fermentum mi gravida sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed semper mi. Fusce euismod orci mi, in suscipit est semper. Curabitur pulvinar massa sed risus fringilla.',
         'ihoi.png',
         "Iconothèque historique de l'océan Indien logo",
         'https://www.ihoi.org/app/photopro.sk/ihoi_icono/?'
