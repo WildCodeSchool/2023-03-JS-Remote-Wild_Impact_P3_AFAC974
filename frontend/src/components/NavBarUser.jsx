@@ -8,7 +8,7 @@ function NavBarUser() {
   const { user } = useCurrentUser();
 
   return (
-    <div className="bg-black pt-2 pl-10 text-white">
+    <div className="mb-[-8rem] pl-10 text-white z-20 relative">
       <ul className="flex justify-between items-center">
         <NavLink to="/">
           <img className="h-20" src={logo} alt="logo" />
@@ -19,7 +19,7 @@ function NavBarUser() {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-purple"
                 : ""
             }
           >
@@ -29,7 +29,7 @@ function NavBarUser() {
             to="/gallery"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-purple"
                 : ""
             }
           >
@@ -39,7 +39,7 @@ function NavBarUser() {
             to="/author"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-purple"
                 : ""
             }
           >
@@ -49,14 +49,14 @@ function NavBarUser() {
             to="/about"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-4 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-purple"
                 : ""
             }
           >
             A propos
           </NavLink>
         </div>
-        <div className="flex items-center pr-10">
+        <div className="flex items-center pr-10 text-xs">
           {user && (
             <Link className="pt-1" to="/favourites/">
               <img className="h-6 pr-4" src={UserIcon} alt="user" />
@@ -65,6 +65,10 @@ function NavBarUser() {
           {!user && (
             <Link className="pt-1" to="/auth/connexion">
               Connexion
+            </Link>            
+            <div className="flex items-center pr-10" />
+            <Link className="pt-1" to="/subscription">
+              Inscription
             </Link>
           )}
         </div>
