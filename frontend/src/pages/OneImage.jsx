@@ -9,6 +9,7 @@ import Carousel from "../components/Carousel";
 function OneImage() {
   const { id } = useParams();
   const [oneImage, setOneImage] = useState([]);
+  const [oneArticle, setOneArticle] = useState([]);
 
   const getOneImage = async () => {
     try {
@@ -19,8 +20,18 @@ function OneImage() {
     }
   };
 
+  const getOneArticle = async () => {
+    try {
+      const art = await connexion.get(`/works/${id}/articles`);
+      setOneArticle(art);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   useEffect(() => {
     getOneImage();
+    getOneArticle();
   }, []);
 
   return (
@@ -64,6 +75,22 @@ function OneImage() {
       <div className="flex flex-col text-white mr-10 ml-10 pt-1">
         <p className="text-sm pb-5 ">{oneImage.summary3}</p>
         <p className="text-sm pb-5">{oneImage.summary4}</p>
+        {oneArticle && (
+          <div>
+            <p className="text-left text-sm ml-5 mr-5">
+              Plus d'infos :{" "}
+              <a
+                href={oneArticle.src}
+                target="_blank"
+                rel="noreferrer"
+                className="underline"
+              >
+                cliquez ici
+              </a>
+            </p>
+            <div className="border-t-2 border-pink h-100 m-5" />
+          </div>
+        )}
       </div>
       <div className="flex ml-10 pt-10 pb-5 text-white">
         <img className="w-11 h-10 mr-2 ml-[-10px]" src={hexaRose} alt="logo" />
