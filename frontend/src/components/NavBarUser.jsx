@@ -17,7 +17,7 @@ function NavBarUser() {
             to="/"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-2 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-white"
                 : ""
             }
           >
@@ -27,7 +27,7 @@ function NavBarUser() {
             to="/gallery"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-2 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-white"
                 : ""
             }
           >
@@ -37,7 +37,7 @@ function NavBarUser() {
             to="/author"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-2 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-white"
                 : ""
             }
           >
@@ -47,7 +47,7 @@ function NavBarUser() {
             to="/about"
             className={({ isActive }) =>
               isActive
-                ? "text underline underline-offset-8 decoration-2 decoration-purple"
+                ? "text underline underline-offset-8 decoration-2 decoration-white"
                 : ""
             }
           >
