@@ -49,48 +49,46 @@ function OneImage() {
         <img className="w-11 h-10 mr-2 ml-3" src={hexaRose} alt="logo" />
         <h3 className="mt-2 font-bold text-xl">Description</h3>
       </div>
-      <div className="flex text-white ml-10">
+      <div className="flex text-white mr-5 pt-1">
+        <div className="flex w-2/3 flex-col text-white ml-10">
+          <p className="text-sm pb-5 mr-5">{oneImage.summary1}</p>
+          <p className="text-sm pb-5 mr-5">{oneImage.summary2}</p>
+          <p className="text-sm pb-5 mr-5">{oneImage.summary3}</p>
+          <p className="text-sm pb-5 mr-5">{oneImage.summary4}</p>
+        </div>
+
         <div className="flex flex-col w-1/3 pt-1">
-          <div className="border-t-[1px] border-pink w-56" />
+          <div className="border-t-[1px] border-pink w-[90%]" />
           <p className="text-left text-sm mt-3">
             Technique : {oneImage.technique}
           </p>
-          <div className="border-t-[1px] border-pink w-56 mt-3" />
+          <div className="border-t-[1px] border-pink w-[90%] mt-3" />
           <p className="text-left text-sm mt-3">
             Catégorie : {oneImage.category}
           </p>
-          <div className="border-t-[1px] border-pink w-56 mt-3" />
+          <div className="border-t-[1px] border-pink w-[90%] mt-3" />
           <p className="text-left text-sm mt-3">
             Dimensions : {oneImage.format}
           </p>
-          <div className="border-t-[1px] border-pink w-56 mt-3" />
+          <div className="border-t-[1px] border-pink w-[90%] mt-3" />
           <p className="text-left text-sm mt-3">Date : {oneImage.date}</p>
-          <div className="border-t-[1px] border-pink w-56 mt-3 mb-6" />
+          <div className="border-t-[1px] border-pink w-[90%] mt-3 mb-6" />
+          {oneArticle && (
+            <div>
+              <p className="text-left text-sm mr-5">
+                Plus d'infos :{" "}
+                <a
+                  href={oneArticle.src}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="underline text-pink"
+                >
+                  cliquez ici
+                </a>
+              </p>
+            </div>
+          )}
         </div>
-        <div className="flex flex-col w-4/6 mr-10 pl-2">
-          <p className="text-sm pb-5 ">{oneImage.summary1}</p>
-          <p className="text-sm pb-5 ">{oneImage.summary2}</p>
-        </div>
-      </div>
-      <div className="flex flex-col text-white mr-10 ml-10 pt-1">
-        <p className="text-sm pb-5 ">{oneImage.summary3}</p>
-        <p className="text-sm pb-5">{oneImage.summary4}</p>
-        {oneArticle && (
-          <div>
-            <p className="text-left text-sm ml-5 mr-5">
-              Plus d'infos :{" "}
-              <a
-                href={oneArticle.src}
-                target="_blank"
-                rel="noreferrer"
-                className="underline"
-              >
-                cliquez ici
-              </a>
-            </p>
-            <div className="border-t-2 border-pink h-100 m-5" />
-          </div>
-        )}
       </div>
       <div className="flex ml-10 pt-10 pb-5 text-white">
         <img className="w-11 h-10 mr-2 ml-[-10px]" src={hexaRose} alt="logo" />
