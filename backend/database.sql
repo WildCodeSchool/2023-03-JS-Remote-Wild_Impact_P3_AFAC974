@@ -158,27 +158,27 @@ INSERT INTO
 VALUES (
         'AFAC 974',
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. \r\n
-        In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. \r\n
-        Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis.',
+        In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque. Proin quis arcu ut metus mattis commodo ut eu massa. Morbi porta at elit sed tempor. In viverra mollis sem, eu accumsan leo pulvinar eu. Sed eu est pretium, pulvinar libero quis, egestas lectus. Mauris eget ligula ex. Mauris hendrerit erat tortor, non porttitor ex facilisis dictum. Proin dapibus a justo nec rhoncus. Cras nec felis at turpis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu posuere nisi. Aenean rhoncus lorem sit amet nisi vehicula, id placerat tellus placerat pellentesque.
+        ',
         'islandAbout.jpg',
         'AFAC 974 logo',
         ''
     ), (
         'Objet témoin',
-        'Donec fringilla ipsum libero, quis fermentum mi gravida sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed semper mi. Fusce euismod orci mi, in suscipit est semper.',
-        'ObjetTemoin_Logo.png',
+        'Donec fringilla ipsum libero, quis fermentum mi gravida sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed semper mi. Fusce euismod orci mi, in suscipit est semper. Curabitur pulvinar massa sed risus fringilla.',
+        'objet_temoin.png',
         'Objet témoin logo',
         'https://museo.vandanjon.com/index.php/en/'
     ), (
         'Département de la réunion',
-        'Curabitur pulvinar massa sed risus fringilla, ac tincidunt orci vulputate. Maecenas vitae mi risus. Curabitur gravida eros ac tortor suscipit, et ornare.',
-        'Reunion_Logo .png',
+        'Donec fringilla ipsum libero, quis fermentum mi gravida sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed semper mi. Fusce euismod orci mi, in suscipit est semper. Curabitur pulvinar massa sed risus fringilla.',
+        'reunion.png',
         'Département de la réunion logo',
         'https://www.departement974.fr'
     ), (
         "Iconothèque historique de l'océan Indien",
-        'Nam varius blandit eros, nec tempor lacus varius et. Aliquam dolor lectus, sodales sed neque ac, tincidunt consequat ex. Etiam pellentesque urna ex, a mollis libero venenatis vitae.',
-        'Ihoi_Logo.png',
+        'Donec fringilla ipsum libero, quis fermentum mi gravida sit amet. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam sed semper mi. Fusce euismod orci mi, in suscipit est semper. Curabitur pulvinar massa sed risus fringilla.',
+        'ihoi.png',
         "Iconothèque historique de l'océan Indien logo",
         'https://www.ihoi.org/app/photopro.sk/ihoi_icono/?'
     );
@@ -349,7 +349,7 @@ VALUES (
         "Lucie le ventre plein de cari",
         "Lorem Ipsum",
         "1866",
-        "AFAC_974_9.jpg",
+        "AFAC_974_11.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -363,7 +363,7 @@ VALUES (
         "La belle Tina",
         "Lorem Ipsum",
         "1866",
-        "AFAC_974_9.jpg",
+        "AFAC_974_12.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -377,7 +377,7 @@ VALUES (
         "Jamali, Cafre, Gardien",
         "Lorem Ipsum",
         "1861",
-        "AFAC_974_9.jpg",
+        "AFAC_974_13.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -391,7 +391,7 @@ VALUES (
         "Le parapluie du pauvre Citoyen",
         "Lorem Ipsum",
         "1861",
-        "AFAC_974_9.jpg",
+        "AFAC_974_14.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -405,7 +405,7 @@ VALUES (
         "La pli y fait pas rien, ça ! Tampon",
         "Lorem Ipsum",
         "27 janvier 1866",
-        "AFAC_974_9.jpg",
+        "AFAC_974_15.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -419,7 +419,7 @@ VALUES (
         "Monsieur Bourrayne dans le jardin des Casernes",
         "Lorem Ipsum",
         "1861",
-        "AFAC_974_9.jpg",
+        "AFAC_974_16.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -433,7 +433,7 @@ VALUES (
         "Chanvert descend le chemin de la Plaine, Golo est à ses côtés",
         "Lorem Ipsum",
         "1861",
-        "AFAC_974_9.jpg",
+        "AFAC_974_18.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -447,7 +447,7 @@ VALUES (
         "Sortie du Bras de Jean Payet en allant vers le Tampon",
         "Lorem Ipsum",
         "29 janvier 1865",
-        "AFAC_974_9.jpg",
+        "AFAC_974_19.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",        
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -461,7 +461,7 @@ VALUES (
         "Le bassin rouge au Tampon, la ravine descend",
         "Lorem Ipsum",
         "10 février 1866",
-        "AFAC_974_9.jpg",
+        "AFAC_974_20.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -475,7 +475,7 @@ VALUES (
         "Excursion au volcan de Bourbon",
         "Lorem Ipsum",
         "août 1861",
-        "AFAC_974_9.jpg",
+        "AFAC_974_21.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -489,7 +489,7 @@ VALUES (
         "Le volcan de Bourbon vu du Pas de Bellecombre",
         "Lorem Ipsum",
         "août 1861",
-        "AFAC_974_9.jpg",
+        "AFAC_974_22.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -503,7 +503,7 @@ VALUES (
         "Mamzelle",
         "Lorem Ipsum",
         "14 avril 1866",
-        "AFAC_974_9.jpg",
+        "AFAC_974_23.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -517,7 +517,7 @@ VALUES (
         "Charrette tirée par des mulets",
         "Lorem Ipsum",
         "1861",
-        "AFAC_974_9.jpg",
+        "AFAC_974_24.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -531,7 +531,7 @@ VALUES (
         "Caille de Bourbon",
         "Lorem Ipsum",
         "21 septembre 1861",
-        "AFAC_974_9.jpg",
+        "AFAC_974_2.jpg",
         "Lorem Ipsum",
         "Lorem Ipsum",
         "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Proin fermentum leo vel orci porta. Dignissim convallis aenean et tortor at. Sed elementum tempus egestas sed sed risus.",
@@ -585,4 +585,17 @@ VALUES (
         "user@users.com",
         "$argon2id$v=19$m=65536,t=3,p=1$2On/bpEHz9AobMjjOuMxiA$IjDynbhQCWrFNVwyL1FquDH1y6Ym1ZjlwmqUFKdShxY",
         0
+    );
+
+    INSERT INTO
+        user_favourites (
+            users_id,
+            works_id
+        )
+    VALUES (
+        2, 1
+    ) , (
+        2,3
+    ) , (
+        2,8
     );

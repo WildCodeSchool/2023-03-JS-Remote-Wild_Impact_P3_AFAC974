@@ -10,6 +10,7 @@ import About from "./pages/About";
 import UserSubscription from "./pages/UserSubscription";
 import UserProfile from "./pages/UserProfile";
 import UserFavourites from "./pages/UserFavourites";
+import RgpdPage from "./pages/RgpdPage";
 
 import AdminLayout from "./pages/layout/AdminLayout";
 
@@ -38,6 +39,7 @@ function App() {
           <Route path="profile" element={<UserProfile />} />
           <Route path="favourites" element={<UserFavourites />} />
           <Route path="auth/connexion" element={<Auth />} />
+          <Route path="rgpd" element={<RgpdPage />} />
         </Route>
         <Route path="/admin" element={<AdminLayout />}>
           <Route path="" element={<WorksAdmin />} />
