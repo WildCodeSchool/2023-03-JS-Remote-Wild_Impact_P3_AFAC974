@@ -44,6 +44,19 @@ class UserFavouriteManager extends AbstractManager {
     );
   }
 
+  async isFavourite(emailUser, workId) {
+    const [rows] = await this.database.query(
+      `
+      SELECT *
+      FROM ${this.table}
+      INNER JOIN users on users.id = user_favourites.users_id
+      WHERE users.email = ? AND user_favourites.works_id = ?;
+      `,
+      [emailUser, workId]
+    );
+    return !!rows.length;
+  }
+
   deleteFavouritesByEmailUser(emailUser, workId) {
     return this.database.query(
       `

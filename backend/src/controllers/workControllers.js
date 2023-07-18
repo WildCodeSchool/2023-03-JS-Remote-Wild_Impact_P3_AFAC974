@@ -1,3 +1,4 @@
+const { verifyToken } = require("../services/jwt");
 const models = require("../models");
 
 const browse = (req, res) => {
@@ -15,12 +16,14 @@ const browse = (req, res) => {
 const read = (req, res) => {
   models.work
     .find(req.params.id)
-    .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.status(200).json(rows[0]);
-      }
+    .then(async ([[work]]) => {
+      const token = verifyToken(req.cookies.afac_token);
+      res.status(200).json({
+        ...work,
+        isFavourite: token
+          ? await models.userFavourites.isFavourite(token.email, req.params.id)
+          : false,
+      });
     })
     .catch((err) => {
       console.error(err);
