@@ -88,6 +88,16 @@ function OneImage() {
           </div>
         )}
       </div>
+      <div className="flex flex-col justify-end ml-14">
+        <button
+          type="button"
+          className="w-fit relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-white rounded-lg group bg-gradient-to-br from-purple to-pink group-hover:from-purple-500 group-hover:to-pink-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-purple-200 dark:focus:ring-purple-800"
+        >
+          <span className="relative px-5 py-2.5 transition-all ease-in duration-75 bg-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+            Ajouter aux favoris
+          </span>
+        </button>
+      </div>
       <div className="flex ml-10 pt-10 pb-5 text-white">
         <img className="w-11 h-10 mr-2 ml-3" src={hexa} alt="logo" />
         <h3 className="mt-2 font-bold text-xl">Oeuvres similaires</h3>
