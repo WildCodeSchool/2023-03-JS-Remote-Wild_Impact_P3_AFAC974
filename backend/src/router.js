@@ -99,6 +99,7 @@ const articleControllers = require("./controllers/articleControllers");
 
 router.get("/articles", articleControllers.browse);
 router.get("/articles/:id", articleControllers.read);
+router.get("/works/:id/articles", articleControllers.browseByWork);
 router.put("/articles/:id", articleControllers.edit);
 router.post("/articles", articleControllers.add);
 router.delete("/articles/:id", articleControllers.destroy);
@@ -118,5 +119,9 @@ router.get("/users/:email", userControllers.find);
 router.post("/users", userControllers.add);
 router.delete("/users/:id", userControllers.destroy);
 router.put("/users/:id", userControllers.edit);
+
+const userFavouritesController = require("./controllers/userFavouriteControllers");
+
+router.get("/favourites", checkUser, userFavouritesController.read);
 
 module.exports = router;
