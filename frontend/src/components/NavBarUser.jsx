@@ -63,13 +63,15 @@ function NavBarUser() {
             </Link>
           )}
           {!user && (
-            <Link className="pt-1" to="/auth/connexion">
-              Connexion
-            </Link>            
-            <div className="flex items-center pr-10" />
-            <Link className="pt-1" to="/subscription">
-              Inscription
-            </Link>
+            <>
+              <Link className="pt-1" to="/auth/connexion">
+                Connexion
+              </Link>            
+              <div className="flex items-center pr-10" />
+              <Link className="pt-1" to="/subscription">
+                Inscription
+              </Link>
+            </>
           )}
         </div>
       </ul>
