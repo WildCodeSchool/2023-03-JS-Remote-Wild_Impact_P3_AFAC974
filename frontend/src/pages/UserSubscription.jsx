@@ -1,4 +1,5 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 
 function UserSubscription() {
@@ -8,6 +9,7 @@ function UserSubscription() {
     password: "",
     confirmPassword: "",
   });
+  const navigate = useNavigate();
 
   const handleUser = (name, value) => {
     setUsers({
@@ -23,16 +25,14 @@ function UserSubscription() {
       return;
     }
     try {
-      const register = await connexion.post("/users", users);
-      setUsers(register);
+      const myUser = { ...users };
+      delete myUser.confirmPassword;
+      await connexion.post("/signup", myUser);
+      navigate("/auth/connexion");
     } catch (error) {
       console.error(error);
     }
   };
-
-  useEffect(() => {
-    postUsers();
-  }, []);
 
   return (
     <div>
@@ -41,74 +41,59 @@ function UserSubscription() {
         onSubmit={(e) => postUsers(e)}
       >
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="form2Example1"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Prénom
+            <input
+              type="text"
+              name="firstname"
+              value={users.firstname}
+              onChange={(e) => handleUser(e.target.name, e.target.value)}
+              className="border-black border-solid border-2 rounded py-2 px-4 w-full"
+            />
           </label>
-          <input
-            type="text"
-            id="form2Example1"
-            name="firstname"
-            value={users.firstname}
-            onChange={(e) => handleUser(e.target.name, e.target.value)}
-            className="border-black border-solid border-2 rounded py-2 px-4 w-full"
-          />
         </div>
 
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="form2Example2"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Adresse mail
+            <input
+              type="email"
+              name="email"
+              value={users.email}
+              onChange={(e) => handleUser(e.target.name, e.target.value)}
+              className="border-black border-solid border-2 rounded py-2 px-4 w-full"
+              required
+              pattern="^[\w-\.]+@([\w-])+\.([\w-]{2,4})$"
+            />
           </label>
-          <input
-            type="email"
-            id="form2Example2"
-            name="email"
-            value={users.email}
-            onChange={(e) => handleUser(e.target.name, e.target.value)}
-            className="border-black border-solid border-2 rounded py-2 px-4 w-full"
-            required
-            pattern="^[\w-\.]+@([\w-])+\.([\w-]{2,4})$"
-          />
         </div>
 
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="form2Example3"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Mot de passe
+            <input
+              type="password"
+              name="password"
+              value={users.password}
+              onChange={(e) => handleUser(e.target.name, e.target.value)}
+              className="border-black border-solid border-2 rounded py-2 px-4 w-full"
+              required
+            />
           </label>
-          <input
-            type="password"
-            id="form2Example3"
-            name="password"
-            value={users.password}
-            onChange={(e) => handleUser(e.target.name, e.target.value)}
-            className="border-black border-solid border-2 rounded py-2 px-4 w-full"
-            required
-          />
         </div>
 
         <div className="mb-4">
-          <label
-            className="block text-gray-700 text-sm font-bold mb-2"
-            htmlFor="form2Example4"
-          >
+          <label className="block text-gray-700 text-sm font-bold mb-2">
             Confirmer le mot de passe
+            <input
+              type="password"
+              name="confirmPassword"
+              value={users.confirmPassword}
+              onChange={(e) => handleUser(e.target.name, e.target.value)}
+              className="border-black border-solid border-2 rounded py-2 px-4 w-full"
+              required
+            />
           </label>
-          <input
-            type="password"
-            id="form2Example4"
-            name="confirmPassword"
-            value={users.confirmPassword}
-            onChange={(e) => handleUser(e.target.name, e.target.value)}
-            className="border-black border-solid border-2 rounded py-2 px-4 w-full"
-          />
         </div>
 
         <button
