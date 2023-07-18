@@ -15,6 +15,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 // eslint-disable-next-line import/no-unresolved
 import "swiper/css/navigation";
+import "./Carousel.css";
 
 function Carousel() {
   const { id } = useParams();
@@ -49,11 +50,12 @@ function Carousel() {
       navigation={true}
       autoplay={{ delay: 2500, disableOnInteraction: false }}
       modules={[Autoplay, Pagination, Navigation]}
-      className="mySwiper"
+      className="pb-10"
     >
       {suggestedImages.map((suggestedImage) => (
-        <SwiperSlide key={suggestedImage.id}>
+        <SwiperSlide className="h-96" key={suggestedImage.id}>
           <ImageCard
+            cls="h-96 m-auto"
             src={suggestedImage.image_src}
             alt={suggestedImage.image_alt}
           />

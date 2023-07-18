@@ -52,7 +52,7 @@ function About() {
           <div className="flex flex-row-reverse pt-5">
             <p className="text-justify">
               <ImageCard
-                cls="h-[6rem] float-right ml-10 mb-8"
+                cls="h-[6rem] float-right ml-10 mb-6"
                 src={about.image_src}
                 alt={about.image_alt}
               />

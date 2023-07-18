@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import connexion from "../services/connexion";
 import ImageCard from "../components/ImageCard";
-import hexa from "../assets/hexa.png";
+import hexaRose from "../assets/hexa_rose.png";
 import Carousel from "../components/Carousel";
 
 function OneImage() {
@@ -35,42 +35,46 @@ function OneImage() {
   }, []);
 
   return (
-    <div className="bg-black h-full">
-      <h1 className="text-right text-white underline-offset-8 font-bold text-2xl pt-5 mr-5">
-        {oneImage.title}
-      </h1>
-      <div className="border-t-2 border-pink h-100 ml-20 mr-5 mb-10" />
+    <div className="bg-black h-full pt-44">
+      <h1 className="text-xl text-white ml-10 pb-1">{oneImage.title}</h1>
+      <div className=" h-[2px] bg-gradient-to-r from-pink to-purple z-10 ml-10 mr-10" />
       <div className="flex justify-center">
         <ImageCard
-          cls="max-h-m max-w-m content-center"
+          cls="content-center pr-10 pl-10 mt-10"
           src={oneImage.image_src}
           alt={oneImage.image_alt}
         />
       </div>
-      <div className="flex ml-10 pt-10 pb-5 text-white">
-        <img className="w-11 h-10 mr-2 ml-3" src={hexa} alt="logo" />
+      <div className="flex pt-10 pl-5 pb-5 text-white">
+        <img className="w-11 h-10 mr-2 ml-3" src={hexaRose} alt="logo" />
         <h3 className="mt-2 font-bold text-xl">Description</h3>
       </div>
-      <div className="text-white ml-10">
-        <p className="text-left text-sm ml-5 mr-5 pb-5 ">{oneImage.summary1}</p>
-        <p className="text-left text-sm ml-5 mr-5 pb-5 ">{oneImage.summary2}</p>
-        <p className="text-left text-sm ml-5 mr-5 pb-5 ">{oneImage.summary3}</p>
-        <p className="text-left text-sm ml-5 mr-5 pb-5 ">{oneImage.summary4}</p>
-        <div className="border-t-2 border-pink h-100 m-5" />
-        <p className="text-left text-sm ml-5 mr-5">
-          Technique : {oneImage.technique}
-        </p>
-        <div className="border-t-2 border-pink h-100 m-5" />
-        <p className="text-left text-sm ml-5 mr-5">
-          Catégorie : {oneImage.category}
-        </p>
-        <div className="border-t-2 border-pink h-100 m-5" />
-        <p className="text-left text-sm ml-5 mr-5">
-          Dimensions : {oneImage.format}
-        </p>
-        <div className="border-t-2 border-pink h-100 m-5" />
-        <p className="text-left text-sm ml-5 mr-5">Date : {oneImage.date}</p>
-        <div className="border-t-2 border-pink h-100 m-5" />
+      <div className="flex text-white ml-10">
+        <div className="flex flex-col w-1/3 pt-1">
+          <div className="border-t-[1px] border-pink w-56" />
+          <p className="text-left text-sm mt-3">
+            Technique : {oneImage.technique}
+          </p>
+          <div className="border-t-[1px] border-pink w-56 mt-3" />
+          <p className="text-left text-sm mt-3">
+            Catégorie : {oneImage.category}
+          </p>
+          <div className="border-t-[1px] border-pink w-56 mt-3" />
+          <p className="text-left text-sm mt-3">
+            Dimensions : {oneImage.format}
+          </p>
+          <div className="border-t-[1px] border-pink w-56 mt-3" />
+          <p className="text-left text-sm mt-3">Date : {oneImage.date}</p>
+          <div className="border-t-[1px] border-pink w-56 mt-3 mb-6" />
+        </div>
+        <div className="flex flex-col w-4/6 mr-10 pl-2">
+          <p className="text-sm pb-5 ">{oneImage.summary1}</p>
+          <p className="text-sm pb-5 ">{oneImage.summary2}</p>
+        </div>
+      </div>
+      <div className="flex flex-col text-white mr-10 ml-10 pt-1">
+        <p className="text-sm pb-5 ">{oneImage.summary3}</p>
+        <p className="text-sm pb-5">{oneImage.summary4}</p>
         {oneArticle && (
           <div>
             <p className="text-left text-sm ml-5 mr-5">
@@ -89,7 +93,7 @@ function OneImage() {
         )}
       </div>
       <div className="flex ml-10 pt-10 pb-5 text-white">
-        <img className="w-11 h-10 mr-2 ml-3" src={hexa} alt="logo" />
+        <img className="w-11 h-10 mr-2 ml-[-10px]" src={hexaRose} alt="logo" />
         <h3 className="mt-2 font-bold text-xl">Oeuvres similaires</h3>
       </div>
       <Carousel />
