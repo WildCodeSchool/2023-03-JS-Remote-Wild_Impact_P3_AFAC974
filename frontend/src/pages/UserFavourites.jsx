@@ -30,19 +30,19 @@ function UserFavourites() {
   };
 
   return (
-    <div className="bg-black h-full pr-20">
-      <h1
-        className="text-right text-white underline-offset-8 font-bold text-2xl pt-5"
-        type="text"
-        value="text"
-      >
-        FAVORIS
-      </h1>
-      <div className="border-t-4 border-pink h-100 w-5/6 ml-20"> </div>
-      <div className="flex-col text-white ml-20 mt-16">
-        <div className="flex flex-col pb-40">
-          {favourites.length &&
-            favourites.map((fav) => (
+    <div className="bg-black h-full pt-32">
+      <div className="relative  flex flex-col text-right mt-10">
+        <h1 className="text-3xl text-white pr-[35px] z-10 pb-1">Favoris</h1>
+        <div className="border-t-4 border-pink h-100 w-5/6 ml-20"> </div>
+        {!favourites.length && (
+          <div className="text-white mt-5 text-left ml-20">
+            Vous n'avez pas encore de favoris ou vous n'êtes pas connecté à
+            votre compte.
+          </div>
+        )}
+        <div className="flex-col text-white ml-20 mt-16">
+          <div className="flex flex-col pb-40">
+            {favourites.map((fav) => (
               <div key={fav.works_id}>
                 <div className="flex mb-8 mt-8">
                   <img
@@ -69,6 +69,7 @@ function UserFavourites() {
                 <div className="border-t-4 border-pink"> </div>
               </div>
             ))}
+          </div>
         </div>
       </div>
     </div>
