@@ -128,5 +128,6 @@ router.delete(
   checkUser,
   userFavouritesController.destroy
 );
+router.post("/favourites", checkUser, userFavouritesController.add);
 
 module.exports = router;

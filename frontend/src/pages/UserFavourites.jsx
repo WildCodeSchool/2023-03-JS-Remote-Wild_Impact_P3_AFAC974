@@ -36,8 +36,7 @@ function UserFavourites() {
         <div className="border-t-4 border-pink h-100 w-5/6 ml-20"> </div>
         {!favourites.length && (
           <div className="text-white mt-5 text-left ml-20">
-            Vous n'avez pas encore de favoris ou vous n'êtes pas connecté à
-            votre compte.
+            Vous n'avez pas encore de favoris.
           </div>
         )}
         <div className="flex-col text-white ml-20 mt-16">

@@ -16,11 +16,7 @@ const read = (req, res) => {
   models.userFavourites
     .findFavouritesByEmailUser(req.token.email)
     .then(([rows]) => {
-      if (rows[0] == null) {
-        res.sendStatus(404);
-      } else {
-        res.send(rows);
-      }
+      res.send(rows);
     })
     .catch((err) => {
       console.error(err);
@@ -44,8 +40,21 @@ const destroy = (req, res) => {
     });
 };
 
+const add = (req, res) => {
+  models.userFavourites
+    .insert(req.token.email, req.body.works_id)
+    .then(([result]) => {
+      res.location(`/favourites/${result.insertId}`).sendStatus(201);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
   destroy,
+  add,
 };

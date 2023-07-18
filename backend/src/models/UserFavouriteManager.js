@@ -56,10 +56,15 @@ class UserFavouriteManager extends AbstractManager {
     );
   }
 
-  insert(favourites) {
-    return this.database.query(`insert into ${this.table} (title) values (?)`, [
-      favourites.title,
-    ]);
+  insert(emailUser, workId) {
+    return this.database.query(
+      `
+      INSERT INTO user_favourites (users_id, works_id)
+      VALUES ((SELECT id FROM users where email = ?), ?)
+      
+      `,
+      [emailUser, workId]
+    );
   }
 }
 
