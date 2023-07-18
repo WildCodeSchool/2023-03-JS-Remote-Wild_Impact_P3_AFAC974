@@ -34,13 +34,25 @@ class UserFavouriteManager extends AbstractManager {
   findFavouritesByEmailUser(emailUser) {
     return this.database.query(
       `
-        SELECT user_favourites.users_id, user_favourites.works_id, summary_title, image_src, image_alt
+        SELECT user_favourites.users_id, user_favourites.works_id, title, summary_title, image_src, image_alt
         FROM ${this.table}
         INNER JOIN  works on works.id = user_favourites.works_id
         INNER JOIN users on users.id = user_favourites.users_id
         WHERE users.email = ?;
       `,
       [emailUser]
+    );
+  }
+
+  deleteFavouritesByEmailUser(emailUser, workId) {
+    return this.database.query(
+      `
+        DELETE user_favourites.*
+        FROM user_favourites
+        INNER JOIN users on users.id = user_favourites.users_id
+        WHERE email = ? AND works_id = ?;
+      `,
+      [emailUser, workId]
     );
   }
 

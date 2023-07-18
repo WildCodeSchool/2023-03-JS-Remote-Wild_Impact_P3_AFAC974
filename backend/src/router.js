@@ -123,5 +123,10 @@ router.put("/users/:id", userControllers.edit);
 const userFavouritesController = require("./controllers/userFavouriteControllers");
 
 router.get("/favourites", checkUser, userFavouritesController.read);
+router.delete(
+  "/favourites/:works_id",
+  checkUser,
+  userFavouritesController.destroy
+);
 
 module.exports = router;

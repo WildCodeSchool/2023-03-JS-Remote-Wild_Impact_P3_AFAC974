@@ -28,7 +28,24 @@ const read = (req, res) => {
     });
 };
 
+const destroy = (req, res) => {
+  models.userFavourites
+    .deleteFavouritesByEmailUser(req.token.email, req.params.works_id)
+    .then(([result]) => {
+      if (result.affectedRows === 0) {
+        res.sendStatus(404);
+      } else {
+        res.sendStatus(204);
+      }
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 module.exports = {
   browse,
   read,
+  destroy,
 };
