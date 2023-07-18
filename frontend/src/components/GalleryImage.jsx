@@ -24,7 +24,7 @@ function GalleryImage() {
         <div
           data-aos="fade-right"
           data-aos-easing="ease-in-out"
-          data-aos-delay="150"
+          data-aos-delay="200"
           data-aos-duration="1000"
           className="w-3/4 flex justify-center flex-col content-center flex-wrap pb-8"
           key={work.id}
