@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import connexion from "../services/connexion";
-import "./GalleryImage.css";
 import ImageCard from "./ImageCard";
 
 function GalleryImage() {
@@ -21,13 +20,15 @@ function GalleryImage() {
 
   return (
     <div className="h-max grid grid-cols-2 gap-10 place-items-center justify-center">
-      {/* <Parallax pages={1} style={{ top: "0", left: "0" }}> */}
       {works.map((work) => (
         <div
-          className="w-3/4 flex justify-center flex-col content-center flex-wrap"
+          data-aos="fade-right"
+          data-aos-easing="ease-in-out"
+          data-aos-delay="150"
+          data-aos-duration="1000"
+          className="w-3/4 flex justify-center flex-col content-center flex-wrap pb-8"
           key={work.id}
         >
-          {/* <ParallaxLayer offset={1.5} speed={1.5}> */}
           <h2 className="text-white text-1xl pb-4">{work.summary_title}</h2>
           <ImageCard
             cls="max-h-[32rem] bg-gradient-to-t from-pink to-purple p-1"
@@ -46,11 +47,9 @@ function GalleryImage() {
               </button>
             </Link>
             <h2 className="text-white text-right text-1xl pt-3">{work.date}</h2>
-            {/* </ParallaxLayer> */}
           </div>
         </div>
       ))}
-      {/* </Parallax> */}
     </div>
   );
 }
