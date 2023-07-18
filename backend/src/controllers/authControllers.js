@@ -5,7 +5,7 @@ const { createJwt } = require("../services/jwt");
 const signup = async (req, res) => {
   const hash = await hashPassword(req.body.password);
   models.user
-    .insert(req.body.email, hash)
+    .insert(req.body, hash)
     .then(() => res.status(200).json({ msg: "User created" }))
     .catch((err) => {
       console.error(err);
