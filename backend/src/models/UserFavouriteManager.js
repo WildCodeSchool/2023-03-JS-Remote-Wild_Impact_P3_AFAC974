@@ -34,7 +34,7 @@ class UserFavouriteManager extends AbstractManager {
   findFavouritesByEmailUser(emailUser) {
     return this.database.query(
       `
-        SELECT user_favourites.users_id, user_favourites.works_id, summary_title, image_src, image_alt
+        SELECT user_favourites.users_id, user_favourites.works_id, title, summary_title, image_src, image_alt
         FROM ${this.table}
         INNER JOIN  works on works.id = user_favourites.works_id
         INNER JOIN users on users.id = user_favourites.users_id
@@ -44,10 +44,40 @@ class UserFavouriteManager extends AbstractManager {
     );
   }
 
-  insert(favourites) {
-    return this.database.query(`insert into ${this.table} (title) values (?)`, [
-      favourites.title,
-    ]);
+  async isFavourite(emailUser, workId) {
+    const [rows] = await this.database.query(
+      `
+      SELECT *
+      FROM ${this.table}
+      INNER JOIN users on users.id = user_favourites.users_id
+      WHERE users.email = ? AND user_favourites.works_id = ?;
+      `,
+      [emailUser, workId]
+    );
+    return !!rows.length;
+  }
+
+  deleteFavouritesByEmailUser(emailUser, workId) {
+    return this.database.query(
+      `
+        DELETE user_favourites.*
+        FROM user_favourites
+        INNER JOIN users on users.id = user_favourites.users_id
+        WHERE email = ? AND works_id = ?;
+      `,
+      [emailUser, workId]
+    );
+  }
+
+  insert(emailUser, workId) {
+    return this.database.query(
+      `
+      INSERT INTO user_favourites (users_id, works_id)
+      VALUES ((SELECT id FROM users where email = ?), ?)
+      
+      `,
+      [emailUser, workId]
+    );
   }
 }
 

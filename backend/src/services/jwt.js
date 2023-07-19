@@ -8,6 +8,9 @@ const createJwt = (payload) => {
 };
 
 const verifyToken = (token) => {
+  if (!token) {
+    return false;
+  }
   return jwt.verify(token, process.env.privateKey);
 };
 
@@ -33,4 +36,4 @@ const checkAdmin = (req, res, next) => {
   }
 };
 
-module.exports = { createJwt, checkUser, checkAdmin };
+module.exports = { createJwt, checkUser, checkAdmin, verifyToken };

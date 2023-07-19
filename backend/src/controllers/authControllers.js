@@ -33,7 +33,12 @@ const login = async (req, res) => {
   }
 };
 
+const logout = async (req, res) => {
+  res.status(200).clearCookie("afac_token").json({ msg: "Disconnected" });
+};
+
 module.exports = {
   login,
   signup,
+  logout,
 };

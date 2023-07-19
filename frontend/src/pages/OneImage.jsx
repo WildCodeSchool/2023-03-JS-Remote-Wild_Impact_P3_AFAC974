@@ -5,6 +5,7 @@ import connexion from "../services/connexion";
 import ImageCard from "../components/ImageCard";
 import hexaRose from "../assets/hexa_rose.png";
 import Carousel from "../components/Carousel";
+import FavoriteButton from "../components/FavoriteButton";
 
 function OneImage() {
   const { id } = useParams();
@@ -89,6 +90,9 @@ function OneImage() {
             </div>
           )}
         </div>
+      </div>
+      <div className="flex flex-col justify-end ml-14">
+        <FavoriteButton item={oneImage} refresh={getOneImage} />
       </div>
       <div className="flex ml-10 pt-10 pb-5 text-white">
         <img className="w-11 h-10 mr-2 ml-[-10px]" src={hexaRose} alt="logo" />
