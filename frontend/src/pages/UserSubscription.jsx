@@ -3,6 +3,7 @@ import { ToastContainer, toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 import "react-toastify/dist/ReactToastify.css";
+import AcceptRGPD from "../components/AcceptRGPD";
 
 const notifyWrong = () =>
   toast("Les mots de passe ne correspondent pas.", {
@@ -141,7 +142,7 @@ function UserSubscription() {
             theme="light"
           />
         </div>
-
+        <AcceptRGPD />
         <button
           type="submit"
           className="bg-gray-800 text-black rounded py-2 px-4 w-full"
