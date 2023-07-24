@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import connexion from "../../services/connexion";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -7,54 +7,6 @@ const categoryModel = {
   id: null,
   name: "",
 };
-
-const notifyWrong = () =>
-  toast("Un problème est survenu, veuillez recommencer.", {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
-
-const notifyAdd = () =>
-  toast("La catégorie a été correctement ajoutée.", {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
-
-const notifyUpdate = () =>
-  toast("La catégorie a été correctement mise à jour.", {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
-
-const notifyDelete = () =>
-  toast("La catégorie été supprimée de la base de données.", {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
 
 function CategoriesAdmin() {
   const [category, setCategory] = useState(categoryModel);
@@ -70,7 +22,6 @@ function CategoriesAdmin() {
       const cat = await connexion.get("/categories");
       setCategories(cat);
     } catch (error) {
-      notifyWrong();
       console.error(error);
     }
   };
@@ -93,9 +44,9 @@ function CategoriesAdmin() {
       await connexion.post("/categories", category);
       setCategory(categoryModel);
       getCategories();
-      notifyAdd();
+      toast.success("La catégorie a été correctement ajoutée.");
     } catch (err) {
-      notifyWrong();
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(err);
     }
   };
@@ -106,9 +57,9 @@ function CategoriesAdmin() {
       await connexion.delete(`/categories/${category.id}`);
       setCategory(categoryModel);
       getCategories();
-      notifyDelete();
+      toast.success("La catégorie a été supprimée de la base de données.");
     } catch (error) {
-      notifyWrong();
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -118,9 +69,9 @@ function CategoriesAdmin() {
     try {
       await connexion.put(`/categories/${category.id}`, category);
       getCategories();
-      notifyUpdate();
+      toast.success("La catégorie a été correctement mise à jour.");
     } catch (error) {
-      notifyWrong();
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -162,18 +113,7 @@ function CategoriesAdmin() {
             value={category.name}
           />
         </label>
-        <ToastContainer
-          position="bottom-right"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="light"
-        />
+
         <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!category.id && (
             <button className="bg-black text-white py-2 px-4" type="submit">
@@ -187,18 +127,18 @@ function CategoriesAdmin() {
           <button
             className="bg-black text-white py-2 px-4"
             type="button"
-            onClick={(e) => deleteCategory(e)}
+            onClick={(e) => updateCategory(e)}
           >
-            Supprimer
+            Modifier
           </button>
         )}
         {category.id && (
           <button
             className="bg-black text-white py-2 px-4"
             type="button"
-            onClick={(e) => updateCategory(e)}
+            onClick={(e) => deleteCategory(e)}
           >
-            Modifier
+            Supprimer
           </button>
         )}
       </div>

@@ -105,13 +105,13 @@ router.put("/articles/:id", articleControllers.edit);
 router.post("/articles", articleControllers.add);
 router.delete("/articles/:id", articleControllers.destroy);
 
-const AboutController = require("./controllers/AboutController");
+const aboutController = require("./controllers/aboutController");
 
-router.get("/about", AboutController.browse);
-router.get("/about/:id", AboutController.read);
-router.put("/about/:id", AboutController.edit);
-router.post("/about", AboutController.add);
-router.delete("/about/:id", AboutController.destroy);
+router.get("/about", aboutController.browse);
+router.get("/about/:id", aboutController.read);
+router.put("/about/:id", aboutController.edit);
+router.post("/about", aboutController.add);
+router.delete("/about/:id", aboutController.destroy);
 
 const userControllers = require("./controllers/userControllers");
 
