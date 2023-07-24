@@ -9,7 +9,7 @@ function AcceptRGPD() {
   // à caler dans le modal d'inscription : setDisableButton(false);
 
   return (
-    <div>
+    <div className="text-xs">
       <label>
         <input type="checkbox" value="accept" onChange={toggleDisableButton} />{" "}
         J'ai lu et j'accepte les conditions générales d'utilisation du site AFAC
