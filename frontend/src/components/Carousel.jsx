@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // eslint-disable-next-line import/no-unresolved
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import connexion from "../services/connexion";
 import ImageCard from "./ImageCard";
 
@@ -32,7 +32,7 @@ function Carousel() {
 
   useEffect(() => {
     getSuggestedImages();
-  }, []);
+  }, [id]);
 
   return (
     <Swiper
@@ -54,11 +54,13 @@ function Carousel() {
     >
       {suggestedImages.map((suggestedImage) => (
         <SwiperSlide className="h-96" key={suggestedImage.id}>
-          <ImageCard
-            cls="h-96 m-auto"
-            src={suggestedImage.image_src}
-            alt={suggestedImage.image_alt}
-          />
+          <Link to={`/gallery/${suggestedImage.id}`}>
+            <ImageCard
+              cls="h-96 m-auto"
+              src={suggestedImage.image_src}
+              alt={suggestedImage.image_alt}
+            />
+          </Link>
         </SwiperSlide>
       ))}
     </Swiper>

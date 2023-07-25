@@ -1,36 +1,9 @@
 import React, { useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import connexion from "../services/connexion";
 import "react-toastify/dist/ReactToastify.css";
 import AcceptRGPD from "../components/AcceptRGPD";
-
-const notifyWrong = () =>
-  toast("Les mots de passe ne correspondent pas.", {
-    position: "bottom-right",
-    autoClose: 5000,
-    hideProgressBar: false,
-    closeOnClick: true,
-    pauseOnHover: true,
-    draggable: true,
-    progress: undefined,
-    theme: "light",
-  });
-
-const notifyRight = () =>
-  toast(
-    "Votre compte a été créé, vous allez être redirigé·e vers la page de connexion",
-    {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    }
-  );
 
 function UserSubscription() {
   const [users, setUsers] = useState({
@@ -41,6 +14,9 @@ function UserSubscription() {
   });
   const navigate = useNavigate();
 
+  // Nous avons déplacé la gestion de l'état de l'acceptation du RGPD ici.
+  const [disableButton, setDisableButton] = useState(true);
+
   const handleUser = (name, value) => {
     setUsers({
       ...users,
@@ -48,11 +24,16 @@ function UserSubscription() {
     });
   };
 
+  // La fonction de toggle a été déplacée ici.
+  const toggleDisableButton = () => {
+    setDisableButton(!disableButton);
+  };
+
   const postUsers = async (e) => {
     e.preventDefault();
     if (users.password !== users.confirmPassword) {
       console.error("Les mots de passe ne correspondent pas");
-      notifyWrong();
+      toast.error("Les mots de passe ne correspondent pas");
       return;
     }
 
@@ -60,7 +41,9 @@ function UserSubscription() {
       const myUser = { ...users };
       delete myUser.confirmPassword;
       await connexion.post("/signup", myUser);
-      notifyRight();
+      toast.success(
+        "Votre compte a été créé, vous allez être redirigé·e vers la page de connexion"
+      );
       setTimeout(() => {
         navigate("/auth/connexion");
       }, 2000);
@@ -87,7 +70,6 @@ function UserSubscription() {
             />
           </label>
         </div>
-
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Adresse mail
@@ -98,11 +80,10 @@ function UserSubscription() {
               onChange={(e) => handleUser(e.target.name, e.target.value)}
               className="border-black border-solid border-2 rounded py-2 px-4 w-full"
               required
-              pattern="^[\w-\.]+@([\w-])+\.([\w-]{2,4})$"
+              pattern="^[\w-.]+@([\w-])+.([\w-]{2,4})$"
             />
           </label>
         </div>
-
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Mot de passe
@@ -116,7 +97,6 @@ function UserSubscription() {
             />
           </label>
         </div>
-
         <div className="mb-4">
           <label className="block text-gray-700 text-sm font-bold mb-2">
             Confirmer le mot de passe
@@ -129,22 +109,11 @@ function UserSubscription() {
               required
             />
           </label>
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
         </div>
-        <AcceptRGPD />
+        <AcceptRGPD toggleDisableButton={toggleDisableButton} />
         <button
           type="submit"
+          disabled={disableButton}
           className="bg-gray-800 text-black rounded py-2 px-4 w-full"
         >
           Créer un compte
