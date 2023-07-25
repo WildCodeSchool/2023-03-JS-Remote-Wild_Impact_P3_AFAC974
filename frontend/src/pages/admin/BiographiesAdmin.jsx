@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import connexion from "../../services/connexion";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -23,54 +23,6 @@ function BiographiesAdmin() {
   const image2 = useRef();
   const image3 = useRef();
 
-  const notifyWrong = () =>
-    toast("Un problème est survenu, veuillez recommencer.", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
-  const notifyAdd = () =>
-    toast("La biographie a été correctement ajoutée.", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
-  const notifyUpdate = () =>
-    toast("La biographie a été correctement mise à jour.", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
-  const notifyDelete = () =>
-    toast("La biographie été supprimée de la base de données.", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
   const refreshBiography = (id) => {
     if (id === "") {
       setBiography(biographyModel);
@@ -84,7 +36,6 @@ function BiographiesAdmin() {
       const bio = await connexion.get("/biographies");
       setBiographies(bio);
     } catch (error) {
-      notifyWrong();
       console.error(error);
     }
   };
@@ -100,8 +51,9 @@ function BiographiesAdmin() {
       setBiography(bio);
       setBiography(biographyModel);
       getBiographies();
-      notifyAdd();
+      toast.success("La biographie a été correctement ajoutée.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -111,9 +63,9 @@ function BiographiesAdmin() {
     try {
       await connexion.put(`/biographies/${biography.id}`, biography);
       getBiographies();
-      notifyUpdate();
+      toast.success("La biographie a été correctement mise à jour.");
     } catch (error) {
-      notifyWrong();
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -127,7 +79,6 @@ function BiographiesAdmin() {
     formData.append("json", JSON.stringify(biography));
     if (biography.id) {
       updateBiography(formData);
-      notifyUpdate();
     } else {
       postBiography(formData);
     }
@@ -139,9 +90,9 @@ function BiographiesAdmin() {
       await connexion.delete(`/biographies/${biography.id}`);
       setBiography(biographyModel);
       getBiographies();
-      notifyDelete();
+      toast.success("La biographie a été supprimée de la base de données.");
     } catch (error) {
-      notifyWrong();
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -366,18 +317,6 @@ function BiographiesAdmin() {
                   value={biography.text3}
                 />
               </label>
-              <ToastContainer
-                position="bottom-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-              />
             </div>
             <div className="flex justify-end pt-10 pb-5 pr-10 gap-10">
               {!biography.id && (

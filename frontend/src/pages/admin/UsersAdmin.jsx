@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import connexion from "../../services/connexion";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -26,40 +26,17 @@ function UsersAdmin() {
     getUsers();
   }, []);
 
-  const notifyUpdate = () =>
-    toast("L'utilisateur a été correctement mis à jour.", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
   const updateUser = async (event) => {
     event.preventDefault();
     try {
       await connexion.put(`/users/${user.id}`, user);
       getUsers();
-      notifyUpdate();
+      toast.success("L'utilisateur a été correctement mis à jour.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
-
-  const notifyDelete = () =>
-    toast("L'utilisateur a bien été supprimé de la base de données.", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
 
   const deleteUser = async (e) => {
     e.preventDefault();
@@ -67,8 +44,9 @@ function UsersAdmin() {
       await connexion.delete(`/users/${user.id}`);
       setUser(userModel);
       getUsers();
-      notifyDelete();
+      toast.success("L'utilisateur a bien été supprimé de la base de données.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -144,18 +122,7 @@ function UsersAdmin() {
               />
             </label>
           </div>
-          <ToastContainer
-            position="bottom-right"
-            autoClose={5000}
-            hideProgressBar={false}
-            newestOnTop={false}
-            closeOnClick
-            rtl={false}
-            pauseOnFocusLoss
-            draggable
-            pauseOnHover
-            theme="light"
-          />
+
           <div className="flex pt-10 pb-5 pr-10 gap-10">
             <button
               type="button"

@@ -1,6 +1,6 @@
 /* eslint-disable import/no-named-as-default */
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import connexion from "../services/connexion";
 import ImageCard from "../components/ImageCard";
 import hexaRose from "../assets/hexa_rose.png";
@@ -33,7 +33,7 @@ function OneImage() {
   useEffect(() => {
     getOneImage();
     getOneArticle();
-  }, []);
+  }, [id]);
 
   return (
     <div className="bg-black h-full pt-44">
@@ -78,14 +78,14 @@ function OneImage() {
             <div>
               <p className="text-left text-sm mr-5">
                 Plus d'infos :{" "}
-                <a
-                  href={oneArticle.src}
+                <Link
+                  to={oneArticle.src}
                   target="_blank"
                   rel="noreferrer"
                   className="underline text-pink"
                 >
                   cliquez ici
-                </a>
+                </Link>
               </p>
             </div>
           )}
