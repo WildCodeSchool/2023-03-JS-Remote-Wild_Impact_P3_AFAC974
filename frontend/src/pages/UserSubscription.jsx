@@ -114,9 +114,11 @@ function UserSubscription() {
         <button
           type="submit"
           disabled={disableButton}
-          className="bg-gray-800 text-black rounded py-2 px-4 w-full"
+          className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-auto overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple to-pink group-hover:from-purple group-hover:to-pink hover:text-white dark:text-white focus:ring-4"
         >
-          Créer un compte
+          <span className="relative text-white px-5 py-2.5 transition-all ease-in duration-75 bg-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+            Créer un compte
+          </span>
         </button>
       </form>
     </div>
