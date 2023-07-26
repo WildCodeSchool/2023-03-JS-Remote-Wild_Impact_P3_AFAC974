@@ -31,7 +31,7 @@ function Auth() {
   return (
     <div className="bg-black flex items-center justify-center h-screen">
       <form
-        className="bg-white border-purple border-solid border-4 p-1 p-6 rounded-lg shadow-lg"
+        className="bg-white border-purple border-solid border-4 p-1 p-6 rounded-lg shadow-lg w-80"
         onSubmit={(event) => login(event)}
       >
         <div className="mb-4">
@@ -70,18 +70,20 @@ function Auth() {
             required
           />
         </div>
-        <div className="flex justify-center">
-          <button
-            type="submit"
-            className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple to-pink group-hover:from-purple group-hover:to-pink hover:text-white dark:text-white focus:ring-4"
-          >
-            <span className="relative text-white px-5 py-2.5 transition-all ease-in duration-75 bg-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
-              Connexion
-            </span>
-          </button>
+        <div className="flex flex-col items-center">
+          <div className="flex">
+            <button
+              type="submit"
+              className="relative inline-flex items-center justify-center p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple to-pink group-hover:from-purple group-hover:to-pink hover:text-white dark:text-white focus:ring-4"
+            >
+              <span className="relative text-white px-5 py-2.5 transition-all ease-in duration-75 bg-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+                Connexion
+              </span>
+            </button>
+          </div>
           <p className="text-center mt-4">Vous n'avez pas de compte ?</p>
           <Link to="/subscription">
-            <p className="text-center underline">Cliquez ici</p>
+            <p className="text-center underline pt-4">Cliquez ici</p>
           </Link>
         </div>
       </form>
