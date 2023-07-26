@@ -30,7 +30,7 @@ function HomePage() {
   };
 
   return (
-    <div className="bg-cover h-screen w-screen bg-[url('./assets/background.jpg')] flex flex-col justify-center items-center md:pt-32">
+    <div className="bg-cover h-screen w-screen bg-[url('./assets/background.jpg')] flex flex-col justify-center items-center md:pt-28">
       <h2 className="text-white text-2xl text-center pr-[450px] pb-2">
         Exposition dédiée à
       </h2>
