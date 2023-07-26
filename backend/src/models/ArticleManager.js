@@ -5,6 +5,26 @@ class ArticleManager extends AbstractManager {
     super({ table: "articles" });
   }
 
+  find(id) {
+    return this.database.query(
+      `select a.name, a.src, w.id from  ${this.table} as a
+    inner join works as w on w.id = a.works_id 
+    where a.id = ?`,
+      [id]
+    );
+  }
+
+  findAll() {
+    return this.database.query(`select * from  ${this.table}`);
+  }
+
+  findAllByWork(id) {
+    return this.database.query(
+      `select * from ${this.table} WHERE works_id = ?`,
+      [id]
+    );
+  }
+
   insert(article) {
     return this.database.query(
       `insert into ${this.table} (name, src, works_id) values (?, ? ,?)`,

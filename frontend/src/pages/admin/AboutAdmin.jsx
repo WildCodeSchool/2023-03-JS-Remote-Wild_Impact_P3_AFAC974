@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
 
 function AboutAdmin() {
   const aboutModel = {
@@ -21,6 +23,7 @@ function AboutAdmin() {
       const ab = await connexion.get("/about");
       setAbouts(ab);
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -43,7 +46,9 @@ function AboutAdmin() {
       await connexion.post("/about", about);
       setAbout(aboutModel);
       getAbouts();
+      toast.success("La section à propos a été correctement ajoutée.");
     } catch (err) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(err);
     }
   };
@@ -54,7 +59,11 @@ function AboutAdmin() {
       await connexion.delete(`/about/${about.id}`);
       setAbout(aboutModel);
       getAbouts();
+      toast.success(
+        "La section à propos a été supprimée de la base de données."
+      );
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -64,7 +73,9 @@ function AboutAdmin() {
     try {
       await connexion.put(`/about/${about.id}`, about);
       getAbouts();
+      toast.success("La section à propos a été correctement mise à jour.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -126,18 +137,18 @@ function AboutAdmin() {
           <button
             className="bg-black text-white py-2 px-4"
             type="button"
-            onClick={(e) => deleteAbout(e)}
+            onClick={(e) => updateAbout(e)}
           >
-            Supprimer
+            Modifier
           </button>
         )}
         {about.id && (
           <button
             className="bg-black text-white py-2 px-4"
             type="button"
-            onClick={(e) => updateAbout(e)}
+            onClick={(e) => deleteAbout(e)}
           >
-            Modifier
+            Supprimer
           </button>
         )}
       </div>

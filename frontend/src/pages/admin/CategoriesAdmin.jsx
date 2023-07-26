@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
 
 const categoryModel = {
   id: null,
@@ -42,7 +44,9 @@ function CategoriesAdmin() {
       await connexion.post("/categories", category);
       setCategory(categoryModel);
       getCategories();
+      toast.success("La catégorie a été correctement ajoutée.");
     } catch (err) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(err);
     }
   };
@@ -53,7 +57,9 @@ function CategoriesAdmin() {
       await connexion.delete(`/categories/${category.id}`);
       setCategory(categoryModel);
       getCategories();
+      toast.success("La catégorie a été supprimée de la base de données.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -63,7 +69,9 @@ function CategoriesAdmin() {
     try {
       await connexion.put(`/categories/${category.id}`, category);
       getCategories();
+      toast.success("La catégorie a été correctement mise à jour.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -105,6 +113,7 @@ function CategoriesAdmin() {
             value={category.name}
           />
         </label>
+
         <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!category.id && (
             <button className="bg-black text-white py-2 px-4" type="submit">
@@ -118,18 +127,18 @@ function CategoriesAdmin() {
           <button
             className="bg-black text-white py-2 px-4"
             type="button"
-            onClick={(e) => deleteCategory(e)}
+            onClick={(e) => updateCategory(e)}
           >
-            Supprimer
+            Modifier
           </button>
         )}
         {category.id && (
           <button
             className="bg-black text-white py-2 px-4"
             type="button"
-            onClick={(e) => updateCategory(e)}
+            onClick={(e) => deleteCategory(e)}
           >
-            Modifier
+            Supprimer
           </button>
         )}
       </div>

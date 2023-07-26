@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
 
 function TechniquesAdmin() {
   const techniqueModel = { id: null, name: "" };
@@ -40,7 +42,9 @@ function TechniquesAdmin() {
       setTechnique(tech);
       setTechnique(techniqueModel);
       getTechniques();
+      toast.success("La technique a été correctement ajoutée.");
     } catch (err) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(err);
     }
   };
@@ -50,7 +54,9 @@ function TechniquesAdmin() {
     try {
       await connexion.put(`/techniques/${technique.id}`, technique);
       getTechniques();
+      toast.success("La technique a été correctement mise à jour.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -61,7 +67,9 @@ function TechniquesAdmin() {
       await connexion.delete(`/techniques/${technique.id}`);
       setTechnique(techniqueModel);
       getTechniques();
+      toast.success("La technique a été supprimée de la base de données.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -102,6 +110,7 @@ function TechniquesAdmin() {
             onChange={(e) => handleTechnique(e.target.name, e.target.value)}
           />
         </label>
+
         <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!technique.id && (
             <button type="submit" className="bg-black text-white py-2 px-4">

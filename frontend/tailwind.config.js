@@ -10,6 +10,7 @@ module.exports = {
       purple: "#716687",
       red: "#762D3F",
       white: "#FFFFFF",
+      grey: "#757575",
       black: "#292929",
       purple2: {
         500: "#716687",
@@ -19,6 +20,19 @@ module.exports = {
       },
     },
     extend: {
+      animation: {
+        "background-shine": "background-shine 2s linear infinite",
+      },
+      keyframes: {
+        "background-shine": {
+          from: {
+            backgroundPosition: "0 0",
+          },
+          to: {
+            backgroundPosition: "-200% 0",
+          },
+        },
+      },
       fontFamily: {
         sans: ["Epilogue"],
       },

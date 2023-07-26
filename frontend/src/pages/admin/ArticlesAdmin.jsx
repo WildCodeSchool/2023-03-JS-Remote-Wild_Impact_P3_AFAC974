@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
+import { toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
 
 function ArticlesAdmin() {
   const articleModel = { id: null, name: "", src: "", works_id: "" };
@@ -39,7 +41,9 @@ function ArticlesAdmin() {
       setArticle(art);
       setArticle(articleModel);
       getArticles();
+      toast.success("L'article a été correctement ajoutée.");
     } catch (err) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(err);
     }
   };
@@ -49,7 +53,9 @@ function ArticlesAdmin() {
     try {
       await connexion.put(`/articles/${article.id}`, article);
       getArticles();
+      toast.success("L'article a été correctement mis à jour.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -60,7 +66,9 @@ function ArticlesAdmin() {
       await connexion.delete(`/articles/${article.id}`);
       setArticle(articleModel);
       getArticles();
+      toast.success("L'article a été supprimé de la base de données.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -146,6 +154,7 @@ function ArticlesAdmin() {
             ))}
           </select>
         </label>
+
         <div className="flex pt-10 pb-5 pr-10 gap-10">
           {!article.id && (
             <button type="submit" className="bg-black text-white py-2 px-4">

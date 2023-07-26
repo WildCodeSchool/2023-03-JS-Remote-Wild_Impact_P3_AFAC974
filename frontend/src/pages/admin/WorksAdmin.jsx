@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import connexion from "../../services/connexion";
-import "react-toastify/dist/ReactToastify.css";
+import ImageCard from "../../components/ImageCard";
 
 function WorksAdmin() {
   const workModel = {
@@ -49,61 +49,28 @@ function WorksAdmin() {
     setWork({ ...work, [name]: value });
   };
 
-  const notifyWrong = () =>
-    toast("Un problème est survenu, veuillez recommencer.", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
-  const notifyAdd = () =>
-    toast("L'oeuvre a été correctement ajoutée à la base de données.", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
   const postWork = async (form) => {
     try {
       const w = await connexion.postFile("/works", form);
       setWork(w);
       setWork(workModel);
-      notifyAdd();
+      toast.success(
+        "L'oeuvre a été correctement ajoutée à la base de données."
+      );
       getWorks();
     } catch (error) {
-      notifyWrong();
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
-  const notifyUpdate = () =>
-    toast("L'oeuvre a été correctement mise à jour.", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
 
   const updateWork = async (form) => {
     try {
       await connexion.putFile(`/works/${work.id}`, form);
       getWorks();
-      notifyUpdate();
+      toast.success("L'oeuvre a été correctement mise à jour.");
     } catch (error) {
-      notifyWrong();
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -120,27 +87,15 @@ function WorksAdmin() {
     }
   };
 
-  const notifyDelete = () =>
-    toast("L'oeuvre a bien été supprimée de la base de données.", {
-      position: "bottom-right",
-      autoClose: 5000,
-      hideProgressBar: false,
-      closeOnClick: true,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
-    });
-
   const deleteWork = async (e) => {
     e.preventDefault();
     try {
       await connexion.delete(`/works/${work.id}`);
       setWork(workModel);
       getWorks();
-      notifyDelete();
+      toast.success("L'oeuvre a bien été supprimée de la base de données.");
     } catch (error) {
-      notifyWrong();
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -423,47 +378,41 @@ function WorksAdmin() {
                 />
               </label>
               {work.image_src && (
-                <img
-                  src={`${import.meta.env.VITE_BACKEND_URL}/assets/images/${
-                    work.image_src
-                  }`}
+                <ImageCard
+                  cls="w-100 h-80"
+                  src={work.image_src}
                   alt={work.summary_title}
                 />
               )}
-              <ToastContainer
-                position="bottom-right"
-                autoClose={5000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="light"
-              />
+
               <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
-                <button
-                  type="submit"
-                  className="bg-black text-white py-2 px-4"
-                  onClick={(e) => manageWork(e)}
-                >
-                  Ajouter
-                </button>
-                <button
-                  type="button"
-                  className="bg-black text-white py-2 px-4"
-                  onClick={(e) => manageWork(e)}
-                >
-                  Mettre à jour
-                </button>
-                <button
-                  type="button"
-                  className="bg-black text-white py-2 px-4"
-                  onClick={(e) => deleteWork(e)}
-                >
-                  Supprimer
-                </button>
+                {!work.id && (
+                  <button
+                    type="submit"
+                    className="bg-black text-white py-2 px-4"
+                    onClick={(e) => manageWork(e)}
+                  >
+                    Ajouter
+                  </button>
+                )}
+                {work.id && (
+                  <button
+                    type="button"
+                    className="bg-black text-white py-2 px-4"
+                    onClick={(e) => manageWork(e)}
+                  >
+                    Mettre à jour
+                  </button>
+                )}
+                {work.id && (
+                  <button
+                    type="button"
+                    className="bg-black text-white py-2 px-4"
+                    onClick={(e) => deleteWork(e)}
+                  >
+                    Supprimer
+                  </button>
+                )}
               </div>
             </div>
           </div>

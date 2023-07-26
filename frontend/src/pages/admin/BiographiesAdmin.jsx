@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
+import { toast } from "react-toastify";
 import connexion from "../../services/connexion";
+import "react-toastify/dist/ReactToastify.css";
 
 function BiographiesAdmin() {
   const biographyModel = {
@@ -49,7 +51,9 @@ function BiographiesAdmin() {
       setBiography(bio);
       setBiography(biographyModel);
       getBiographies();
+      toast.success("La biographie a été correctement ajoutée.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -59,7 +63,9 @@ function BiographiesAdmin() {
     try {
       await connexion.put(`/biographies/${biography.id}`, biography);
       getBiographies();
+      toast.success("La biographie a été correctement mise à jour.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };
@@ -84,7 +90,9 @@ function BiographiesAdmin() {
       await connexion.delete(`/biographies/${biography.id}`);
       setBiography(biographyModel);
       getBiographies();
+      toast.success("La biographie a été supprimée de la base de données.");
     } catch (error) {
+      toast.error("Un problème est survenu, veuillez recommencer.");
       console.error(error);
     }
   };

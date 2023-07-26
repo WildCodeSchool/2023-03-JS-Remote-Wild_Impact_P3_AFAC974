@@ -17,9 +17,11 @@ const { checkUser, checkAdmin } = require("./services/jwt");
 
 router.post("/signup", checkUserData, authControllers.signup);
 router.post("/login", checkUserData, authControllers.login);
+router.post("/logout", checkUser, authControllers.logout);
 
 const workControllers = require("./controllers/workControllers");
 
+router.get("/categories/:id/works", workControllers.browseByCategory);
 router.get("/works", workControllers.browse);
 router.get("/works/:id", workControllers.read);
 
@@ -98,17 +100,18 @@ const articleControllers = require("./controllers/articleControllers");
 
 router.get("/articles", articleControllers.browse);
 router.get("/articles/:id", articleControllers.read);
+router.get("/works/:id/articles", articleControllers.browseByWork);
 router.put("/articles/:id", articleControllers.edit);
 router.post("/articles", articleControllers.add);
 router.delete("/articles/:id", articleControllers.destroy);
 
-const AboutController = require("./controllers/AboutController");
+const aboutControllers = require("./controllers/aboutControllers");
 
-router.get("/about", AboutController.browse);
-router.get("/about/:id", AboutController.read);
-router.put("/about/:id", AboutController.edit);
-router.post("/about", AboutController.add);
-router.delete("/about/:id", AboutController.destroy);
+router.get("/about", aboutControllers.browse);
+router.get("/about/:id", aboutControllers.read);
+router.put("/about/:id", aboutControllers.edit);
+router.post("/about", aboutControllers.add);
+router.delete("/about/:id", aboutControllers.destroy);
 
 const userControllers = require("./controllers/userControllers");
 
@@ -117,5 +120,15 @@ router.get("/users/:email", userControllers.find);
 router.post("/users", userControllers.add);
 router.delete("/users/:id", userControllers.destroy);
 router.put("/users/:id", userControllers.edit);
+
+const userFavouritesController = require("./controllers/userFavouriteControllers");
+
+router.get("/favourites", checkUser, userFavouritesController.read);
+router.delete(
+  "/favourites/:works_id",
+  checkUser,
+  userFavouritesController.destroy
+);
+router.post("/favourites", checkUser, userFavouritesController.add);
 
 module.exports = router;

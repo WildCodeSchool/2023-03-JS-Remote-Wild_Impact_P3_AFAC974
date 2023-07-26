@@ -70,6 +70,11 @@ const UserManager = require("./UserManager");
 models.user = new UserManager();
 models.user.setDatabase(pool);
 
+const UserFavouriteManager = require("./UserFavouriteManager");
+
+models.userFavourites = new UserFavouriteManager();
+models.userFavourites.setDatabase(pool);
+
 const handler = {
   get(obj, prop) {
     if (prop in obj) {
