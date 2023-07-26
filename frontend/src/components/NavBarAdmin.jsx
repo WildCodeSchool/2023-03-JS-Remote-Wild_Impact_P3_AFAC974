@@ -6,7 +6,7 @@ function NavBarAdmin() {
   return (
     <div className="flex bg-black w-80 h-screen text-white pl-5 flex-col items-left pt-40">
       <div className="pb-8">
-        <h1 className="font-bold text-2xl">Tableau de bord</h1>
+        <h1 className="font-bold text-2xl pl-5">Tableau de bord</h1>
       </div>
       <div className="pl-5">
         <div className="flex w-auto">
@@ -59,14 +59,13 @@ function NavBarAdmin() {
           </Link>
         </div>
       </div>
-      <div className="flex pt-96">
-        <Link to="/" className="flex bg-white p-3 text-xl text-black">
-          <img
-            className="h-6 pr-8"
-            src="https://cdn2.iconfinder.com/data/icons/system-interface/72/Quit-256.png"
-            alt="logo_deconnexion"
-          />
-          Déconnexion{" "}
+      <div className="flex pt-80 pl-6 pr-10">
+        <Link to="/" className="flex p-3 text-xl text-black">
+          <div className="flex pt-10 pb-5  gap-10">
+            <button type="submit" className="bg-white text-black py-2 px-4">
+              Deconnexion
+            </button>
+          </div>
         </Link>
       </div>
     </div>
