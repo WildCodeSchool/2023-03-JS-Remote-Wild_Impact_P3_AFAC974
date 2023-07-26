@@ -385,7 +385,7 @@ function WorksAdmin() {
                 />
               )}
 
-              <div className="flex justify-end pt-60 pb-5 pr-10 gap-10">
+              <div className="flex justify-end pt-24 pb-5 pr-10 gap-10">
                 {!work.id && (
                   <button
                     type="submit"
