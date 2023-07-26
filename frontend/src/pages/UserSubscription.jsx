@@ -55,7 +55,7 @@ function UserSubscription() {
   return (
     <div className="bg-black flex items-center justify-center h-screen">
       <form
-        className="bg-white p-6 rounded-lg shadow-lg"
+        className="bg-white border-purple border-solid border-4 p-6 rounded-lg shadow-lg  w-80 h-100"
         onSubmit={(e) => postUsers(e)}
       >
         <div className="mb-4">
@@ -66,7 +66,7 @@ function UserSubscription() {
               name="firstname"
               value={users.firstname}
               onChange={(e) => handleUser(e.target.name, e.target.value)}
-              className="border-black border-solid border-2 rounded py-2 px-4 w-full"
+              className="border-pink border-solid border-2 rounded py-2 px-4 w-full"
             />
           </label>
         </div>
@@ -78,7 +78,7 @@ function UserSubscription() {
               name="email"
               value={users.email}
               onChange={(e) => handleUser(e.target.name, e.target.value)}
-              className="border-black border-solid border-2 rounded py-2 px-4 w-full"
+              className="border-pink border-solid border-2 rounded py-2 px-4 w-full"
               required
               pattern="^[\w-.]+@([\w-])+.([\w-]{2,4})$"
             />
@@ -92,7 +92,7 @@ function UserSubscription() {
               name="password"
               value={users.password}
               onChange={(e) => handleUser(e.target.name, e.target.value)}
-              className="border-black border-solid border-2 rounded py-2 px-4 w-full"
+              className="border-pink border-solid border-2 rounded py-2 px-4 w-full"
               required
             />
           </label>
@@ -105,19 +105,23 @@ function UserSubscription() {
               name="confirmPassword"
               value={users.confirmPassword}
               onChange={(e) => handleUser(e.target.name, e.target.value)}
-              className="border-black border-solid border-2 rounded py-2 px-4 w-full"
+              className="border-pink border-solid border-2 rounded py-2 px-4 w-full"
               required
             />
           </label>
         </div>
         <AcceptRGPD toggleDisableButton={toggleDisableButton} />
-        <button
-          type="submit"
-          disabled={disableButton}
-          className="bg-gray-800 text-black rounded py-2 px-4 w-full"
-        >
-          Créer un compte
-        </button>
+        <div className="flex">
+          <button
+            type="submit"
+            disabled={disableButton}
+            className="relative inline-flex items-center justify-center ml-12 mt-5 p-0.5 mb-2 mr-2 overflow-hidden text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-purple to-pink group-hover:from-purple group-hover:to-pink hover:text-white dark:text-white focus:ring-4"
+          >
+            <span className="relative text-white px-5 py-2.5 transition-all ease-in duration-75 bg-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              Créer un compte
+            </span>
+          </button>
+        </div>
       </form>
     </div>
   );
