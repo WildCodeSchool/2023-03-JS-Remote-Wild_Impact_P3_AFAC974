@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import connexion from "../services/connexion";
 import ImageCard from "./ImageCard";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 function GalleryImage() {
+  AOS.init();
+
   const [works, setWorks] = useState([]);
   const getWorks = async () => {
     try {
@@ -22,10 +26,12 @@ function GalleryImage() {
     <div className="h-max grid grid-cols-2 gap-10 place-items-center justify-center">
       {works.map((work) => (
         <div
-          data-aos="fade-right"
-          data-aos-easing="ease-in-out"
-          data-aos-delay="200"
+          data-aos="fade-up"
+          data-aos-delay="50"
           data-aos-duration="1000"
+          data-aos-easing="ease-in-out"
+          data-aos-once="false"
+          data-aos-anchor-placement="top-center"
           className="w-3/4 flex justify-center flex-col content-center flex-wrap pb-8"
           key={work.id}
         >
