@@ -34,8 +34,8 @@ function UserFavourites() {
   return (
     <div className="bg-black h-full pt-32">
       <div className="relative  flex flex-col text-right mt-10">
-        <h1 className="text-3xl text-white pr-[35px] z-10 pb-1">Favoris</h1>
-        <div className="border-t-4 border-pink h-100 w-5/6 ml-20"> </div>
+        <h1 className="text-3xl text-white pr-[35px] z-10 pb-1">Biographie</h1>
+        <div className=" h-[2px] bg-gradient-to-r from-pink to-purple z-10 ml-10 mr-10" />
         {!favourites.length && (
           <div className="text-white mt-5 text-left ml-20">
             Vous n'avez pas encore de favoris.
@@ -69,7 +69,7 @@ function UserFavourites() {
                     </button>
                   </div>
                 </div>
-                <div className="border-t-4 border-pink"> </div>
+                <div className=" h-[2px] bg-gradient-to-r from-pink to-purple z-10 mr-10" />
               </div>
             ))}
           </div>

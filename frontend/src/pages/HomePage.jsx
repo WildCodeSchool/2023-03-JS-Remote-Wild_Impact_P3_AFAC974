@@ -78,18 +78,17 @@ function HomePage() {
           <h2>
             Les représentations des oeuvres que vous allez consulter sur ce site
             ne sont pas libres de droit. <br /> <br />
-            Elles sont la propriété de l'Iconothèque historique de l'océan
-            indien{" "}
+            Elles sont la propriété de{" "}
             <a
               href="https://www.ihoi.org/app/photopro.sk/ihoi_icono/?"
               target="_blank"
-              className="underline text-blue"
+              className="underline text-purple"
               rel="noreferrer"
             >
-              (en savoir plus)
+              l'Iconothèque historique de l'océan indien
             </a>
             . <br /> <br />
-            En cliquant sur "Entrer", vous reconnaissez avoir pris connaissance
+            En cliquant sur "entrer", vous reconnaissez avoir pris connaissance
             de cette information.
             <br />
             <br />
@@ -99,7 +98,9 @@ function HomePage() {
             type="button"
             className="text-black text-3xl"
           >
-            ENTRER
+            <span className="relative text-sm text-white px-5 py-2.5 transition-all ease-in duration-75 bg-black dark:bg-gray-900 rounded-md group-hover:bg-opacity-0">
+              entrer
+            </span>
           </button>
         </div>
       </Modal>
