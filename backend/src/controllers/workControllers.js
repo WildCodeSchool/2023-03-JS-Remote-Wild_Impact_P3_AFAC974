@@ -45,6 +45,7 @@ const browseByCategory = (req, res) => {
 
 const edit = (req, res) => {
   const work = JSON.parse(req.body.json);
+  work.image_src = req.file.filename;
   work.id = parseInt(req.params.id, 10);
   models.work
     .update(work)
