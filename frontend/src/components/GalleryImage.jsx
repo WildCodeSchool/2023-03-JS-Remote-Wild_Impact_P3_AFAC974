@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import connexion from "../services/connexion";
-import ImageCard from "./ImageCard";
 import AOS from "aos";
 import "aos/dist/aos.css";
+import connexion from "../services/connexion";
+import ImageCard from "./ImageCard";
 
 function GalleryImage() {
   AOS.init();
