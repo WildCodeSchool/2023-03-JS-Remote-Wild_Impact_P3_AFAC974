@@ -4,7 +4,7 @@ import hexa from "../assets/hexa.png";
 
 function NavBarAdmin() {
   return (
-    <div className="flex bg-black w-80 h-screen text-white pl-5 flex-col items-left pt-40">
+    <div className="flex bg-black w-80 h-full text-white pl-5 flex-col items-left pt-40">
       <div className="pb-8">
         <h1 className="font-bold text-2xl pl-5">Tableau de bord</h1>
       </div>

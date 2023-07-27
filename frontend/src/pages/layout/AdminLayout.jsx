@@ -8,7 +8,7 @@ function AdminLayout() {
 
   if (user?.admin) {
     return (
-      <div className="flex">
+      <div className="flex h-full w-full">
         <NavBarAdmin />
         <Outlet />
       </div>
