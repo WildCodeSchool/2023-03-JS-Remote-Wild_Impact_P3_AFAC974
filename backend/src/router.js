@@ -84,6 +84,7 @@ router.delete("/biographies/:id", checkUser, biographyControllers.destroy);
 const categoryControllers = require("./controllers/categoryControllers");
 
 router.get("/categories", categoryControllers.browse);
+router.get("/categories/:name", categoryControllers.browseByCategoryName);
 router.post("/categories", checkUser, categoryControllers.add);
 router.put("/categories/:id", checkUser, categoryControllers.edit);
 router.delete("/categories/:id", checkUser, categoryControllers.destroy);

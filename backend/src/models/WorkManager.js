@@ -26,6 +26,13 @@ class WorkManager extends AbstractManager {
     );
   }
 
+  findAllByCategoryName(name) {
+    return this.database.query(
+      `select * from ${this.table} AS w INNER JOIN categories AS c ON w.categories_id = c.id WHERE name = ?`,
+      [name]
+    );
+  }
+
   insert(work) {
     return this.database.query(
       `insert into ${this.table} (title, summary_title, date, image_src, image_alt, reference, summary1, summary2, summary3, summary4, format, techniques_id, categories_id) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,

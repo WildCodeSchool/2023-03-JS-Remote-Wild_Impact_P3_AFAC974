@@ -17,13 +17,15 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 import "./Carousel.css";
 
-function Carousel() {
-  const { id } = useParams();
+function Carousel({ image }) {
+  //  const { id } = useParams();
+  const categoryName = image.category;
   const [suggestedImages, setSuggestedImages] = useState([]);
 
   const getSuggestedImages = async () => {
+    console.log(categoryName)
     try {
-      const suggestImg = await connexion.get(`/categories/${id}/works`);
+      const suggestImg = await connexion.get(`/categories/${categoryName}`);
       setSuggestedImages(suggestImg);
     } catch (error) {
       console.error(error);
@@ -32,7 +34,7 @@ function Carousel() {
 
   useEffect(() => {
     getSuggestedImages();
-  }, [id]);
+  }, []);
 
   return (
     <Swiper
