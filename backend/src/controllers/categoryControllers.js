@@ -13,7 +13,6 @@ const browse = (req, res) => {
 };
 
 const browseByCategoryName = (req, res) => {
-  console.log(req.params.name)
   models.work
     .findAllByCategoryName(req.params.name)
     .then(([rows]) => {

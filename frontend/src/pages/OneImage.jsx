@@ -8,25 +8,25 @@ import Carousel from "../components/Carousel";
 import FavoriteButton from "../components/FavoriteButton";
 
 function OneImage() {
-  const oneImageModel = {
-    id: null,
-    reference: "",
-    title: "",
-    summary_title: "",
-    date: "",
-    summary1: "",
-    summary2: "",
-    summary3: "",
-    summary4: "",
-    techniques_id: "",
-    format: "",
-    categories_id: "",
-    image_alt: "",
-  };
+  // const oneImageModel = {
+  // id: null,
+  // reference: "",
+  // title: "",
+  // summary_title: "",
+  // date: "",
+  // summary1: "",
+  // summary2: "",
+  // summary3: "",
+  // summary4: "",
+  // techniques_id: "",
+  // format: "",
+  // categories_id: "",
+  // image_alt: "",
+  // };
   const { id } = useParams();
   const [oneImage, setOneImage] = useState([]);
   const [oneArticle, setOneArticle] = useState([]);
-
+  // console.log(oneImageModel);
   const getOneImage = async () => {
     try {
       const desc = await connexion.get(`/works/${id}`);

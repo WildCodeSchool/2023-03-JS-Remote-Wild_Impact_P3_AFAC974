@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 // eslint-disable-next-line import/no-unresolved
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import { useParams, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import connexion from "../services/connexion";
 import ImageCard from "./ImageCard";
 
@@ -23,7 +23,7 @@ function Carousel({ image }) {
   const [suggestedImages, setSuggestedImages] = useState([]);
 
   const getSuggestedImages = async () => {
-    console.log(categoryName)
+    // console.log(categoryName)
     try {
       const suggestImg = await connexion.get(`/categories/${categoryName}`);
       setSuggestedImages(suggestImg);
@@ -34,7 +34,7 @@ function Carousel({ image }) {
 
   useEffect(() => {
     getSuggestedImages();
-  }, []);
+  }, [image]);
 
   return (
     <Swiper
