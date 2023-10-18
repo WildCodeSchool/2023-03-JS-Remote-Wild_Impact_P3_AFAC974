@@ -28,7 +28,7 @@ class WorkManager extends AbstractManager {
 
   findAllByCategoryName(name) {
     return this.database.query(
-      `select * from ${this.table} AS w INNER JOIN categories AS c ON w.categories_id = c.id WHERE name = ?`,
+      `select w.id, w.title, w.summary_title, w.date, w.image_src, w.image_alt, w.reference, w.summary1, w.summary2, w.summary3, w.summary4, w.format, c.name as category from ${this.table} AS w INNER JOIN categories AS c ON w.categories_id = c.id WHERE name = ?`,
       [name]
     );
   }

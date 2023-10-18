@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+
 // Import Swiper React components
 // eslint-disable-next-line import/no-unresolved
 import { Swiper, SwiperSlide } from "swiper/react";
