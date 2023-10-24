@@ -98,7 +98,7 @@ function OneImage() {
         <img className="w-11 h-10 mr-2 ml-[-10px]" src={hexaRose} alt="logo" />
         <h3 className="mt-2 font-bold text-xl">Oeuvres similaires</h3>
       </div>
-      <Carousel />
+      <Carousel image={oneImage} />
     </div>
   );
 }

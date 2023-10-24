@@ -12,6 +12,18 @@ const browse = (req, res) => {
     });
 };
 
+const browseByCategoryName = (req, res) => {
+  models.work
+    .findAllByCategoryName(req.params.name)
+    .then(([rows]) => {
+      res.status(200).json(rows);
+    })
+    .catch((err) => {
+      console.error(err);
+      res.sendStatus(500);
+    });
+};
+
 const read = (req, res) => {
   models.category
     .find(req.params.id)
@@ -86,6 +98,7 @@ const destroy = (req, res) => {
 
 module.exports = {
   browse,
+  browseByCategoryName,
   read,
   edit,
   add,
