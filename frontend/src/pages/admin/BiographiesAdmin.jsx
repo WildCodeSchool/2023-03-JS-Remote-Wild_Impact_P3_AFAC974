@@ -103,7 +103,9 @@ function BiographiesAdmin() {
 
   return (
     <div className="flex flex-col w-full pr-10">
-      <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
+      <h1 className="text-right pr-5 pt-5 mr-44 text-2xl font-bold">
+        Page Admin
+      </h1>
       <h2 className="text-xl font-bold p-4">Gestion des Biographies</h2>
 
       <form className="flex gap-20" onSubmit={(e) => postBiography(e)}>
