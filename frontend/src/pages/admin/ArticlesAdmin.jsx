@@ -106,6 +106,7 @@ function ArticlesAdmin() {
           </select>
         </label>
         <label className="flex flex-col font-semibold w-80">
+          {" "}
           <input
             required
             type="text"
@@ -117,6 +118,7 @@ function ArticlesAdmin() {
           />
         </label>
         <label className="flex flex-col font-semibold w-80">
+          {" "}
           <input
             required
             type="text"
