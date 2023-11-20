@@ -82,10 +82,8 @@ function CategoriesAdmin() {
       <h2 className="text-xl font-bold p-4">Gestion des catégories</h2>
 
       <form className="ml-10" onSubmit={(event) => postCategory(event)}>
-        <label
-          htmlFor="Select categories"
-          className="flex flex-col font-semibold w-80"
-        >
+        <label className="flex flex-col font-semibold w-80">
+          Select categories
           <select
             onChange={(event) => refreshCategory(event.target.value)}
             value={category.id}
@@ -100,7 +98,7 @@ function CategoriesAdmin() {
           </select>
         </label>
 
-        <label htmlFor="" className="flex flex-col font-semibold w-80">
+        <label className="flex flex-col font-semibold w-80">
           <input
             className="border border-black h-7 mt-10 placeholder:pl-2"
             type="text"
