@@ -79,10 +79,8 @@ function TechniquesAdmin() {
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4">Gestion des techniques</h2>
       <form className="ml-10" onSubmit={(e) => postTechnique(e)}>
-        <label
-          htmlFor="Select techniques"
-          className="flex flex-col font-semibold w-80"
-        >
+        <label className="flex flex-col font-semibold w-80">
+          Select techniques
           <select
             onChange={(e) => refreshTechnique(e.target.value)}
             value={technique.id}
@@ -96,10 +94,8 @@ function TechniquesAdmin() {
             ))}
           </select>
         </label>
-        <label
-          htmlFor="Write technique"
-          className="flex flex-col font-semibold w-80"
-        >
+        <label className="flex flex-col font-semibold w-80">
+          Write technique
           <input
             required
             type="text"

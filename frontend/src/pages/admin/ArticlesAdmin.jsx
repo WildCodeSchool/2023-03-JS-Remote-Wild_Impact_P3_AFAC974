@@ -90,10 +90,7 @@ function ArticlesAdmin() {
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des Articles</h2>
       <form className="ml-10" onSubmit={(e) => postArticle(e)}>
-        <label
-          htmlFor="Select Articles"
-          className="flex flex-col font-semibold w-80"
-        >
+        <label className="flex flex-col font-semibold w-80">
           Selectionner un article
           <select
             onChange={(e) => refreshArticle(e.target.value)}
@@ -108,10 +105,7 @@ function ArticlesAdmin() {
             ))}
           </select>
         </label>
-        <label
-          htmlFor="Write article"
-          className="flex flex-col font-semibold w-80"
-        >
+        <label className="flex flex-col font-semibold w-80">
           <input
             required
             type="text"
@@ -122,10 +116,7 @@ function ArticlesAdmin() {
             onChange={(e) => handleArticle(e.target.name, e.target.value)}
           />
         </label>
-        <label
-          htmlFor="Write article"
-          className="flex flex-col font-semibold w-80"
-        >
+        <label className="flex flex-col font-semibold w-80">
           <input
             required
             type="text"
