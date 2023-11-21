@@ -77,7 +77,7 @@ function UsersAdmin() {
               <select
                 onChange={(event) => refreshUser(event.target.value)}
                 value={user.id}
-                className="border border-black h-7 mt-10 text-black"
+                className="border border-black h-7 mt-5 text-black"
               >
                 <option value="">Choisir l'utilisateur</option>
                 {users.map((u) => (
@@ -88,7 +88,7 @@ function UsersAdmin() {
               </select>
             </label>
 
-            <label className="flex flex-col font-semibold">
+            <label className="flex flex-col mt-5 font-semibold">
               Prénom
               <input
                 className="border border-black h-7 placeholder:pl-2"

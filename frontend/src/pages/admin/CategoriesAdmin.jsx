@@ -79,17 +79,15 @@ function CategoriesAdmin() {
   return (
     <div className="flex flex-col w-full">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
-      <h2 className="text-xl font-bold p-4">Gestion des catégories</h2>
+      <h2 className="text-xl font-bold p-4 mb-5">Gestion des catégories</h2>
 
       <form className="ml-10" onSubmit={(event) => postCategory(event)}>
-        <label
-          htmlFor="Select categories"
-          className="flex flex-col font-semibold w-80"
-        >
+        <label className="flex flex-col font-semibold w-80">
+          Selection d'une categorie
           <select
             onChange={(event) => refreshCategory(event.target.value)}
             value={category.id}
-            className="border border-black h-7 mt-10 text-black"
+            className="border border-black h-7 mt-5 text-black"
           >
             <option value="">Choisir la catégorie</option>
             {categories.map((cat) => (
@@ -100,7 +98,8 @@ function CategoriesAdmin() {
           </select>
         </label>
 
-        <label htmlFor="" className="flex flex-col font-semibold w-80">
+        <label className="flex flex-col font-semibold w-80">
+          {" "}
           <input
             className="border border-black h-7 mt-10 placeholder:pl-2"
             type="text"

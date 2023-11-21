@@ -20,7 +20,7 @@ const authSchema = () => {
   return Joi.object({
     email: Joi.string().email({
       minDomainSegments: 2,
-      tlds: { allow: ["com"] },
+      tlds: { allow: ["com", "fr"] },
     }),
     password: Joi.string().min(5).required(),
     firstname: Joi.string().optional().allow(""),

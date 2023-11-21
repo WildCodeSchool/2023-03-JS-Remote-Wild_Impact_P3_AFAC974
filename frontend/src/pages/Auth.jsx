@@ -31,7 +31,7 @@ function Auth() {
   return (
     <div className="bg-black flex items-center justify-center h-screen">
       <form
-        className="bg-white border-purple border-solid border-4 p-1 p-6 rounded-lg shadow-lg w-80"
+        className="bg-white border-purple border-solid border-4 p-6 rounded-lg shadow-lg w-80"
         onSubmit={(event) => login(event)}
       >
         <div className="mb-4">

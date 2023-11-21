@@ -126,9 +126,11 @@ function WorksAdmin() {
 
   return (
     <div className="flex flex-col w-full">
-      <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
+      <h1 className="text-right pr-5 pt-5 mr-64 text-2xl font-bold">
+        Page Admin
+      </h1>
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des oeuvres</h2>
-      <div className="flex pl-10">
+      <div className="flex pl-6">
         <form className="flex gap-20" onSubmit={(event) => postWork(event)}>
           <div className="w-5/12">
             <div>
@@ -284,7 +286,7 @@ function WorksAdmin() {
             </div>
           </div>
 
-          <div className="w-5/12">
+          <div className="w-5/10">
             <div>
               <label className="flex flex-col font-semibold pb-5">
                 Technique
@@ -356,7 +358,7 @@ function WorksAdmin() {
                   className="border border-black h-7 placeholder:pl-2"
                   type="text"
                   required
-                  placeholder="Décrivez l'oeuvre en quelques mots (à destination des personnes déficientes visuelles"
+                  placeholder="Décrivez l'oeuvre en quelques mots"
                   name="image_alt"
                   onChange={(event) =>
                     handleWork(event.target.name, event.target.value)
