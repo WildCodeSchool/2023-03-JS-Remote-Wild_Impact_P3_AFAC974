@@ -3,19 +3,18 @@ import { toast } from "react-toastify";
 import connexion from "../../services/connexion";
 import "react-toastify/dist/ReactToastify.css";
 
-function TechniquesAdmin() {
-  const techniqueModel = { id: null, name: "" };
+const techniqueModel = {
+  id: null,
+  name: "",
+};
 
-  const [technique, setTechnique] = useState({ techniqueModel });
+function TechniquesAdmin() {
+  const [technique, setTechnique] = useState(techniqueModel);
 
   const [techniques, setTechniques] = useState([]);
 
-  const refreshTechnique = (id) => {
-    if (id === "") {
-      setTechnique(techniqueModel);
-    } else {
-      setTechnique(techniques.find((tech) => tech.id === +id));
-    }
+  const handleTechnique = (name, value) => {
+    setTechnique({ ...technique, [name]: value });
   };
 
   const getTechniques = async () => {
@@ -31,15 +30,18 @@ function TechniquesAdmin() {
     getTechniques();
   }, []);
 
-  const handleTechnique = (name, value) => {
-    setTechnique({ ...technique, [name]: value });
+  const refreshTechnique = (id) => {
+    if (id === "") {
+      setTechnique(techniqueModel);
+    } else {
+      setTechnique(techniques.find((tech) => tech.id === +id));
+    }
   };
 
   const postTechnique = async (e) => {
     e.preventDefault();
     try {
-      const tech = await connexion.post("/techniques", technique);
-      setTechnique(tech);
+      await connexion.post("/techniques", technique);
       setTechnique(techniqueModel);
       getTechniques();
       toast.success("La technique a été correctement ajoutée.");
@@ -77,14 +79,14 @@ function TechniquesAdmin() {
   return (
     <div className="flex flex-col w-full">
       <h1 className="text-right pr-5 pt-5 text-2xl font-bold">Page Admin</h1>
-      <h2 className="text-xl font-bold p-4">Gestion des techniques</h2>
+      <h2 className="text-xl font-bold mb-10 p-4">Gestion des techniques</h2>
       <form className="ml-10" onSubmit={(e) => postTechnique(e)}>
         <label className="flex flex-col font-semibold w-80">
-          Select techniques
+          Selection d'une technique
           <select
             onChange={(e) => refreshTechnique(e.target.value)}
             value={technique.id}
-            className="border border-black h-7 mt-10 text-black"
+            className="border border-black h-7 mt-5 text-black"
           >
             <option value="">Choisir la technique</option>
             {techniques.map((tech) => (
@@ -95,12 +97,12 @@ function TechniquesAdmin() {
           </select>
         </label>
         <label className="flex flex-col font-semibold w-80">
-          Write technique
+          {" "}
           <input
             required
             type="text"
             className="border border-black h-7 mt-10 placeholder:pl-2"
-            placeholder="Tapez ici le nom de la catégorie"
+            placeholder="Tapez ici le nom de la technique"
             name="name"
             value={technique.name}
             onChange={(e) => handleTechnique(e.target.name, e.target.value)}

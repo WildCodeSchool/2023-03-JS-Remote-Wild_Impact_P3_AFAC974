@@ -49,10 +49,17 @@ router.put(
   upload.single("image"),
   workControllers.edit
 );
-router.post("/works", checkUser, upload.single("image"), workControllers.add);
+router.post(
+  "/works",
+  checkUser,
+  checkAdmin,
+  upload.single("image"),
+  workControllers.add
+);
 router.delete(
   "/works/:id",
   checkUser,
+  checkAdmin,
   upload.single("image"),
   workControllers.destroy
 );
@@ -61,6 +68,7 @@ const biographyControllers = require("./controllers/biographyControllers");
 
 router.get("/biographies", biographyControllers.browse);
 router.get("/biographies/:id", biographyControllers.read);
+
 router.put(
   "/biographies/:id",
   checkUser,
@@ -79,40 +87,60 @@ router.post(
   upload.single("image3"),
   biographyControllers.add
 );
-router.delete("/biographies/:id", checkUser, biographyControllers.destroy);
+router.delete(
+  "/biographies/:id",
+  checkUser,
+  checkAdmin,
+  biographyControllers.destroy
+);
 
 const categoryControllers = require("./controllers/categoryControllers");
 
 router.get("/categories", categoryControllers.browse);
 router.get("/categories/:name", categoryControllers.browseByCategoryName);
-router.post("/categories", checkUser, categoryControllers.add);
-router.put("/categories/:id", checkUser, categoryControllers.edit);
-router.delete("/categories/:id", checkUser, categoryControllers.destroy);
+router.post("/categories", checkUser, checkAdmin, categoryControllers.add);
+router.put("/categories/:id", checkUser, checkAdmin, categoryControllers.edit);
+router.delete(
+  "/categories/:id",
+  checkUser,
+  checkAdmin,
+  categoryControllers.destroy
+);
 
 const techniqueControllers = require("./controllers/techniqueControllers");
 
 router.get("/techniques", techniqueControllers.browse);
 router.get("/techniques/:id", techniqueControllers.read);
-router.put("/techniques/:id", checkUser, techniqueControllers.edit);
+router.put("/techniques/:id", checkUser, checkAdmin, techniqueControllers.edit);
 router.post("/techniques", checkUser, techniqueControllers.add);
-router.delete("/techniques/:id", checkUser, techniqueControllers.destroy);
+router.delete(
+  "/techniques/:id",
+  checkUser,
+  checkAdmin,
+  techniqueControllers.destroy
+);
 
 const articleControllers = require("./controllers/articleControllers");
 
 router.get("/articles", articleControllers.browse);
 router.get("/articles/:id", articleControllers.read);
 router.get("/works/:id/articles", articleControllers.browseByWork);
-router.put("/articles/:id", articleControllers.edit);
-router.post("/articles", articleControllers.add);
-router.delete("/articles/:id", articleControllers.destroy);
+router.put("/articles/:id", checkUser, checkAdmin, articleControllers.edit);
+router.post("/articles", checkUser, checkAdmin, articleControllers.add);
+router.delete(
+  "/articles/:id",
+  checkUser,
+  checkAdmin,
+  articleControllers.destroy
+);
 
 const aboutControllers = require("./controllers/aboutControllers");
 
 router.get("/about", aboutControllers.browse);
 router.get("/about/:id", aboutControllers.read);
-router.put("/about/:id", aboutControllers.edit);
-router.post("/about", aboutControllers.add);
-router.delete("/about/:id", aboutControllers.destroy);
+router.put("/about/:id", checkUser, checkAdmin, aboutControllers.edit);
+router.post("/about", checkUser, checkAdmin, aboutControllers.add);
+router.delete("/about/:id", checkUser, checkAdmin, aboutControllers.destroy);
 
 const userControllers = require("./controllers/userControllers");
 

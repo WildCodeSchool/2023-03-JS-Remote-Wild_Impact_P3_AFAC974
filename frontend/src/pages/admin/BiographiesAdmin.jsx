@@ -111,7 +111,7 @@ function BiographiesAdmin() {
         <form className="flex gap-20" onSubmit={(e) => postBiography(e)}>
           <div className="flex flex-col w-5/12">
             <label className="flex flex-col font-semibold pb-5 pl-10">
-              Select biographies
+              Selection d'une biographie
               <select
                 onChange={(e) => refreshBiography(e.target.value)}
                 value={biography.id}
@@ -126,7 +126,7 @@ function BiographiesAdmin() {
               </select>
             </label>
             <label className="flex flex-col font-semibold pb-5 pl-10">
-              Write biographie
+              {" "}
               <input
                 required
                 type="text"

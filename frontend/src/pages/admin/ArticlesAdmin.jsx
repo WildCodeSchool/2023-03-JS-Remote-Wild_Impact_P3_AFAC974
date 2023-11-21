@@ -91,11 +91,11 @@ function ArticlesAdmin() {
       <h2 className="text-xl font-bold p-4 pb-10">Gestion des Articles</h2>
       <form className="ml-10" onSubmit={(e) => postArticle(e)}>
         <label className="flex flex-col font-semibold w-80">
-          Selectionner un article
+          Selection d'un article
           <select
             onChange={(e) => refreshArticle(e.target.value)}
             value={article.id}
-            className="border border-black h-7 mt-10 text-black"
+            className="border border-black h-7 mt-5 text-black"
           >
             <option value="">Choisir l'article</option>
             {articles.map((art) => (
